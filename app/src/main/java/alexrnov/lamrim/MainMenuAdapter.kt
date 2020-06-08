@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -20,7 +21,6 @@ class MainMenuAdapter(private val dataset: Array<String>) :
             .inflate(R.layout.text_view, parent, false) as TextView
     // set the view's size, margins, paddings and layout parameters
     // ...
-
     return TextViewHolder(textView)
   }
 
