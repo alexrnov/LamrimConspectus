@@ -3,6 +3,7 @@ package alexrnov.lamrim;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,5 +13,6 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
     Class1 class1 = new Class1();
     class1.f();
+    Log.i("P", "77777");
   }
 }
