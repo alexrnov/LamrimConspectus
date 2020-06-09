@@ -29,11 +29,12 @@ public class MainActivity extends AppCompatActivity {
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
 
-    String[] dataset = new String[] {"item1", "item2", "item4", "item5",
-            "item6", "item7", "item8", "item9", "item10", "item11", "item12", "item13"};
-    // specify an adapter
-    adapter = new MainMenuAdapter(dataset);
+     // specify an adapter
+    adapter = new MainMenuAdapter();
     recyclerView.setAdapter(adapter);
+
+
+
 
   }
 }

@@ -6,13 +6,22 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MainMenuAdapter(private val dataset: Array<String>) :
-        RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
+class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
+
+  private var dataset = arrayOf("item1", "item2", "item3", "item4",
+          "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item132")
+
 
   // Provide a reference to the views for each data item. Complex data items may need
   // more than one view per item, and you provide access to all the views for a data
   // item in a view holder. Each data item is just a string in this case that is shown in a TextView.
-  class TextViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView)
+  class TextViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView) {
+    init {
+      textView.setOnClickListener {
+        Log.i("P", "adapterPosition = $adapterPosition")
+      }
+    }
+  }
 
   // Create new views (invoked by the layout manager)
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextViewHolder {
