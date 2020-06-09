@@ -6,12 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
+    <FrameLayout android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:ignore="ExtraText">
-        >
+        android:layout_height="match_parent">
         <include layout="@layout/menu_list" />
     </FrameLayout>
 
