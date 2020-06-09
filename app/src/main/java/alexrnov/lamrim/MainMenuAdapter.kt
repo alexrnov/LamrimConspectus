@@ -1,10 +1,11 @@
 package alexrnov.lamrim
 
-import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.TextView
+
 import androidx.recyclerview.widget.RecyclerView
 
 class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
@@ -18,11 +19,24 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
   // item in a view holder. Each data item is just a string in this case that is shown in a TextView.
   class TextViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView) {
     init {
+
+      textView.setFocusable(true);
+      textView.setFocusableInTouchMode(true);
+
       textView.setOnClickListener {
         textView.setBackgroundResource(R.drawable.item_press)
         Log.i("P", "adapterPosition = $adapterPosition")
       }
 
+
+      textView.setOnFocusChangeListener { view, hasFocus ->
+        if (hasFocus) {
+          Log.i("P", "YES")
+        } else {
+          Log.i("P", "NO")
+        }
+      }
+      /*
       textView.setOnFocusChangeListener { view, b ->
         if (b) {
           Log.i("P", "YES")
@@ -32,7 +46,11 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
           view.setBackgroundResource(R.drawable.item_default)
         }
       }
+
+       */
     }
+
+
   }
 
   // Create new views (invoked by the layout manager)
