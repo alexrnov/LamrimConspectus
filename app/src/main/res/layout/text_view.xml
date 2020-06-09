@@ -4,4 +4,7 @@
     android:id="@+id/menu_item_text_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_height"
-    android:gravity="center"/>
+    android:gravity="center"
+    android:clickable="true"
+    android:background="@drawable/toggle_item"
+    android:focusable="true" />

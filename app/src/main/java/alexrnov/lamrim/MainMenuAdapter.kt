@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import android.os.Build
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -18,7 +19,18 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
   class TextViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView) {
     init {
       textView.setOnClickListener {
+        textView.setBackgroundResource(R.drawable.item_press)
         Log.i("P", "adapterPosition = $adapterPosition")
+      }
+
+      textView.setOnFocusChangeListener { view, b ->
+        if (b) {
+          Log.i("P", "YES")
+          view.setBackgroundResource(R.drawable.item_press)
+        } else {
+          Log.i("P", "NO")
+          view.setBackgroundResource(R.drawable.item_default)
+        }
       }
     }
   }
