@@ -20,20 +20,26 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
   class TextViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView) {
     init {
 
-      textView.setFocusable(true);
-      textView.setFocusableInTouchMode(true);
-
+      textView.requestFocus()
+      textView.isFocusable = true
+      textView.isFocusableInTouchMode = true
+      textView.isClickable = true
+      /*
       textView.setOnClickListener {
         textView.setBackgroundResource(R.drawable.item_press)
         Log.i("P", "adapterPosition = $adapterPosition")
       }
 
+       */
+
 
       textView.setOnFocusChangeListener { view, hasFocus ->
         if (hasFocus) {
           Log.i("P", "YES")
+          textView.setBackgroundResource(R.drawable.item_press)
         } else {
           Log.i("P", "NO")
+          textView.setBackgroundResource(R.drawable.item_default)
         }
       }
       /*
