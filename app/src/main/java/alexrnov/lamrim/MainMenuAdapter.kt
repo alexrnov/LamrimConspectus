@@ -17,6 +17,7 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
   // more than one view per item, and you provide access to all the views for a data
   // item in a view holder. Each data item is just a string in this case that is shown in a TextView.
   class TextViewHolder(val textView: TextView) : RecyclerView.ViewHolder(textView) {
+
     init {
 
       textView.requestFocus()
@@ -31,6 +32,7 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
           view.setBackgroundResource(R.drawable.item_default)
         }
       }
+
     }
 
 
