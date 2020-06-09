@@ -2,7 +2,6 @@ package alexrnov.lamrim
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View.OnFocusChangeListener
 import android.view.ViewGroup
 import android.widget.TextView
 
@@ -24,36 +23,14 @@ class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
       textView.isFocusable = true
       textView.isFocusableInTouchMode = true
       textView.isClickable = true
-      /*
-      textView.setOnClickListener {
-        textView.setBackgroundResource(R.drawable.item_press)
-        Log.i("P", "adapterPosition = $adapterPosition")
-      }
-
-       */
-
 
       textView.setOnFocusChangeListener { view, hasFocus ->
         if (hasFocus) {
-          Log.i("P", "YES")
-          textView.setBackgroundResource(R.drawable.item_press)
-        } else {
-          Log.i("P", "NO")
-          textView.setBackgroundResource(R.drawable.item_default)
-        }
-      }
-      /*
-      textView.setOnFocusChangeListener { view, b ->
-        if (b) {
-          Log.i("P", "YES")
           view.setBackgroundResource(R.drawable.item_press)
         } else {
-          Log.i("P", "NO")
           view.setBackgroundResource(R.drawable.item_default)
         }
       }
-
-       */
     }
 
 
