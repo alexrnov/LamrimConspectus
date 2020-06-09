@@ -17,9 +17,6 @@ public class MainActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
-    Class1 class1 = new Class1();
-    class1.f();
-    Log.i("P", "77777");
 
     recyclerView = (RecyclerView) findViewById(R.id.main_menu);
     // use this setting to improve performance if you know that changes
@@ -32,9 +29,5 @@ public class MainActivity extends AppCompatActivity {
      // specify an adapter
     adapter = new MainMenuAdapter();
     recyclerView.setAdapter(adapter);
-
-
-
-
   }
 }
