@@ -6,15 +6,29 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MainMenuAdapter : RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
+class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
+        RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
   private var dataset = arrayOf("item1", "item2", "item3", "item4",
           "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item13")
 
-
   private val focusListener = { view: View, hasFocus: Boolean ->
       if (hasFocus) {
+        //view.setBackgroundResource(R.drawable.item_press)
+
+
+        val fragment = ContentFragment()
+
+        parentActivity.supportFragmentManager.beginTransaction()
+                .replace(R.id.fragment_container, fragment)
+                .commit()
+
         view.setBackgroundResource(R.drawable.item_press)
+        //parentActivity.supportFragmentManager().
+        // you must call commit() for the changes to take effect.
+
+
+
       } else {
         view.setBackgroundResource(R.drawable.item_default)
       }
