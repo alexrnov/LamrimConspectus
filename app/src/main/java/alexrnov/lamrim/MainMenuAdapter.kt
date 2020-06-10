@@ -1,40 +1,39 @@
 package alexrnov.lamrim
 
 import android.content.Intent
-import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
+class MainMenuAdapter(private val dualPane: Boolean,
+                                      private val parentActivity: MainActivity) :
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
-  private var dataset = arrayOf("item1", "item2", "item3", "item4",
+  private var dataset = arrayOf("Предисловие", "item2", "item3", "item4",
           "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item13")
 
 
   private val onePanelListener = { view: View ->
-    view.setBackgroundResource(R.drawable.item_press)
+    view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
     val intent = Intent(context, ContentActivity::class.java)
     context.startActivity(intent)
   }
 
   private val dualPaneListener = { view: View, hasFocus: Boolean ->
-      if (hasFocus) {
-        val fragment = ContentFragment()
+    if (hasFocus) {
+      val fragment = ContentFragment()
 
-        parentActivity.supportFragmentManager.beginTransaction()
+      parentActivity.supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
                 .commit() // call commit() for the changes to take effect.
 
-        view.setBackgroundResource(R.drawable.item_press)
-      } else {
-        view.setBackgroundResource(R.drawable.item_default)
-      }
+      view.setBackgroundResource(R.drawable.item_check)
+    } else {
+      view.setBackgroundResource(R.drawable.item_default)
+    }
   }
 
   // Provide a reference to the views for each data item. Complex data items may need

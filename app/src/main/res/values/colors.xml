@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#0087c5</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="itemDefaultCenter">#ffc000</color>
-    <color name="itemDefaultStartEnd">#ffbc8a</color>
+    <color name="recyclerFill">#ffb300</color>
 
-    <color name="itemPressCenter">#ff3e3e</color>
-    <color name="itemPressStartEnd">#ff9d8a</color>
+    <color name="itemDefaultBorder">#9a9a9a</color>
+
+    <color name="itemCheckCenter">#ff791f</color>
+    <color name="itemCheckStartEnd">#ffa66a</color>
+
+
 </resources>
