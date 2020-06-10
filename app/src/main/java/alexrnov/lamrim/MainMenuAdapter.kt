@@ -16,14 +16,12 @@ class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
           "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item13")
 
 
-  private val onePanelListener = View.OnClickListener { view ->
+  private val onePanelListener = { view: View ->
     view.setBackgroundResource(R.drawable.item_press)
-    Log.i("P", "ONEPANELLISTENER")
     val context = view.context
     val intent = Intent(context, ContentActivity::class.java)
     context.startActivity(intent)
   }
-
 
   private val dualPaneListener = { view: View, hasFocus: Boolean ->
       if (hasFocus) {
@@ -31,11 +29,9 @@ class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
 
         parentActivity.supportFragmentManager.beginTransaction()
                 .replace(R.id.fragment_container, fragment)
-                .commit()
+                .commit() // call commit() for the changes to take effect.
 
         view.setBackgroundResource(R.drawable.item_press)
-        //parentActivity.supportFragmentManager().
-        // you must call commit() for the changes to take effect.
       } else {
         view.setBackgroundResource(R.drawable.item_default)
       }
@@ -62,16 +58,13 @@ class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
     // - replace the contents of the view with that element
     holder.textView.text = dataset[position]
 
+    holder.textView.isClickable = true
     if (dualPane) {
-
       holder.textView.requestFocus()
       holder.textView.isFocusable = true
       holder.textView.isFocusableInTouchMode = true
-      holder.textView.isClickable = true
-
       holder.textView.setOnFocusChangeListener(dualPaneListener)
     } else {
-      holder.textView.isClickable = true
       holder.textView.setOnClickListener(onePanelListener)
     }
   }
