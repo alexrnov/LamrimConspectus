@@ -1,5 +1,8 @@
 package alexrnov.lamrim
 
+import android.content.Intent
+import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,11 +15,18 @@ class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
   private var dataset = arrayOf("item1", "item2", "item3", "item4",
           "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item13")
 
-  private val focusListener = { view: View, hasFocus: Boolean ->
+
+  private val onePanelListener = View.OnClickListener { view ->
+    view.setBackgroundResource(R.drawable.item_press)
+    Log.i("P", "ONEPANELLISTENER")
+    val context = view.context
+    val intent = Intent(context, ContentActivity::class.java)
+    context.startActivity(intent)
+  }
+
+
+  private val dualPaneListener = { view: View, hasFocus: Boolean ->
       if (hasFocus) {
-        //view.setBackgroundResource(R.drawable.item_press)
-
-
         val fragment = ContentFragment()
 
         parentActivity.supportFragmentManager.beginTransaction()
@@ -26,9 +36,6 @@ class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
         view.setBackgroundResource(R.drawable.item_press)
         //parentActivity.supportFragmentManager().
         // you must call commit() for the changes to take effect.
-
-
-
       } else {
         view.setBackgroundResource(R.drawable.item_default)
       }
@@ -55,12 +62,18 @@ class MainMenuAdapter(val dualPane: Boolean, val parentActivity: MainActivity) :
     // - replace the contents of the view with that element
     holder.textView.text = dataset[position]
 
-    holder.textView.requestFocus()
-    holder.textView.isFocusable = true
-    holder.textView.isFocusableInTouchMode = true
-    holder.textView.isClickable = true
+    if (dualPane) {
 
-    holder.textView.setOnFocusChangeListener(focusListener)
+      holder.textView.requestFocus()
+      holder.textView.isFocusable = true
+      holder.textView.isFocusableInTouchMode = true
+      holder.textView.isClickable = true
+
+      holder.textView.setOnFocusChangeListener(dualPaneListener)
+    } else {
+      holder.textView.isClickable = true
+      holder.textView.setOnClickListener(onePanelListener)
+    }
   }
 
   // return the size of your dataset (invoked by the layout manager)
