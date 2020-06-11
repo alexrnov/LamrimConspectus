@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 
 class MainMenuAdapter(private val dualPane: Boolean,
@@ -24,11 +26,13 @@ class MainMenuAdapter(private val dualPane: Boolean,
 
   private val dualPaneListener = { view: View, hasFocus: Boolean ->
     if (hasFocus) {
-      val fragment = ContentFragment()
-
-      parentActivity.supportFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, fragment)
-                .commit() // call commit() for the changes to take effect.
+      // to manage the fragments in activity, need to use FragmentManager.
+      val manager: FragmentManager = parentActivity.supportFragmentManager
+      // to make fragment transactions in activity (such as add, remove, or replace a fragment)
+      val transaction: FragmentTransaction = manager.beginTransaction()
+      // replace an existing fragment that was added to a container
+      transaction.replace(R.id.fragment_container, ContentFragment())
+      transaction.commit() // call commit() for the changes to take effect.
 
       view.setBackgroundResource(R.drawable.item_check)
     } else {
