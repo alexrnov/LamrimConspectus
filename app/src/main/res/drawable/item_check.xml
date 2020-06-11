@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
-    <item>
-        <shape
-            android:shape="rectangle">
-            <stroke android:width="1dp" android:color="#FF000000" />
-            <solid android:color="#ffb027" />
-        </shape>
-    </item>
 
-    <item android:bottom="20dp">
-        <shape android:shape="rectangle" >
-            <solid android:color="#FFDDDDDD"/>
+    <item
+
+        android:top="28dp"
+        android:right="0dp"
+        android:gravity="center">
+
+        <shape android:shape="rectangle">
             <size
-                android:height="4dp"
-                android:width="4dp" />
-            <stroke
-                android:width="20dp" android:color="#00000000" />
+                android:height="5dp"
+                android:width="140dp" />
+            <solid android:color="#ff5434" />
         </shape>
     </item>
-
-
-
 
 
 
