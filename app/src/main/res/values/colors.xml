@@ -6,6 +6,7 @@
 
     <color name="recyclerFill">#FFDDDDDD</color>
     <color name="itemTopBottomBorder">#a5a5a5</color>
-    <color name="underlineItem">#5cb2d9</color>
+    <color name="underlineItemDefault">#5cb2d9</color>
+    <color name="underlineItemChecked">#ffb327</color>
 
 </resources>

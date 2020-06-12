@@ -9,6 +9,19 @@
         </shape>
     </item>
 
+    <item
+        android:top="34dp"
+        android:right="0dp"
+        android:gravity="center">
+        <shape android:shape="rectangle">
+            <size
+                android:height="3dp"
+                android:width="180dp" />
+            <solid android:color="@color/underlineItemDefault" />
+        </shape>
+    </item>
+
+
     <item android:bottom="1dp">
         <shape
             android:shape="rectangle">

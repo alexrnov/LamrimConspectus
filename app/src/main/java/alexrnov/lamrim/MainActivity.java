@@ -35,20 +35,6 @@ public class MainActivity extends AppCompatActivity {
     recyclerView.setLayoutManager(layoutManager);
 
 
-    recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-
-      @Override
-      public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-        super.onScrolled(recyclerView, dx, dy);
-        if (dy > 0) {
-          Log.i("P", "Scroll up");
-        } else {
-          Log.i("P", "Scroll down");
-        }
-      }
-
-    });
-
     adapter = new MainMenuAdapter(dualPane, this);
 
     recyclerView.setAdapter(adapter);
