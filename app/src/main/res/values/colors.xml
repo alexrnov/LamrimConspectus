@@ -4,9 +4,10 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
+    <color name="background_content">#fff0d5</color>
     <color name="recyclerFill">#FFDDDDDD</color>
     <color name="itemTopBottomBorder">#a5a5a5</color>
     <color name="underlineItemDefault">#5cb2d9</color>
-    <color name="underlineItemChecked">#ffb327</color>
+    <color name="underlineItemChecked">#ff4d00</color>
 
 </resources>
