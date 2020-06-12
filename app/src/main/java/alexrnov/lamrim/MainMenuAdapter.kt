@@ -78,6 +78,7 @@ class MainMenuAdapter(private val dualPane: Boolean,
       //holder.textView.isFocusableInTouchMode = true
 
       holder.textView.setOnClickListener { view ->
+        // solution Dustin Charles (https://stackoverflow.com/questions/27194044/how-to-properly-highlight-selected-item-on-recyclerview)
         view.setBackgroundResource(R.drawable.item_check)
 
         if (selected.isEmpty()) {
