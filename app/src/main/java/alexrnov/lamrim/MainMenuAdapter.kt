@@ -18,13 +18,7 @@ class MainMenuAdapter(private val dualPane: Boolean,
   private var dataset = arrayOf("Предисловие", "item2", "item3", "item4",
           "item5", "item6", "item7", "item8", "item9", "item10", "item11", "item13")
 
-
-  private var selectedPos = RecyclerView.NO_POSITION
-
-  private var viewHolder: TextViewHolder? = null
-
   private val selected: ArrayList<Int> = ArrayList()
-
 
   private val onePanelListener = { view: View ->
     view.setBackgroundResource(R.drawable.item_check)
@@ -33,6 +27,7 @@ class MainMenuAdapter(private val dualPane: Boolean,
     context.startActivity(intent)
   }
 
+  /*
   private val dualPaneListener = { view: View, hasFocus: Boolean ->
     if (hasFocus) {
       // to manage the fragments in activity, need to use FragmentManager.
@@ -47,6 +42,8 @@ class MainMenuAdapter(private val dualPane: Boolean,
       view.setBackgroundResource(R.drawable.item_default)
     }
   }
+
+   */
 
   // Provide a reference to the views for each data item. Complex data items may need
   // more than one view per item, and you provide access to all the views for a data
@@ -66,23 +63,12 @@ class MainMenuAdapter(private val dualPane: Boolean,
   // replace the contents of a view (invoked by the layout manager)
   override fun onBindViewHolder(holder: TextViewHolder, position: Int) {
 
-    //viewHolder = holder
-
-    //holder.itemView.isSelected = selectedPos == position
-
-
-    if (!selected.contains(position)) {
-      // view not selected
-      //holder.itemView.setBackgroundColor(Color.LTGRAY);
+    if (!selected.contains(position)) { // view not selected
       holder.itemView.setBackgroundResource(R.drawable.item_default)
-    }
-    else {
-      // view is selected
-      //holder.itemView.setBackgroundColor(Color.CYAN);
+    } else { // view is selected
       holder.itemView.setBackgroundResource(R.drawable.item_check)
     }
-    // - get element from your dataset at this position
-    // - replace the contents of the view with that element
+    // - get element from your dataset at this position - replace the contents of the view with that element
     holder.textView.text = dataset[position]
 
     holder.textView.isClickable = true
@@ -91,53 +77,21 @@ class MainMenuAdapter(private val dualPane: Boolean,
       //holder.textView.isFocusable = true
       //holder.textView.isFocusableInTouchMode = true
 
+      holder.textView.setOnClickListener { view ->
+        view.setBackgroundResource(R.drawable.item_check)
 
-
-
-
-      holder.textView.setOnClickListener {v ->
-        // set color immediately.
-
-        // set color immediately.
-        //v.setBackgroundColor(Color.CYAN)
-
-        v.setBackgroundResource(R.drawable.item_check)
-
-        // (*1)
-        // forcing single selection here
-
-        // (*1)
-        // forcing single selection here
         if (selected.isEmpty()) {
           selected.add(position)
         } else {
           val oldSelected = selected[0]
           selected.clear()
           selected.add(position)
-          // we do not notify that an item has been selected
-          // because that work is done here. we instead send
-          // notifications for items to be deselected
+          // we do not notify that an item has been selected because that work is
+          // done here. We instead send notifications for items to be deselected
           notifyItemChanged(oldSelected)
         }
-
       }
-
-
-      /*
-      holder.textView.setOnClickListener { view ->
-        Log.i("P", "Click")
-
-        notifyItemChanged(selectedPos)
-        selectedPos = viewHolder?.getLayoutPosition()!!
-        notifyItemChanged(selectedPos)
-
-      }
-      */
-
-
       //holder.textView.setOnFocusChangeListener(dualPaneListener)
-
-
     } else {
       holder.textView.setOnClickListener(onePanelListener)
     }
