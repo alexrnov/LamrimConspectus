@@ -1,5 +1,6 @@
 package alexrnov.lamrim;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -33,7 +34,23 @@ public class MainActivity extends AppCompatActivity {
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
 
+
+    recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+      @Override
+      public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+        super.onScrolled(recyclerView, dx, dy);
+        if (dy > 0) {
+          Log.i("P", "Scroll up");
+        } else {
+          Log.i("P", "Scroll down");
+        }
+      }
+
+    });
+
     adapter = new MainMenuAdapter(dualPane, this);
+
     recyclerView.setAdapter(adapter);
   }
 }
