@@ -52,7 +52,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
 
     holder.textView.isClickable = true
 
-    if (dualPane) {
+    if (dualPane) { // dual pane mode
 
       holder.textView.setOnClickListener { view ->
         // solution Dustin Charles how-to-properly-highlight-selected-item-on-recyclerview
@@ -77,7 +77,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
         transaction.replace(R.id.fragment_container, ContentFragment())
         transaction.commit() // call commit() for the changes to take effect.
       }
-    } else {
+    } else { // one pane mode
       holder.textView.setOnClickListener(onePanelListener)
     }
   }
