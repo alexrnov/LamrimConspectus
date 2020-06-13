@@ -44,19 +44,14 @@ public class MainActivity extends AppCompatActivity {
   }
 
   @Override
-  public void onConfigurationChanged(Configuration newConfig) {
-    super.onConfigurationChanged(newConfig);
+  public void onConfigurationChanged(@NonNull Configuration config) {
+    super.onConfigurationChanged(config);
 
     // Checks the orientation of the screen
-    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-      Log.i("P", "LANDSCAPE");
-    } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-      if (dualPane) {
-        Context context = this.getApplicationContext();
-        Intent intent = new Intent(context, ContentActivity.class);
-        context.startActivity(intent);
-      }
-      Log.i("P", "PORTRAIT");
+    if (config.orientation == Configuration.ORIENTATION_PORTRAIT && dualPane) {
+      Context context = this.getApplicationContext();
+      Intent intent = new Intent(context, ContentActivity.class);
+      context.startActivity(intent);
     }
   }
 }
