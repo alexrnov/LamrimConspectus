@@ -17,6 +17,16 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
+  init {
+    if (dualPane) { // by default, in dual pane mode, select the first item
+      selectedItem.add(0)
+      // to manage the fragments in activity, need to use FragmentManager.
+      parentActivity.supportFragmentManager.beginTransaction()
+              .replace(R.id.fragment_container, ContentFragment())
+              .commit() // call commit() for the changes to take effect.
+    }
+  }
+
   private val onePanelListener = { view: View ->
     view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
