@@ -1,6 +1,7 @@
 package alexrnov.lamrim
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,9 +21,18 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
   init {
     if (dualPane) { // by default, in dual pane mode, select the first item
       selectedItem.add(0)
+
+
+      val arguments = Bundle()
+      arguments.putString("id", "0")
+      val fragment = ContentFragment()
+      fragment.arguments = arguments
+
+
+
       // to manage the fragments in activity, need to use FragmentManager.
       parentActivity.supportFragmentManager.beginTransaction()
-              .replace(R.id.fragment_container, ContentFragment())
+              .replace(R.id.fragment_container, fragment)
               .commit() // call commit() for the changes to take effect.
     }
   }
@@ -31,6 +41,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
     view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
     val intent = Intent(context, ContentActivity::class.java)
+    intent.putExtra("id", view.tag.toString())
     context.startActivity(intent)
   }
 
@@ -60,7 +71,9 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
     // - get element from your dataset at this position - replace the contents of the view with that element
     holder.textView.text = dataset[position]
 
+    holder.textView.tag = position
     holder.textView.isClickable = true
+
 
     if (dualPane) { // dual pane mode
 
@@ -79,12 +92,17 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
           notifyItemChanged(oldSelected)
         }
 
+        val arguments = Bundle()
+        arguments.putString("id", view.tag.toString())
+        val fragment = ContentFragment()
+        fragment.arguments = arguments
+
         // to manage the fragments in activity, need to use FragmentManager.
         val manager: FragmentManager = parentActivity.supportFragmentManager
         // to make fragment transactions in activity (such as add, remove, or replace a fragment)
         val transaction: FragmentTransaction = manager.beginTransaction()
         // replace an existing fragment that was added to a container
-        transaction.replace(R.id.fragment_container, ContentFragment())
+        transaction.replace(R.id.fragment_container, fragment)
         transaction.commit() // call commit() for the changes to take effect.
       }
     } else { // one pane mode

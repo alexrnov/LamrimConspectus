@@ -1,6 +1,7 @@
 package alexrnov.lamrim;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,11 @@ public class ContentFragment extends Fragment {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
+
+    if (getArguments().containsKey("id")) {
+      String s = getArguments().getString("id");
+      Log.i("P", "s = " + s);
+    }
   }
 
   // calls when it's time for the fragment to draw its layout.
