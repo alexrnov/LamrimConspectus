@@ -2,6 +2,7 @@ package alexrnov.lamrim;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +26,13 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
+    ApplicationData model = new ViewModelProvider(this).get(ApplicationData.class);
+
+
     View container = findViewById(R.id.fragment_container);
     dualPane = container != null && container.getVisibility() == View.VISIBLE;
 
-    Log.i("P", "dualPane = " + dualPane);
+    Log.i(model.getTag(), "dualPane = " + dualPane);
     recyclerView = (RecyclerView) findViewById(R.id.main_menu);
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
