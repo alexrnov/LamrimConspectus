@@ -4,6 +4,6 @@
     android:id="@+id/menu_item_text_view"
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_height"
-    android:textColor="#7e7e7e"
+    android:textAppearance="@style/TextMenu"
     android:gravity="center"
     android:background="@drawable/toggle_item" />
