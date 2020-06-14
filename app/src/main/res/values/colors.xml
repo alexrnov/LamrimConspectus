@@ -9,6 +9,6 @@
     <color name="itemTopBottomBorder">#a5a5a5</color>
     <color name="underlineItemDefault">#5cb2d9</color>
     <color name="underlineItemChecked">#ff8976</color>
-    <color name="itemCheckedPortrait">#8bc6e0</color>
+    <color name="itemCheckedPortrait">#dbc1d3</color>
 
 </resources>

@@ -22,13 +22,10 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
     if (dualPane) { // by default, in dual pane mode, select the first item
       selectedItem.add(0)
 
-
       val arguments = Bundle()
       arguments.putString("id", "0")
       val fragment = ContentFragment()
       fragment.arguments = arguments
-
-
 
       // to manage the fragments in activity, need to use FragmentManager.
       parentActivity.supportFragmentManager.beginTransaction()
