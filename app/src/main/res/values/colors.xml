@@ -4,12 +4,11 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="background_content">#fffdea</color>
-    <color name="recyclerFill">#dbe9e8</color>
+    <color name="background_content">#fefde8</color>
+    <color name="itemFillDefault">#c9ebf6</color>
+    <color name="itemFillChecked">#aee0f5</color>
     <color name="itemTopBottomBorder">#a5a5a5</color>
     <color name="underlineItemDefault">#5cb2d9</color>
     <color name="underlineItemChecked">#5cb2d9</color>
-    <color name="itemFillChecked">#ebe3ba</color>
-
 
 </resources>

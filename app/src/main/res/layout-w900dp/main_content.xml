@@ -15,7 +15,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
-        android:background="@color/recyclerFill" />
+        android:background="@color/itemFillDefault" />
 
     <FrameLayout
         android:id="@+id/fragment_container"

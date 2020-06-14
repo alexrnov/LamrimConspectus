@@ -4,7 +4,7 @@
         <shape
             android:shape="rectangle">
             <stroke android:width="1dp" android:color="@color/itemTopBottomBorder" />
-            <solid android:color="@color/recyclerFill" />
+            <solid android:color="@color/itemFillDefault" />
 
         </shape>
     </item>
@@ -18,7 +18,7 @@
         android:left="10dp"
         android:gravity="center">
         <shape android:shape="line">
-            <stroke android:width="2dp" android:color="@color/underlineItemDefault" />
+            <stroke android:width="1dp" android:color="@color/underlineItemDefault" />
         </shape>
     </item>
 
@@ -26,7 +26,7 @@
     <item android:bottom="1dp">
         <shape
             android:shape="rectangle">
-            <stroke android:width="1dp" android:color="@color/recyclerFill" />
+            <stroke android:width="1dp" android:color="@color/itemFillDefault" />
             <solid android:color="#00000000" />
         </shape>
     </item>
