@@ -5,10 +5,11 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="background_content">#fffdea</color>
-    <color name="recyclerFill">#FFDDDDDD</color>
+    <color name="recyclerFill">#dbe9e8</color>
     <color name="itemTopBottomBorder">#a5a5a5</color>
     <color name="underlineItemDefault">#5cb2d9</color>
-    <color name="underlineItemChecked">#ff8976</color>
-    <color name="itemCheckedPortrait">#dbc1d3</color>
+    <color name="underlineItemChecked">#5cb2d9</color>
+    <color name="itemFillChecked">#ebe3ba</color>
+
 
 </resources>

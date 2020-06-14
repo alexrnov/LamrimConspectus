@@ -20,7 +20,7 @@
 
     <item android:bottom="1dp">
         <shape android:shape="rectangle">
-            <solid android:color="@color/itemCheckedPortrait" />
+            <solid android:color="@color/itemFillChecked" />
         </shape>
     </item>
 
