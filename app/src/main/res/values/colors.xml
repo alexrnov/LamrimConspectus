@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">#7e7e7e</color>
     <color name="colorAccent">#D81B60</color>
 
-    <!-- #dcdaaa -->
+    <color name="white">#ffffff</color>
+
+    <color name="appBarColor">#c6804d</color>
     <color name="background_content">#bbbaa2</color>
     <color name="itemFillDefault">#cdb760</color>
     <color name="itemFillChecked">#cea915</color>

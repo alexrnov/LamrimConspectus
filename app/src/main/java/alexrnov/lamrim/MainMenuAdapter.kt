@@ -18,6 +18,9 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
+  var currentSelectId: String = "0" // id выбранного пункта
+    private set
+
   init {
     if (dualPane) { // by default, in dual pane mode, select the first item
       selectedItem.add(0)
@@ -38,7 +41,8 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
     view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
     val intent = Intent(context, ContentActivity::class.java)
-    intent.putExtra("id", view.tag.toString())
+    currentSelectId = view.tag.toString()
+    intent.putExtra("id", currentSelectId)
     context.startActivity(intent)
   }
 
@@ -90,7 +94,8 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
         }
 
         val arguments = Bundle()
-        arguments.putString("id", view.tag.toString())
+        currentSelectId = view.tag.toString()
+        arguments.putString("id", currentSelectId)
         val fragment = ContentFragment()
         fragment.arguments = arguments
 
