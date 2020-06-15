@@ -18,7 +18,14 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/appBarColor"
-            app:popupTheme="@style/AppTheme" />
+            app:popupTheme="@style/AppTheme" >
+            <TextView
+                android:id="@+id/toolbar_about_game_title"
+                style="@style/ActionBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/title_app"/>
+        </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout android:id="@+id/frameLayout"
