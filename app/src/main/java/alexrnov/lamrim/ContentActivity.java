@@ -3,7 +3,12 @@ package alexrnov.lamrim;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.google.android.material.appbar.CollapsingToolbarLayout;
+
+import java.util.Objects;
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,6 +18,15 @@ public class ContentActivity extends AppCompatActivity {
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_detail);
+
+    CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
+
+    collapsingToolbarLayout.setTitle("Конспект ламрима");
+    Toolbar toolbar = findViewById(R.id.detail_toolbar);
+    setSupportActionBar(toolbar);
+
+    (getSupportActionBar()).setDisplayHomeAsUpEnabled(true); // enable the Up button
+    getSupportActionBar().setIcon(R.mipmap.ic_launcher_round);
 
     // savedInstanceState is non-null when there is fragment state saved from previous
     // configurations of this activity (e.g. when rotating the screen from portrait to landscape).
