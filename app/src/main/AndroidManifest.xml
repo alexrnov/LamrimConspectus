@@ -21,7 +21,8 @@
         </activity>
         <activity
             android:name=".ContentActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="alexrnov.lamrim.MainActivity" />

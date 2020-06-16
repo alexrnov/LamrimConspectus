@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">LamrimConspectus</string>
     <string name="title_app">Конспект Ламрима</string>
+    <string name="appbar_scrolling_text">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 </resources>
