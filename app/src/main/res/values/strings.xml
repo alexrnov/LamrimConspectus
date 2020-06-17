@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LamrimConspectus</string>
+    <string name="app_name">Конспект Ламрима</string>
     <string name="title_app">Конспект Ламрима</string>
     <string name="appbar_scrolling_text">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

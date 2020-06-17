@@ -2,14 +2,17 @@ package alexrnov.lamrim;
 
 import android.os.Bundle;
 import android.util.Log;
-
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-
+import android.graphics.drawable.Drawable;
 import java.util.Objects;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -31,6 +34,11 @@ public class ContentActivity extends AppCompatActivity {
       actionBar.setDisplayHomeAsUpEnabled(true); // enable the Up button
       actionBar.setIcon(R.drawable.home_icon);
     }
+
+
+    Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
+    toolbar.setOverflowIcon(drawable);
+
     // savedInstanceState is non-null when there is fragment state saved from previous
     // configurations of this activity (e.g. when rotating the screen from portrait to landscape).
     if (savedInstanceState == null) {
@@ -48,6 +56,27 @@ public class ContentActivity extends AppCompatActivity {
       transaction.add(R.id.fragment_container, fragment);
       transaction.commit(); // call commit() for the changes to take effect.
     }
+  }
+
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_exit:
+        Log.i("P", "action");
+        return true;
+      case R.id.action_settings:
+        Log.i("P", "action2");
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
+    }
+  }
+
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu_layout, menu);
+    return true;
   }
 
 

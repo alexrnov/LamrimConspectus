@@ -1,7 +1,10 @@
 package alexrnov.lamrim;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,10 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.MenuInflater;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,12 +53,23 @@ public class MainActivity extends AppCompatActivity {
     adapter = new MainMenuAdapter(dualPane, this);
 
     recyclerView.setAdapter(adapter);
-  }
 
-  @Override
-  public boolean onCreateOptionsMenu(Menu menu) {
-    getMenuInflater().inflate(R.menu.menu_layout, menu);
-    return super.onCreateOptionsMenu(menu);
+
+    //Toolbar collapsingToolbarLayout = findViewById(R.id.toolbar);
+
+    //collapsingToolbarLayout.setTitle("Конспект ламрима");
+    Toolbar toolbar = findViewById(R.id.toolbar);
+    setSupportActionBar(toolbar);
+
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      //actionBar.setDisplayHomeAsUpEnabled(true); // enable the Up button
+      actionBar.setIcon(R.drawable.home_icon);
+    }
+
+    Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
+    toolbar.setOverflowIcon(drawable);
+
   }
 
   @Override
@@ -65,6 +82,27 @@ public class MainActivity extends AppCompatActivity {
       Intent intent = new Intent(context, ContentActivity.class);
       intent.putExtra("id", adapter.getCurrentSelectId());
       context.startActivity(intent);
+    }
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.menu_layout, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.action_exit:
+        Log.i("P", "action");
+        return true;
+      case R.id.action_settings:
+        Log.i("P", "action2");
+        return true;
+      default:
+        return super.onOptionsItemSelected(item);
     }
   }
 }
