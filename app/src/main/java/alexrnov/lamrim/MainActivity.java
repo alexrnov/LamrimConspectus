@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     //Toolbar collapsingToolbarLayout = findViewById(R.id.toolbar);
 
     //collapsingToolbarLayout.setTitle("Конспект ламрима");
-    Toolbar toolbar = findViewById(R.id.toolbar);
+    Toolbar toolbar = findViewById(R.id.main_toolbar);
     setSupportActionBar(toolbar);
 
     ActionBar actionBar = getSupportActionBar();
@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
     toolbar.setOverflowIcon(drawable);
-
   }
 
   @Override

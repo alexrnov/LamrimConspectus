@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 import android.graphics.drawable.Drawable;
-import java.util.Objects;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
+import android.widget.ImageView;
 public class ContentActivity extends AppCompatActivity {
 
   @Override
@@ -25,7 +24,7 @@ public class ContentActivity extends AppCompatActivity {
 
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
-    collapsingToolbarLayout.setTitle("Конспект ламрима");
+    collapsingToolbarLayout.setTitle("Title");
     Toolbar toolbar = findViewById(R.id.detail_toolbar);
     setSupportActionBar(toolbar);
 
@@ -38,6 +37,9 @@ public class ContentActivity extends AppCompatActivity {
 
     Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
     toolbar.setOverflowIcon(drawable);
+
+    ImageView image = findViewById(R.id.image_toolbar);
+    image.setImageResource(R.drawable.app_bar_image);
 
     // savedInstanceState is non-null when there is fragment state saved from previous
     // configurations of this activity (e.g. when rotating the screen from portrait to landscape).

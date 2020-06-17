@@ -33,10 +33,14 @@ public class ContentFragment extends Fragment {
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView = inflater.inflate(R.layout.item_detail, container, false);
 
+    /*
     ((TextView) rootView.findViewById(R.id.item_detail)).setText("text = " + currentItemID
             + " sddskljkj kdskckdscj dskjkskl dsklfsdk dskklsd " +
             "dssdfkdskkk;lkmkmm \n dsklf dskfdsckm \n dslkjk \n dkjslsc akl dfgef dsfse dsdfd ds fsdffd s dsf efsfsd dsf ds khghg kjhkjhkj hiuhuihiu iguihuihi hgjhgj jhgh jihese gvgh dsf dsfdsf dsf sdf");
+    */
+
     return rootView;
+
 
   }
 }

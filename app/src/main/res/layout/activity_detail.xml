@@ -24,8 +24,16 @@
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:toolbarId="@+id/toolbar" >
+            app:toolbarId="@+id/detail_toolbar" >
 
+            <ImageView
+                android:id="@+id/image_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:fitsSystemWindows="true"
+                app:layout_collapseMode="parallax"
+                android:contentDescription="@string/image_toolbar" />
             <!--
             <app:contentInsetStartWithNavigation>
             - that there would be no distance between the arrow and the icon
@@ -33,7 +41,6 @@
             app:layout_collapseMode="pin"
             - that the arrow and icon do not go away when toolbar is collapsing
             -->
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
