@@ -12,6 +12,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Menu;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -46,6 +47,12 @@ public class MainActivity extends AppCompatActivity {
     adapter = new MainMenuAdapter(dualPane, this);
 
     recyclerView.setAdapter(adapter);
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu_layout, menu);
+    return super.onCreateOptionsMenu(menu);
   }
 
   @Override

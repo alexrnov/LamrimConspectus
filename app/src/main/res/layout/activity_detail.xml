@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/appbar_big_height"
         android:fitsSystemWindows="true"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:theme="@style/ActionBarCollapse">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
@@ -26,13 +26,22 @@
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar" >
 
+            <!--
+            <app:contentInsetStartWithNavigation>
+            - that there would be no distance between the arrow and the icon
+            app:titleMarginStart - increase the distance between the icon and title
+            app:layout_collapseMode="pin"
+            - that the arrow and icon do not go away when toolbar is collapsing
+            -->
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/detail_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme"
-                app:contentInsetStartWithNavigation="0dp">
+                app:contentInsetStartWithNavigation="0dp"
+                app:titleMarginStart="20dp">
 
             </androidx.appcompat.widget.Toolbar>
 

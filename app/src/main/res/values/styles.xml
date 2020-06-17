@@ -33,4 +33,15 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="ActionBarCollapse" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="colorControlNormal">#3f48cc</item>
+        <item name="actionMenuTextColor">#3f48cc</item>
+
+        <item name="homeAsUpIndicator">@drawable/back_arrow</item>
+        <item name="android:homeAsUpIndicator">@drawable/back_arrow</item>
+        <item name="android:actionMenuTextColor">#3f48cc</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
 </resources>
