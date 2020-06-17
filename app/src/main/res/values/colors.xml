@@ -3,16 +3,13 @@
     <color name="colorPrimary">#c6804d</color>
     <color name="colorPrimaryDark">#7e7e7e</color>
     <color name="colorAccent">#D81B60</color>
-
-
-
+    
     <color name="appBarColor">#c6804d</color>
-    <color name="appBarTextColor">#474747</color>
     <color name="background_content">#bbbaa2</color>
     <color name="itemFillDefault">#cdb760</color>
     <color name="itemFillChecked">#cea915</color>
-    <color name="itemTopBottomBorder">#7e7e7e</color>
-    <color name="underlineItemDefault">#7e7e7e</color>
-    <color name="underlineItemChecked">#7e7e7e</color>
-    <color name="menuTextColor">#7e7e7e</color>
+    <color name="itemTopBottomBorder">#5a5959</color>
+    <color name="underlineItemDefault">#5a5959</color>
+    <color name="underlineItemChecked">#5a5959</color>
+    <color name="menuTextColor">#5a5959</color>
 </resources>

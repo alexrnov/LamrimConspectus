@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
-      //actionBar.setDisplayHomeAsUpEnabled(true); // enable the Up button
       actionBar.setIcon(R.drawable.home_icon);
     }
 
