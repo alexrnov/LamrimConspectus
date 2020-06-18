@@ -35,8 +35,8 @@ public class ContentActivity extends AppCompatActivity {
     }
 
 
-    Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
-    toolbar.setOverflowIcon(drawable);
+    //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
+    //toolbar.setOverflowIcon(drawable);
 
     ImageView image = findViewById(R.id.image_toolbar);
     image.setImageResource(R.drawable.app_bar_image);
@@ -62,9 +62,9 @@ public class ContentActivity extends AppCompatActivity {
 
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.action_exit:
-        Log.i("P", "action");
-        return true;
+      //case R.id.action_exit:
+        //Log.i("P", "action");
+        //return true;
       case R.id.action_settings:
         Log.i("P", "action2");
         return true;

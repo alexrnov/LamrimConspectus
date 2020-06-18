@@ -3,6 +3,7 @@
     <string name="app_name">Ламрим</string>
     <string name="appbar_scrolling_text">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
+    <string name="tune_icon">tune</string>
     <!-- descriptions -->
     <string name="image_toolbar">image toolbar</string>
 </resources>

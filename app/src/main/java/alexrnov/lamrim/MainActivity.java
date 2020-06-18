@@ -71,8 +71,9 @@ public class MainActivity extends AppCompatActivity {
       actionBar.setIcon(R.drawable.home_icon);
     }
 
-    Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
-    toolbar.setOverflowIcon(drawable);
+    //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
+    //toolbar.setOverflowIcon(drawable);
+
   }
 
   /*
@@ -100,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      case R.id.action_exit:
-        Log.i("P", "action");
-        return true;
+      //case R.id.action_exit:
+        //Log.i("P", "action");
+        //return true;
       case R.id.action_settings:
         Log.i("P", "action2");
         return true;
@@ -110,4 +111,6 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
   }
+
+
 }
