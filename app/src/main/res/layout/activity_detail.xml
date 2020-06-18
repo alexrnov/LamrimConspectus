@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/YOURSTYLE"
+                app:popupTheme="@style/AppTheme"
                 app:contentInsetStartWithNavigation="0dp"
                 app:titleMarginStart="20dp">
 

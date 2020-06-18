@@ -7,6 +7,9 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <item name="android:colorControlHighlight">#00000000</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSharedElementsUseOverlay">false</item>
     </style>
 
     <style name="TextMenu" parent = "@android:style/TextAppearance">

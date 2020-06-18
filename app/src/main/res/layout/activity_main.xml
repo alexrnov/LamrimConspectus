@@ -19,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/appBarColor"
-            app:popupTheme="@style/YOURSTYLE"
-            app:titleMarginStart="35dp">
+            app:popupTheme="@style/AppTheme"
+            app:titleMarginStart="27dp">
 
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
