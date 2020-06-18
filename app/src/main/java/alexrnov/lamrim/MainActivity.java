@@ -3,6 +3,7 @@ package alexrnov.lamrim;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,6 +16,10 @@ import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
+
+import android.view.ContextThemeWrapper;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
     toolbar.setOverflowIcon(drawable);
   }
 
+  /*
   @Override
   public void onConfigurationChanged(@NonNull Configuration config) {
     super.onConfigurationChanged(config);
@@ -82,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
       context.startActivity(intent);
     }
   }
+  */
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {

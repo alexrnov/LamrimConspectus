@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/appBarColor"
-            app:popupTheme="@style/AppTheme"
+            app:popupTheme="@style/YOURSTYLE"
             app:titleMarginStart="35dp">
 
         </androidx.appcompat.widget.Toolbar>
@@ -32,7 +32,5 @@
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
         <include layout="@layout/main_content" />
     </FrameLayout>
-
-
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
