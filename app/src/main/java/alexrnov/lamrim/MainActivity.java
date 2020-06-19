@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -109,6 +110,8 @@ public class MainActivity extends AppCompatActivity {
         //return true;
       case R.id.action_settings:
         Log.i("P", "action2");
+        SettingsDialogFragment settings = new SettingsDialogFragment();
+        settings.show(this.getSupportFragmentManager(), "tag");
         return true;
       default:
         return super.onOptionsItemSelected(item);
