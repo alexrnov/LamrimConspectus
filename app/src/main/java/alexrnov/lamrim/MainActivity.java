@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
 
-
-
     ApplicationData model = new ViewModelProvider(this).get(ApplicationData.class);
 
 
@@ -105,13 +103,13 @@ public class MainActivity extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      //case R.id.action_exit:
-        //Log.i("P", "action");
-        //return true;
-      case R.id.action_settings:
-        Log.i("P", "action2");
+      case R.id.action_about:
         SettingsDialogFragment settings = new SettingsDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
+        Log.i("P", "action1");
+        return true;
+      case R.id.action_settings:
+        Log.i("P", "action2");
         return true;
       default:
         return super.onOptionsItemSelected(item);

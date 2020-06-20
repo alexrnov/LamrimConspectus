@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity: MainActivity) :
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
-  private var dataset = arrayOf("Предисловие", "Введение", "Глава 1", "Глава 2",
-          "Глава 3", "Глава 4", "Глава 5", "Глава 6", "Глава 7", "Глава 8", "Глава 9", "Глава 10")
+  private var dataset = arrayOf("Item1", "Item2", "Item3", "Item4",
+          "Item5", "Item6", "Item7", "Item8", "Item9", "Item10", "Item11", "Item12")
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ламрим</string>
+    <string name="app_name">Title</string>
     <string name="appbar_scrolling_text">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
+    <!-- title for items of action bar menu -->
     <string name="tune_icon">tune</string>
+    <string name="about_icon">about</string>
+
     <!-- descriptions -->
     <string name="image_toolbar">image toolbar</string>
 </resources>

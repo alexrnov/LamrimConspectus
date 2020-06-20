@@ -7,6 +7,15 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
+        <!-- transparent status bar when collapsing toolbar -->
+        <item name="android:colorControlHighlight" tools:targetApi="lollipop">#00000000</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent</item>
+        <item name="android:windowSharedElementsUseOverlay" tools:targetApi="lollipop">false</item>
+    </style>
+
+    <style name="MyAlertDialogTheme" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
+        <item name="windowFixedWidthMajor">10%</item>
+        <item name="windowFixedWidthMinor">10%</item>
     </style>
 
     <style name="TextMenu" parent = "@android:style/TextAppearance">

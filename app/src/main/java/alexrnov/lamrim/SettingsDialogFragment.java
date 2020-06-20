@@ -1,5 +1,6 @@
 package alexrnov.lamrim;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 
 import android.content.DialogInterface;
@@ -17,12 +18,10 @@ import androidx.fragment.app.DialogFragment;
 
 public class SettingsDialogFragment extends DialogFragment {
 
-  //private List<Integer> mSelectedItems = new ArrayList<>();
-
   @NotNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
-    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogTheme);
     LayoutInflater inflater = getActivity().getLayoutInflater();
 
     builder.setView(inflater.inflate(R.layout.settings_dialog, null))
@@ -30,7 +29,6 @@ public class SettingsDialogFragment extends DialogFragment {
             .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
               @Override
               public void onClick(DialogInterface dialog, int id) {
-                // sign in the user ...
               }
             })
             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

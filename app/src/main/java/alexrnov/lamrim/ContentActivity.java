@@ -1,5 +1,6 @@
 package alexrnov.lamrim;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -14,6 +15,9 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 public class ContentActivity extends AppCompatActivity {
 
@@ -80,6 +84,4 @@ public class ContentActivity extends AppCompatActivity {
     inflater.inflate(R.menu.menu_layout, menu);
     return true;
   }
-
-
 }
