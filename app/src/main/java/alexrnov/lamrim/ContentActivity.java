@@ -34,7 +34,7 @@ public class ContentActivity extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
     collapsingToolbarLayout.setTitle(this.getString(R.string.app_name));
-    
+    // style for title text
     collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ToolbarTitleExpanded);
     collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.ToolbarTitleCollapsed);
 
