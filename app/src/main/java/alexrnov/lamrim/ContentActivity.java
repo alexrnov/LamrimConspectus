@@ -29,6 +29,7 @@ public class ContentActivity extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
     collapsingToolbarLayout.setTitle(this.getString(R.string.app_name));
+
     Toolbar toolbar = findViewById(R.id.detail_toolbar);
     setSupportActionBar(toolbar);
 

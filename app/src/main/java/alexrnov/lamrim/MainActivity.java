@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
 
     ApplicationData model = new ViewModelProvider(this).get(ApplicationData.class);
 
-
     View container = findViewById(R.id.fragment_container);
     dualPane = container != null && container.getVisibility() == View.VISIBLE;
 
