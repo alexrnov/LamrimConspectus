@@ -1,7 +1,9 @@
 package alexrnov.lamrim;
 
 import android.app.Activity;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,6 +34,9 @@ public class ContentActivity extends AppCompatActivity {
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
     collapsingToolbarLayout.setTitle(this.getString(R.string.app_name));
+    
+    collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.ToolbarTitleExpanded);
+    collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.ToolbarTitleCollapsed);
 
     Toolbar toolbar = findViewById(R.id.detail_toolbar);
     setSupportActionBar(toolbar);
@@ -44,6 +49,7 @@ public class ContentActivity extends AppCompatActivity {
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true); // enable the Up button
       actionBar.setIcon(R.drawable.home_icon);
+      actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>Ламрим</font>"));
     }
 
 

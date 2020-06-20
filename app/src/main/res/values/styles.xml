@@ -44,6 +44,15 @@
         <item name="android:homeAsUpIndicator">@drawable/back_arrow</item>
     </style>
 
+    <style name="ToolbarTitleCollapsed" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">#fdeca6</item>
+    </style>
+
+    <style name="ToolbarTitleExpanded" parent="@android:style/TextAppearance.Medium">
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">#fdeca6</item>
+    </style>
 
     <!-- // style for popup menu
     <style name="YOURSTYLE" parent="Widget.AppCompat.PopupMenu">

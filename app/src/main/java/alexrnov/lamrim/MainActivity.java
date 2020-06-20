@@ -16,6 +16,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 
 import android.view.ContextThemeWrapper;
@@ -70,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setIcon(R.drawable.home_icon);
+      actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>" +
+              this.getString(R.string.app_name) + "</font>"));
     }
 
     //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
