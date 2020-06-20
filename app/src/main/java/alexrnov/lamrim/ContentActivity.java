@@ -19,11 +19,14 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+
 public class ContentActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
+
     super.onCreate(savedInstanceState);
+
     setContentView(R.layout.activity_detail);
 
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
@@ -32,6 +35,10 @@ public class ContentActivity extends AppCompatActivity {
 
     Toolbar toolbar = findViewById(R.id.detail_toolbar);
     setSupportActionBar(toolbar);
+
+
+
+
 
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
@@ -43,8 +50,17 @@ public class ContentActivity extends AppCompatActivity {
     //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
     //toolbar.setOverflowIcon(drawable);
 
+    String s = getIntent().getStringExtra("id");
     ImageView image = findViewById(R.id.image_toolbar);
-    image.setImageResource(R.drawable.app_bar_image);
+
+
+    String name = "app_bar_image" + s;
+    int i = getResources().getIdentifier(name, "drawable", getPackageName());
+    Log.i("P", "identifier = " + i);
+    Log.i("P", "identifiers = " + R.drawable.app_bar_image1);
+
+    //image.setImageResource(R.drawable.app_bar_image);
+    image.setImageResource(i);
 
     // savedInstanceState is non-null when there is fragment state saved from previous
     // configurations of this activity (e.g. when rotating the screen from portrait to landscape).
@@ -65,11 +81,14 @@ public class ContentActivity extends AppCompatActivity {
     }
   }
 
+  @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
-      //case R.id.action_exit:
-        //Log.i("P", "action");
-        //return true;
+      case R.id.action_about:
+        SettingsDialogFragment settings = new SettingsDialogFragment();
+        settings.show(this.getSupportFragmentManager(), "tag");
+        Log.i("P", "action1");
+        return true;
       case R.id.action_settings:
         Log.i("P", "action2");
         return true;
