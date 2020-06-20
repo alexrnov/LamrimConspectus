@@ -14,7 +14,8 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
   private var dataset = arrayOf("Item1", "Item2", "Item3", "Item4",
-          "Item5", "Item6", "Item7", "Item8", "Item9", "Item10", "Item11", "Item12")
+          "Item5", "Item6", "Item7", "Item8", "Item9", "Item10", "Item11", "Item12",
+          "Item13", "Item14", "Iem15", "Item16","Item17", "Item18", "Item19")
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
