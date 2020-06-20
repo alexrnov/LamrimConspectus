@@ -47,7 +47,7 @@
     <style name="ToolbarTitleCollapsed" parent="@android:style/TextAppearance.Medium">
         <item name="android:textSize">21sp</item>
         <item name="android:textColor">@color/appBarElementsColor</item>
-        <item name="android:textStyle">bold</item>
+        <!-- <item name="android:textStyle">bold</item> -->
     </style>
 
     <style name="ToolbarTitleExpanded" parent="@android:style/TextAppearance.Medium">
