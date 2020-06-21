@@ -1,32 +1,22 @@
 package alexrnov.lamrim;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.PopupMenu;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.preference.Preference;
+import androidx.preference.PreferenceFragmentCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 
-import android.view.ContextThemeWrapper;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
-import android.view.WindowManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -106,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_about:
-        SettingsDialogFragment settings = new SettingsDialogFragment();
+        AboutDialogFragment settings = new AboutDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
         Log.i("P", "action1");
         return true;
@@ -118,5 +108,11 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
+  /*
+  @Override
+  public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
+
+  }
+*/
 
 }

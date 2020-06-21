@@ -11,7 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
-public class SettingsDialogFragment extends DialogFragment {
+public class AboutDialogFragment extends DialogFragment {
 
   @NotNull
   @Override
@@ -29,7 +29,7 @@ public class SettingsDialogFragment extends DialogFragment {
             })
             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
               public void onClick(DialogInterface dialog, int id) {
-                SettingsDialogFragment.this.getDialog().cancel();
+                AboutDialogFragment.this.getDialog().cancel();
               }
             });
 

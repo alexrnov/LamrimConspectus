@@ -1,7 +1,5 @@
 package alexrnov.lamrim;
 
-import android.app.Activity;
-import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -9,17 +7,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import android.graphics.drawable.Drawable;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 public class ContentActivity extends AppCompatActivity {
@@ -91,11 +85,18 @@ public class ContentActivity extends AppCompatActivity {
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
       case R.id.action_about:
-        SettingsDialogFragment settings = new SettingsDialogFragment();
+        AboutDialogFragment settings = new AboutDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
         Log.i("P", "action1");
         return true;
       case R.id.action_settings:
+
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, new SettingsFragment())
+                .commit();
+
         Log.i("P", "action2");
         return true;
       default:

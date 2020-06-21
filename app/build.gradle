@@ -39,7 +39,7 @@ dependencies {
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
 
-
+    implementation "androidx.preference:preference:1.1.1"
 }
 repositories {
     mavenCentral()
