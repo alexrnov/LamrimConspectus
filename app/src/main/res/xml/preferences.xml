@@ -50,4 +50,16 @@
             app:summary="Report technical issues or suggest new features"
             />
     </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="about"
+        app:title="about program">
+        <Preference
+            app:key="feedback7"
+            app:title="Send feedback"
+            app:summary="Report technical issues or suggest new features"
+            app:fragment="alexrnov.lamrim.AboutSettingsFragment"
+            />
+    </PreferenceCategory>
+
 </PreferenceScreen>
