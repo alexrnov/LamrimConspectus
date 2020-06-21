@@ -9,6 +9,7 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -102,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
         return true;
       case R.id.action_settings:
         Log.i("P", "action2");
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
         return true;
       default:
         return super.onOptionsItemSelected(item);

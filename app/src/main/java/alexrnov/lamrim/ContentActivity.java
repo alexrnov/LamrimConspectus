@@ -90,13 +90,6 @@ public class ContentActivity extends AppCompatActivity {
         Log.i("P", "action1");
         return true;
       case R.id.action_settings:
-
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragment_container, new SettingsFragment())
-                .commit();
-
         Log.i("P", "action2");
         return true;
       default:
