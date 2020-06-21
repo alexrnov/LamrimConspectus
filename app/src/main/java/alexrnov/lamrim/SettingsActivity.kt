@@ -40,6 +40,19 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
 
   override fun onPreferenceStartFragment(caller: PreferenceFragmentCompat, pref: Preference): Boolean {
     Log.i("P", "onPreferenceStartFragment()")
+
+    val args = pref.extras
+    val fragment = supportFragmentManager.fragmentFactory.instantiate(
+            classLoader,
+            pref.fragment)
+    fragment.arguments = args
+    fragment.setTargetFragment(caller, 0)
+    supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .addToBackStack(null)
+            .commit()
+
+
     return true
   }
 
