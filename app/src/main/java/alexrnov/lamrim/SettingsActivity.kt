@@ -1,7 +1,10 @@
 package alexrnov.lamrim
 
 import android.os.Bundle
+import android.text.Html
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.preference.PreferenceFragmentCompat
 
 class SettingsActivity: AppCompatActivity() {
 
@@ -10,27 +13,35 @@ class SettingsActivity: AppCompatActivity() {
     setContentView(R.layout.settings_activity)
 
 
+    //Toolbar collapsingToolbarLayout = findViewById(R.id.toolbar);
+
+    //collapsingToolbarLayout.setTitle("Конспект ламрима");
+    val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
+    setSupportActionBar(toolbar)
+
+
+    val actionBar = supportActionBar
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true) // enable the Up button
+      actionBar.setIcon(R.drawable.home_icon)
+      actionBar.title = Html.fromHtml("<font color='#fffbbe'>" +
+              this.getString(R.string.app_name) + "</font>")
+    }
+
+
     supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, ContentFragment())
+            .replace(R.id.fragment_container, SettingsFragment())
             .commit()
 
 
-    /*
-    // to manage the fragments in activity, need to use FragmentManager.
-
-    // to manage the fragments in activity, need to use FragmentManager.
-    val manager = this.supportFragmentManager
-    // to make fragment transactions in activity (such as add, remove, or replace a fragment)
-    // to make fragment transactions in activity (such as add, remove, or replace a fragment)
-    val transaction = manager.beginTransaction()
-    // add a fragment, specifying the fragment to add and the view in which to insert it.
-    // add a fragment, specifying the fragment to add and the view in which to insert it.
-    transaction.add(R.id.fragment_container, ContentFragment())
-    transaction.commit() // call commit() for the changes to take effect.
-
-*/
   }
 
 
+}
+
+class SettingsFragment2 : PreferenceFragmentCompat() {
+  override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+    setPreferencesFromResource(R.xml.preferences, rootKey)
+  }
 }

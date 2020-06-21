@@ -1,5 +1,6 @@
 package alexrnov.lamrim;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
@@ -90,6 +91,11 @@ public class ContentActivity extends AppCompatActivity {
         Log.i("P", "action1");
         return true;
       case R.id.action_settings:
+
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+
+
         Log.i("P", "action2");
         return true;
       default:
