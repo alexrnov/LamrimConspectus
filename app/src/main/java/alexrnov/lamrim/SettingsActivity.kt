@@ -3,11 +3,13 @@ package alexrnov.lamrim
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
-class SettingsActivity: AppCompatActivity() {
+class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
@@ -36,8 +38,12 @@ class SettingsActivity: AppCompatActivity() {
             .commit()
   }
 
+  override fun onPreferenceStartFragment(caller: PreferenceFragmentCompat, pref: Preference): Boolean {
+    Log.i("P", "onPreferenceStartFragment()")
+    return true
+  }
 
-}
+  }
 
 class SettingsFragment2 : PreferenceFragmentCompat() {
   override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
