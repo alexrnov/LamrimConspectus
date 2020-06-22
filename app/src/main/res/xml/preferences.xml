@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory
         app:key="notifications_category"
@@ -44,11 +44,23 @@
             app:title="Send feedback"
             app:summary="Report technical issues or suggest new features"
             />
-        <Preference
-            app:key="feedback5"
-            app:title="Send feedback"
-            app:summary="Report technical issues or suggest new features"
-            />
+        <EditTextPreference
+            app:key="signature"
+            app:title="Your signature"/>
+
+        <CheckBoxPreference
+            android:key="pref_sync"
+            android:title="checkbox"
+            android:summary="checkbox_summary"
+            android:defaultValue="true" />
+        <ListPreference
+            android:dependency="pref_sync"
+            android:key="pref_syncConnectionType"
+            android:title="titleA"
+            android:dialogTitle="titleB"
+            android:entries="@array/icons"
+            android:entryValues="@array/colors"
+             />
     </PreferenceCategory>
 
     <PreferenceCategory

@@ -38,8 +38,8 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
             .commit()
   }
 
+  // invoke when sub-settings is taps
   override fun onPreferenceStartFragment(caller: PreferenceFragmentCompat, pref: Preference): Boolean {
-    Log.i("P", "onPreferenceStartFragment()")
 
     val args = pref.extras
     val fragment = supportFragmentManager.fragmentFactory.instantiate(
