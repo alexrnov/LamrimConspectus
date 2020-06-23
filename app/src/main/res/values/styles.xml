@@ -27,10 +27,12 @@
     <!-- style for settings dialog -->
     <style name="AppTheme.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
         <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:background">#212D3B</item>
-        <item name="colorPrimary">#61A3D7</item>
+        <item name="android:background">@color/background_content</item>
+        <!-- button color -->
+        <item name="colorPrimary">@color/colorAccent</item>
         <item name="colorPrimaryDark">#8DB2D3</item>
-        <item name="colorAccent">#61A3D7</item>
+        <!-- radio-button color -->
+        <item name="colorAccent">@color/colorAccent</item>
     </style>
 
     <style name="TextMenu" parent = "@android:style/TextAppearance">
