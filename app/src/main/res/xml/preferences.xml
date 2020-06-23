@@ -6,20 +6,27 @@
         app:key="font"
         app:title="@string/font_category">
 
-        <EditTextPreference
-            app:key="signature"
-            app:title="Your signature"/>
+        <ListPreference
+            android:key="font_size"
+            android:title="size"
+            android:defaultValue="#00FFFF"
+            android:entries="@array/text_size_names_array"
+            android:entryValues="@array/text_size_values_array"
+            android:summary="@string/font_color_summary"
+            android:icon="@drawable/font_color_icon"
+            android:dialogIcon="@drawable/font_color_icon"
+            />
 
 
         <ListPreference
             android:key="font_color"
             android:title="@string/font_color"
             android:defaultValue="#00FFFF"
-            android:entries="@array/foreground_color_names_array"
-            android:entryValues="@array/foreground_color_values_array"
+            android:entries="@array/text_color_names_array"
+            android:entryValues="@array/text_color_values_array"
             android:summary="@string/font_color_summary"
-            android:icon="@drawable/about_icon"
-            android:dialogIcon="@drawable/back_arrow"
+            android:icon="@drawable/font_color_icon"
+            android:dialogIcon="@drawable/font_color_icon"
             />
     </PreferenceCategory>
 

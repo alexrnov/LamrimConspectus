@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- foreground color names array -->
-    <string-array name="foreground_color_names_array">
-        <item>Aqua</item>
+    <!-- text color names array -->
+    <string-array name="text_color_names_array">
+        <item>@string/black_color</item>
         <!--item>#00FFFF</item-->
 
-        <item>Azure</item>
+        <item>@string/gray_color</item>
         <!--item>#F0FFFF</item-->
 
-        <item>Beige</item>
+        <item>@string/brown_color</item>
         <!--item>#F5F5DC</item-->
 
-        <item>Cornsilk</item>
+        <item>@string/blue_color</item>
         <!--item>#FFF8DC</item-->
 
-        <item>Ivory</item>
-        <!--item>#FFFFF0</item-->
     </string-array>
 
-    <!-- foreground color values array -->
-    <string-array name="foreground_color_values_array">
+    <!-- text color values array -->
+    <string-array name="text_color_values_array">
         <!--item>Aqua</item-->
         <item>#00FFFF</item>
 
@@ -32,7 +30,39 @@
         <!--item>Cornsilk</item-->
         <item>#FFF8DC</item>
 
-        <!--item>Ivory</item-->
-        <item>#FFFFF0</item>
     </string-array>
+
+
+
+    <string-array name="text_size_names_array">
+        <item>@string/black_color</item>
+        <!--item>#00FFFF</item-->
+
+        <item>@string/gray_color</item>
+        <!--item>#F0FFFF</item-->
+
+        <item>@string/brown_color</item>
+        <!--item>#F5F5DC</item-->
+
+        <item>@string/blue_color</item>
+        <!--item>#FFF8DC</item-->
+
+    </string-array>
+
+    <!-- text color values array -->
+    <string-array name="text_size_values_array">
+        <!--item>Aqua</item-->
+        <item>#00FFFF</item>
+
+        <!--item>Azure</item-->
+        <item>#F0FFFF</item>
+
+        <!--item>Beige</item-->
+        <item>#F5F5DC</item>
+
+        <!--item>Cornsilk</item-->
+        <item>#FFF8DC</item>
+
+    </string-array>
+
 </resources>
