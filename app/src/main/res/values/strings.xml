@@ -12,9 +12,13 @@
 
     <!-- settings -->
     <string name="font_category">Настройки текста</string>
+    <string name="font_color">Цвет текста</string>
+    <string name="font_color_summary">Выбрать другой цвет шрифта</string>
+
     <string name="about_program_category">О программе</string>
     <string name="program_information">Информация</string>
     <string name="information_summary">Дополнительная информация о версии и источниках ресурсов</string>
+
 
     <string name="black_color">черный</string>
     <string name="gray_color">серый</string>
