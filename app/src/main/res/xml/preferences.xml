@@ -8,11 +8,11 @@
 
         <ListPreference
             android:key="font_size"
-            android:title="size"
+            android:title="@string/font_size"
             android:defaultValue="#00FFFF"
             android:entries="@array/text_size_names_array"
             android:entryValues="@array/text_size_values_array"
-            android:summary="@string/font_color_summary"
+            android:summary="@string/font_size_summary"
             android:icon="@drawable/font_color_icon"
             android:dialogIcon="@drawable/font_color_icon"
             />

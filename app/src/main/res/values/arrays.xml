@@ -33,23 +33,23 @@
     </string-array>
 
 
-
+    <!-- text font size names array -->
     <string-array name="text_size_names_array">
-        <item>@string/black_color</item>
+        <item>@string/min_size</item>
         <!--item>#00FFFF</item-->
 
-        <item>@string/gray_color</item>
+        <item>@string/middle_size</item>
         <!--item>#F0FFFF</item-->
 
-        <item>@string/brown_color</item>
+        <item>@string/big_size</item>
         <!--item>#F5F5DC</item-->
 
-        <item>@string/blue_color</item>
+        <item>@string/very_big_size</item>
         <!--item>#FFF8DC</item-->
 
     </string-array>
 
-    <!-- text color values array -->
+    <!-- text font size values array -->
     <string-array name="text_size_values_array">
         <!--item>Aqua</item-->
         <item>#00FFFF</item>
