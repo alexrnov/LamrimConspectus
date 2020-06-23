@@ -7,6 +7,18 @@
     <string name="tune_icon">tune</string>
     <string name="about_icon">about</string>
 
-    <!-- descriptions -->
+    <!-- content descriptions -->
     <string name="image_toolbar">image toolbar</string>
+
+    <!-- settings -->
+    <string name="font_category">Настройки текста</string>
+    <string name="about_program_category">О программе</string>
+    <string name="program_information">Информация</string>
+    <string name="information_summary">Дополнительная информация о версии и источниках ресурсов</string>
+
+    <string name="black_color">черный</string>
+    <string name="gray_color">серый</string>
+    <string name="brown_color">коричневый</string>
+    <string name="blue_color">синий</string>
+
 </resources>
