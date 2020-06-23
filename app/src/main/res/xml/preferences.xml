@@ -24,43 +24,22 @@
     <PreferenceCategory
         app:key="font"
         app:title="Font settings">
-        <Preference
-            app:key="feedback1"
-            app:title="Send feedback"
-            app:summary="Report technical issues or suggest new features"
-            />
-        <Preference
-            app:key="feedback2"
-            app:title="Send feedback"
-            app:summary="Report technical issues or suggest new features"
-            />
-        <Preference
-            app:key="feedback3"
-            app:title="Send feedback"
-            app:summary="Report technical issues or suggest new features"
-            />
-        <Preference
-            app:key="feedback4"
-            app:title="Send feedback"
-            app:summary="Report technical issues or suggest new features"
-            />
+
         <EditTextPreference
             app:key="signature"
             app:title="Your signature"/>
 
-        <CheckBoxPreference
-            android:key="pref_sync"
-            android:title="checkbox"
-            android:summary="checkbox_summary"
-            android:defaultValue="true" />
+
         <ListPreference
-            android:dependency="pref_sync"
-            android:key="pref_syncConnectionType"
-            android:title="titleA"
-            android:dialogTitle="titleB"
-            android:entries="@array/icons"
-            android:entryValues="@array/colors"
-             />
+            android:key="listPref"
+            android:title="Foreground Color"
+            android:defaultValue="#00FFFF"
+            android:entries="@array/foreground_color_names_array"
+            android:entryValues="@array/foreground_color_values_array"
+            android:summary="Select a foreground color"
+            android:icon="@drawable/about_icon"
+            android:dialogIcon="@drawable/back_arrow"
+            />
     </PreferenceCategory>
 
     <PreferenceCategory
