@@ -15,14 +15,24 @@
         <!-- style for back arrow for settings app bar -->
         <item name="homeAsUpIndicator">@drawable/back_arrow</item>
         <item name="android:homeAsUpIndicator">@drawable/back_arrow</item>
+
     </style>
 
-    <!--
-    <style name="MyAlertDialogTheme" parent="Base.Theme.AppCompat.Light.Dialog.Alert">
-        <item name="windowFixedWidthMajor">10%</item>
-        <item name="windowFixedWidthMinor">10%</item>
+    <!-- them for settings activity -->
+    <style name="AppThemeSettings" parent="AppTheme">
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@color/colorPrimaryDark</item>
+        <item name="alertDialogTheme">@style/AppTheme.Dialog</item>
     </style>
-    -->
+
+    <!-- style for settings dialog -->
+    <style name="AppTheme.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:background">#212D3B</item>
+        <item name="colorPrimary">#61A3D7</item>
+        <item name="colorPrimaryDark">#8DB2D3</item>
+        <item name="colorAccent">#61A3D7</item>
+    </style>
+
     <style name="TextMenu" parent = "@android:style/TextAppearance">
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/menuTextColor</item>
@@ -36,14 +46,6 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-
-    <!-- the link is added to the manifest, so that the collapsing appbar is not white -->
-    <!--
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
-     -->
     <style name="ActionBarCollapse" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
         <item name="homeAsUpIndicator">@drawable/back_arrow</item>
         <item name="android:homeAsUpIndicator">@drawable/back_arrow</item>
