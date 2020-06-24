@@ -46,12 +46,9 @@ public class MainActivity extends AppCompatActivity {
     layoutManager = new LinearLayoutManager(this);
     recyclerView.setLayoutManager(layoutManager);
 
-
     adapter = new MainMenuAdapter(dualPane, this);
 
     recyclerView.setAdapter(adapter);
-
-
     //Toolbar collapsingToolbarLayout = findViewById(R.id.toolbar);
 
     //collapsingToolbarLayout.setTitle("Конспект ламрима");
@@ -113,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
   /*
   @Override
   public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
-
   }
-*/
-
+  */
 }
