@@ -1,9 +1,9 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.settings
 
+import alexrnov.lamrim.R
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.Preference
@@ -56,10 +56,4 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
     return true
   }
 
-  }
-
-class SettingsFragment2 : PreferenceFragmentCompat() {
-  override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-    setPreferencesFromResource(R.xml.preferences, rootKey)
-  }
 }

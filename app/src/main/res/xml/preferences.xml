@@ -33,11 +33,12 @@
     <PreferenceCategory
         app:key="about"
         app:title="@string/about_program_category">
+
         <Preference
             app:key="information"
             app:title="@string/program_information"
             app:summary="@string/information_summary"
-            app:fragment="alexrnov.lamrim.AboutSettingsFragment"
+            app:fragment="alexrnov.lamrim.settings.AboutSettingsFragment"
             android:icon="@drawable/information_icon"
             />
     </PreferenceCategory>

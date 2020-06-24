@@ -1,5 +1,6 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.settings
 
+import alexrnov.lamrim.R
 import android.os.Bundle
 import androidx.preference.PreferenceFragmentCompat
 

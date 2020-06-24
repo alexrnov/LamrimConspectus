@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.MenuInflater;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
+import alexrnov.lamrim.settings.SettingsActivity;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
