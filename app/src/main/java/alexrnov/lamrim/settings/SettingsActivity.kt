@@ -4,6 +4,8 @@ import alexrnov.lamrim.R
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.Preference
@@ -56,4 +58,12 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
     return true
   }
 
+  override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    val id = item.itemId
+    if (id == android.R.id.home) {
+      onBackPressed()
+      return true
+    }
+    return super.onOptionsItemSelected(item)
+  }
 }
