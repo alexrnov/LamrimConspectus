@@ -64,6 +64,10 @@ public class ContentActivity extends AppCompatActivity {
 
       Bundle arguments = new Bundle();
       arguments.putString("id", getIntent().getStringExtra("id"));
+
+      arguments.putBoolean("dualPane", getIntent().getBooleanExtra("dualPane", false));
+
+
       ContentFragment fragment = new ContentFragment();
       fragment.setArguments(arguments);
 
