@@ -42,7 +42,6 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
 
   // invoke when sub-settings is taps
   override fun onPreferenceStartFragment(caller: PreferenceFragmentCompat, pref: Preference): Boolean {
-
     val args = pref.extras
     val fragment = supportFragmentManager.fragmentFactory.instantiate(
             classLoader,
@@ -53,11 +52,10 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
             .replace(R.id.fragment_container, fragment)
             .addToBackStack(null)
             .commit()
-
-
     return true
   }
 
+  // In order for the home button press to return to the previous activity.
   override fun onOptionsItemSelected(item: MenuItem): Boolean {
     val id = item.itemId
     if (id == android.R.id.home) {
