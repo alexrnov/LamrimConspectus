@@ -37,10 +37,6 @@ public class ContentActivity extends AppCompatActivity {
     Toolbar toolbar = findViewById(R.id.detail_toolbar);
     setSupportActionBar(toolbar);
 
-
-
-
-
     ActionBar actionBar = getSupportActionBar();
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true); // enable the Up button
@@ -48,13 +44,11 @@ public class ContentActivity extends AppCompatActivity {
       actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>Ламрим</font>"));
     }
 
-
     //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
     //toolbar.setOverflowIcon(drawable);
 
     String s = getIntent().getStringExtra("id");
     ImageView image = findViewById(R.id.image_toolbar);
-
 
     String name = "app_bar_image" + s;
     int i = getResources().getIdentifier(name, "drawable", getPackageName());
@@ -103,7 +97,6 @@ public class ContentActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
   }
-
 
   @Override
   public boolean onCreateOptionsMenu(Menu menu) {

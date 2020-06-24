@@ -1,68 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- text color names array -->
-    <string-array name="text_color_names_array">
-        <item>@string/black_color</item>
-        <!--item>#00FFFF</item-->
-
-        <item>@string/gray_color</item>
-        <!--item>#F0FFFF</item-->
-
-        <item>@string/brown_color</item>
-        <!--item>#F5F5DC</item-->
-
-        <item>@string/blue_color</item>
-        <!--item>#FFF8DC</item-->
-
-    </string-array>
-
-    <!-- text color values array -->
-    <string-array name="text_color_values_array">
-        <!--item>Aqua</item-->
-        <item>#00FFFF</item>
-
-        <!--item>Azure</item-->
-        <item>#F0FFFF</item>
-
-        <!--item>Beige</item-->
-        <item>#F5F5DC</item>
-
-        <!--item>Cornsilk</item-->
-        <item>#FFF8DC</item>
-
-    </string-array>
-
-
     <!-- text font size names array -->
     <string-array name="text_size_names_array">
+        <item>@string/very_min_size</item>
         <item>@string/min_size</item>
-        <!--item>#00FFFF</item-->
-
         <item>@string/middle_size</item>
-        <!--item>#F0FFFF</item-->
-
         <item>@string/big_size</item>
-        <!--item>#F5F5DC</item-->
-
         <item>@string/very_big_size</item>
-        <!--item>#FFF8DC</item-->
-
     </string-array>
 
     <!-- text font size values array -->
     <string-array name="text_size_values_array">
-        <!--item>Aqua</item-->
-        <item>#00FFFF</item>
-
-        <!--item>Azure</item-->
-        <item>#F0FFFF</item>
-
-        <!--item>Beige</item-->
-        <item>#F5F5DC</item>
-
-        <!--item>Cornsilk</item-->
-        <item>#FFF8DC</item>
-
+        <item>14</item>
+        <item>17</item>
+        <item>20</item>
+        <item>23</item>
+        <item>26</item>
     </string-array>
 
+    <!-- text color names array -->
+    <string-array name="text_color_names_array">
+        <item>@string/gray_color</item>
+        <item>@string/black_color</item>
+        <item>@string/brown_color</item>
+        <item>@string/blue_color</item>
+    </string-array>
+
+    <!-- text color values array -->
+    <string-array name="text_color_values_array">
+        <item>#393939</item>
+        <item>#000000</item>
+        <item>#753100</item>
+        <item>#1a3677</item>
+    </string-array>
 </resources>
