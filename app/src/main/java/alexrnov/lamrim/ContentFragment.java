@@ -1,5 +1,7 @@
 package alexrnov.lamrim;
 
+import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -62,6 +64,24 @@ public class ContentFragment extends Fragment {
         @Override
         public void onClick(View v) {
           Log.i("P", "click");
+
+
+
+          Context context = getContext();
+          if (context == null) {
+            Log.i("P", "context is null");
+          } else {
+            Log.i("P", "context is not null");
+          }
+          Log.i("P", "currentItemID = " +  currentItemID);
+          Log.i("P", "dualPane = " + dualPane);
+
+          Intent intent = new Intent(context, ContentActivity.class);
+          intent.putExtra("id", currentItemID);
+          intent.putExtra("dualPane", false);
+          context.startActivity(intent);
+
+
         }
       });
 
