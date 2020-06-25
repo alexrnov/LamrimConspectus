@@ -52,7 +52,7 @@ public class ContentFragment extends Fragment {
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
     if (dualPane) {
-      rootView = inflater.inflate(R.layout.item_detail_descript, container, false);
+      rootView = inflater.inflate(R.layout.descript_text_view, container, false);
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
       textView.setText("text = " + currentItemID
               + " introduction text " +
@@ -72,7 +72,7 @@ public class ContentFragment extends Fragment {
       });
 
     } else {
-      rootView = inflater.inflate(R.layout.item_detail, container, false);
+      rootView = inflater.inflate(R.layout.detail_text_view, container, false);
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
       textView.setText("text = " + currentItemID
               + " sddskljkj kdskckdscj dskjkskl dsklfsdk dskklsd " +

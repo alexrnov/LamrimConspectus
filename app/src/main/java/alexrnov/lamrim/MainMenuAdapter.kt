@@ -58,7 +58,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
   override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TextViewHolder {
     // create a new view
     val textView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.text_view, parent, false) as TextView
+            .inflate(R.layout.item_menu_text_view, parent, false) as TextView
     // set the view's size, margins, paddings and layout parameters
     // ...
     return TextViewHolder(textView)
