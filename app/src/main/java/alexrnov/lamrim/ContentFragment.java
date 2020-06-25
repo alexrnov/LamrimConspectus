@@ -49,9 +49,7 @@ public class ContentFragment extends Fragment {
   @Override
   public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    Log.i("P", "ONCREATEVIEW()");
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
-
     View rootView;
     if (dualPane) {
       rootView = inflater.inflate(R.layout.lay1, container, false);
@@ -59,29 +57,17 @@ public class ContentFragment extends Fragment {
       textView.setText("text = " + currentItemID
               + " introduction text " +
               "dssdfkdskkk;lkmkmm \n c ffuihse gvgh dsf dsfdsf dsf sdf");
-      button = rootView.findViewById(R.id.button3);
+      button = rootView.findViewById(R.id.details_button);
       button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-          Log.i("P", "click");
-
-
-
           Context context = getContext();
-          if (context == null) {
-            Log.i("P", "context is null");
-          } else {
-            Log.i("P", "context is not null");
+          if (context != null) {
+            Intent intent = new Intent(context, ContentActivity.class);
+            intent.putExtra("id", currentItemID);
+            intent.putExtra("dualPane", false);
+            context.startActivity(intent);
           }
-          Log.i("P", "currentItemID = " +  currentItemID);
-          Log.i("P", "dualPane = " + dualPane);
-
-          Intent intent = new Intent(context, ContentActivity.class);
-          intent.putExtra("id", currentItemID);
-          intent.putExtra("dualPane", false);
-          context.startActivity(intent);
-
-
         }
       });
 
@@ -92,13 +78,6 @@ public class ContentFragment extends Fragment {
               + " sddskljkj kdskckdscj dskjkskl dsklfsdk dskklsd " +
               "dssdfkdskkk;lkmkmm \n dsklf dskfdsckm \n dslkjk \n dkjslsc akl dfgef dsfse dsdfd ds fsdffd s dsf efsfsd dsf ds khghg kjhkjhkj hiuhuihiu iguihuihi hgjhgj jhgh jihese gvgh dsf dsfdsf dsf sdf");
     }
-    //View rootView = inflater.inflate(R.layout.item_detail, container, false);
-/*
-    textView = ((TextView) rootView.findViewById(R.id.item_detail));
-    textView.setText("text = " + currentItemID
-            + " sddskljkj kdskckdscj dskjkskl dsklfsdk dskklsd " +
-            "dssdfkdskkk;lkmkmm \n dsklf dskfdsckm \n dslkjk \n dkjslsc akl dfgef dsfse dsdfd ds fsdffd s dsf efsfsd dsf ds khghg kjhkjhkj hiuhuihiu iguihuihi hgjhgj jhgh jihese gvgh dsf dsfdsf dsf sdf");
- */
     return rootView;
   }
 
@@ -109,9 +88,5 @@ public class ContentFragment extends Fragment {
     textView.setTextSize(Float.valueOf(size));
     textView.setTextColor(Color.parseColor(color));
     super.onResume();
-  }
-
-  public void button(View view) {
-    Log.i("P", "button click");
   }
 }
