@@ -26,8 +26,8 @@
 
     <item
         android:top="34dp"
-        android:right="40dp"
-        android:left="40dp"
+        android:right="10dp"
+        android:left="10dp"
         android:gravity="center">
         <shape android:shape="line">
             <stroke android:width="2dp" android:color="@color/underlineItemChecked" />
