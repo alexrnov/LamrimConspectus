@@ -11,7 +11,10 @@
     <color name="itemFillChecked">#cea915</color>
     <color name="itemTopBottomBorder">#5a5959</color>
     <color name="underlineItemDefault">#5a5959</color>
-    <color name="underlineItemChecked">#5a5959</color>
+    <color name="underlineItemChecked">#4d5a78</color>
     <color name="menuTextColor">#5a5959</color>
+
+    <color name="materialButtonColor">#c6804d</color>
+    <color name="materialButtonTextColor">#fdeca6</color>
 
 </resources>
