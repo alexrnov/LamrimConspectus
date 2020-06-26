@@ -32,7 +32,7 @@
         android:layout_marginEnd="24dp"
         android:text="@string/details_button_text"
         android:textAppearance="@style/ButtonStyle"
-        app:icon="@drawable/button_icon"
+        app:icon="@mipmap/button_icon"
         app:iconGravity="textStart"
         app:iconTint="@null"
         android:textColor="@color/menuTextColor"
