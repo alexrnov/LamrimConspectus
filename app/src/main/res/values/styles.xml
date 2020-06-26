@@ -68,7 +68,7 @@
 
     <style name="ButtonStyle" parent="@android:style/TextAppearance">
         <item name="android:textSize">20sp</item>
-        <item name="android:textColor">#aacbb4</item>
+        <item name="android:textColor">@color/ButtonTextColor</item>
     </style>
 
     <!-- // style for popup menu

@@ -33,7 +33,7 @@
         app:icon="@mipmap/button_icon_round"
         app:iconTint="@null"
         app:iconGravity="textStart"
-        android:textColor="@color/materialButtonTextColor"
+        android:textColor="@color/ButtonTextColor"
         app:backgroundTintMode="src_over"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,11 +41,11 @@
         app:layout_constraintTop_toBottomOf="@+id/item_detail"
         app:cornerRadius="14dp"
         app:iconPadding="15dp"
-        android:paddingStart="24dp"
+        android:paddingStart="15dp"
         android:paddingTop="5dp"
-        android:paddingEnd="24dp"
+        android:paddingEnd="15dp"
         android:paddingBottom="5dp"
-        app:backgroundTint="@color/materialButtonColor"
+        app:backgroundTint="@color/BackgroundButtonColor"
         android:theme="@style/Theme.MaterialComponents.Light"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

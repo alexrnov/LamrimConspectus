@@ -14,7 +14,9 @@
     <color name="underlineItemChecked">#4d5a78</color>
     <color name="menuTextColor">#5a5959</color>
 
-    <color name="materialButtonColor">#c6804d</color>
-    <color name="materialButtonTextColor">#fdeca6</color>
+    <!-- button for read more -->
+    <color name="BackgroundButtonColor">#c6804d</color>
+    <color name="BackgroundButtonPressedColor">#ce8b5a</color>
+    <color name="ButtonTextColor">#fdeca6</color>
 
 </resources>
