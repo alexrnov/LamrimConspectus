@@ -14,9 +14,14 @@
     <color name="underlineItemChecked">#4d5a78</color>
     <color name="menuTextColor">#5a5959</color>
 
-    <!-- button for read more -->
+    <!-- material button for read more -->
+    <color name="BackgroundMatButtonColor">#d8d8d8</color>
+    <color name="BackgroundMatButtonPressedColor">#dfdfdf</color>
+    <color name="MatButtonTextColor">#4d5a78</color>
+
+    <!-- usually button for read more (API low than 19) -->
     <color name="BackgroundButtonColor">#c6804d</color>
-    <color name="BackgroundButtonPressedColor">#ce8b5a</color>
+    <color name="BackgroundButtonPressedColor">#cd8a59</color>
     <color name="ButtonTextColor">#fdeca6</color>
 
 </resources>
