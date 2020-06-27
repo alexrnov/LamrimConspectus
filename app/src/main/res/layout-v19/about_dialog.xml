@@ -65,7 +65,7 @@
         android:layout_marginBottom="24dp"
         android:text="@string/ok_button"
         android:textAppearance="@style/ButtonStyle"
-        app:icon="@mipmap/button_icon_round"
+        app:icon="@mipmap/ok_button_icon_round"
         app:iconTint="@null"
         app:iconGravity="textStart"
         android:textColor="@color/MatButtonTextColor"
