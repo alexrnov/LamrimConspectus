@@ -22,6 +22,6 @@
     <!-- usually button for read more (API low than 19) -->
     <color name="BackgroundButtonColor">#c6804d</color>
     <color name="BackgroundButtonPressedColor">#cd8a59</color>
-    <color name="ButtonTextColor">#fdeca6</color>
+    <color name="ButtonTextColor">#fffbbe</color>
 
 </resources>

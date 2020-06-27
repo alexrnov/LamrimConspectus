@@ -33,7 +33,7 @@
     <string name="brown_color">коричневый</string>
     <string name="blue_color">синий</string>
 
-    <string name="about_program_category">О программе</string>
+    <string name="about_program_category">О приложении</string>
     <string name="program_information">Информация</string>
     <string name="information_summary">Дополнительная информация о версии и источниках ресурсов</string>
 
@@ -43,8 +43,12 @@
     <string name="additional_resources">Дополнительные ресурсы</string>
     <string name="images_summary">Изображения: www.goodfon.ru</string>
 
+    <!-- about program alert dialog -->
     <string name="ok_button">OK</string>
     <string name="app_bar_about_descript">app_bar_about_descript</string>
     <string name="about_icon_descript">icon_des_descript</string>
-    <string name="about_program_text">dskj sdfkdsjfhkjsd sakj sadkjjksa asjkdn jnk sakjd njkas ndjkn ska dbj ksanjkd nksabdj ksankjd sandj jsandkjasn sajdkjas</string>
+    <string name="about_program_text">Приложение является конспектом книги Чже Цонкапа \'\'Большое руководство
+        к этапам Пути Пробуждения\'\' (Ламрим). Том I. Подготовительная часть и этап духовного развития
+        низшей личности. Перевод с тибетского языка А. Кугявичуса под общей редакцией А. Терентьева. Поэтический перевод цитат и транскрипция
+        тибетских имен М. Кожевниковой.</string>
 </resources>
