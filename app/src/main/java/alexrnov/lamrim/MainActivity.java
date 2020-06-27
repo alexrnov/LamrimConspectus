@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.util.Log;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         AboutDialogFragment settings = new AboutDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
         Log.i("P", "action1");
+
         return true;
       case R.id.action_settings:
         Log.i("P", "action2");
