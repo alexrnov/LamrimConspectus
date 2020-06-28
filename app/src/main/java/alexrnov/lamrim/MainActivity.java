@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.DisplayMetrics;
 import android.util.Log;
 
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
+
+import static alexrnov.lamrim.ApplicationUtilsKt.getScreenSizeWithNavBar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -66,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
     //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
     //toolbar.setOverflowIcon(drawable);
 
+
+    getScreenSizeWithNavBar(this);
   }
 
   /*
@@ -114,4 +119,5 @@ public class MainActivity extends AppCompatActivity {
   public boolean onPreferenceStartFragment(PreferenceFragmentCompat caller, Preference pref) {
   }
   */
+
 }
