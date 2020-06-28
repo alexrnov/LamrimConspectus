@@ -30,58 +30,71 @@
         app:layout_constraintStart_toEndOf="@+id/about_app_icon"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:id="@+id/about_app_text_constrain"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+
         android:layout_marginRight="16dp"
+        android:fadeScrollbars="true"
+        android:fadingEdgeLength="50dp"
+        android:requiresFadingEdge="vertical"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@+id/close_dialog_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/about_app_bar">
 
-        <TextView
-            android:id="@+id/about_app_text"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/about_program_text"
-            android:textAlignment="center"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/about_app_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_program_text"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+    </ScrollView>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/close_dialog_button"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginBottom="24dp"
-        android:text="@string/ok_button"
-        android:textAppearance="@style/ButtonStyle"
-        app:icon="@mipmap/ok_button_icon_round"
-        app:iconTint="@null"
-        app:iconGravity="textStart"
-        android:textColor="@color/MatButtonTextColor"
-        app:backgroundTintMode="src_over"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/about_app_text_constrain"
-        app:cornerRadius="14dp"
-        app:iconPadding="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
         android:paddingStart="15dp"
         android:paddingTop="5dp"
         android:paddingEnd="15dp"
         android:paddingBottom="5dp"
+        android:text="@string/ok_button"
+        android:textAppearance="@style/ButtonStyle"
+        android:textColor="@color/MatButtonTextColor"
+        android:theme="@style/Theme.MaterialComponents.Light"
         app:backgroundTint="@color/BackgroundMatButtonColor"
-        android:theme="@style/Theme.MaterialComponents.Light"/>
+        app:backgroundTintMode="src_over"
+        app:cornerRadius="14dp"
+        app:icon="@mipmap/ok_button_icon_round"
+        app:iconGravity="textStart"
+        app:iconPadding="15dp"
+        app:iconTint="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/about_app_text_constrain" />
 
     <ImageView
         android:id="@+id/about_app_icon"
