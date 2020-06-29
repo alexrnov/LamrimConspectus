@@ -28,14 +28,13 @@ public class AboutDialogFragment extends DialogFragment {
   @NotNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
-
     FragmentActivity activity = this.requireActivity();
     AlertDialog.Builder builder = new AlertDialog.Builder(activity);
     //LayoutInflater inflater = activity.getLayoutInflater();
     //View v = inflater.inflate(R.layout.about_dialog, null);
     View v = View.inflate(getContext(), R.layout.about_dialog, null);
     builder.setView(v);
-    /* Add action buttons when used standard alert dialog buttons
+    /* // add action buttons when used standard alert dialog buttons
     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
         public void onClick(DialogInterface dialog, int id) {}});
     .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
