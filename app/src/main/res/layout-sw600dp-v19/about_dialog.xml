@@ -33,7 +33,7 @@
     <ScrollView
         android:id="@+id/about_app_text_constrain"
         android:layout_width="fill_parent"
-        android:layout_height="240dp"
+        android:layout_height="@dimen/height_sw600"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="8dp"
