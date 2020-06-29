@@ -2,72 +2,48 @@ package alexrnov.lamrim;
 
 import android.app.Dialog;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
 import org.jetbrains.annotations.NotNull;
 
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentActivity;
 
 public class AboutDialogFragment extends DialogFragment {
+
+  private View.OnClickListener clickListener = new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+      Dialog dialog = AboutDialogFragment.this.getDialog();
+      if (dialog != null) {
+        dialog.cancel();
+      }
+    }
+  };
 
   @NotNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
-    //AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyAlertDialogTheme);
-    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-    LayoutInflater inflater = getActivity().getLayoutInflater();
 
-    /*
-    button.setOnClickListener( new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Log.i("P", "Click");
-      }
-    });
+    FragmentActivity activity = this.requireActivity();
+    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    LayoutInflater inflater = activity.getLayoutInflater();
 
-     */
     View v = inflater.inflate(R.layout.about_dialog, null);
     builder.setView(v);
-            // Add action buttons
-            /*
-            .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-              @Override
-              public void onClick(DialogInterface dialog, int id) {
-              }
-            });
-            */
-
-            /*
-            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-              public void onClick(DialogInterface dialog, int id) {
-                AboutDialogFragment.this.getDialog().cancel();
-              }
-            });
-            */
-
-
-    AlertDialog alertDialog = builder.create();
-    Button button = (Button) v.findViewById(R.id.close_dialog_button);
-
-    if (button == null) {
-      Log.i("P", "button is null");
-    } else {
-      Log.i("P", "button is not null");
-    }
-
-    button.setOnClickListener( new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        AboutDialogFragment.this.getDialog().cancel();
-      }
-    });
-
+    /* Add action buttons when used standard alert dialog buttons
+    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {}});
+    .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int id) {}});
+    */
+    Button button = v.findViewById(R.id.close_dialog_button);
+    if (button != null) button.setOnClickListener(clickListener);
     return builder.create();
   }
 }
