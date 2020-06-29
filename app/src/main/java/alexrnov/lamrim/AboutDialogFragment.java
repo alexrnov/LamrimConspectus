@@ -3,7 +3,6 @@ package alexrnov.lamrim;
 import android.app.Dialog;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
@@ -32,9 +31,9 @@ public class AboutDialogFragment extends DialogFragment {
 
     FragmentActivity activity = this.requireActivity();
     AlertDialog.Builder builder = new AlertDialog.Builder(activity);
-    LayoutInflater inflater = activity.getLayoutInflater();
-
-    View v = inflater.inflate(R.layout.about_dialog, null);
+    //LayoutInflater inflater = activity.getLayoutInflater();
+    //View v = inflater.inflate(R.layout.about_dialog, null);
+    View v = View.inflate(getContext(), R.layout.about_dialog, null);
     builder.setView(v);
     /* Add action buttons when used standard alert dialog buttons
     .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
