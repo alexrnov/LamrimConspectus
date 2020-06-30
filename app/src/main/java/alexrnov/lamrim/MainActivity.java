@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
     View container = findViewById(R.id.fragment_container);
     dualPane = container != null && container.getVisibility() == View.VISIBLE;
 
-    Log.i(TAG, "dualPane = " + dualPane);
     recyclerView = (RecyclerView) findViewById(R.id.main_menu);
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
@@ -101,11 +100,8 @@ public class MainActivity extends AppCompatActivity {
       case R.id.action_about:
         AboutDialogFragment settings = new AboutDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
-        Log.i("P", "action1");
-
         return true;
       case R.id.action_settings:
-        Log.i("P", "action2");
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
         return true;

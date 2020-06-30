@@ -36,8 +36,8 @@ public class ContentFragment extends Fragment {
         Log.i("P", "currentItemID = " + currentItemID);
       }
 
-      if (getArguments() != null && getArguments().containsKey("dualPane")) {
-        dualPane = getArguments().getBoolean("dualPane");
+      if (getArguments().containsKey("dualPaneMode")) {
+        dualPane = getArguments().getBoolean("dualPaneMode");
         Log.i("P", "dualPane fragment = " + dualPane);
       }
     }
@@ -65,7 +65,7 @@ public class ContentFragment extends Fragment {
           if (context != null) {
             Intent intent = new Intent(context, ContentActivity.class);
             intent.putExtra("id", currentItemID);
-            intent.putExtra("dualPane", false);
+            intent.putExtra("dualPaneMode", false);
             context.startActivity(intent);
           }
         }

@@ -28,7 +28,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
 
       val arguments = Bundle()
       arguments.putString("id", "0")
-      arguments.putBoolean("dualPane", dualPane)
+      arguments.putBoolean("dualPaneMode", dualPane)
       val fragment = ContentFragment()
       fragment.arguments = arguments
 
@@ -45,7 +45,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
     val intent = Intent(context, ContentActivity::class.java)
     currentSelectId = view.tag.toString()
     intent.putExtra("id", currentSelectId)
-    intent.putExtra("dualPane", dualPane)
+    intent.putExtra("dualPaneMode", dualPane)
     context.startActivity(intent)
   }
 
@@ -99,7 +99,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
         val arguments = Bundle()
         currentSelectId = view.tag.toString()
         arguments.putString("id", currentSelectId)
-        arguments.putBoolean("dualPane", dualPane)
+        arguments.putBoolean("dualPaneMode", dualPane)
         val fragment = ContentFragment()
         fragment.arguments = arguments
 
