@@ -34,12 +34,19 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    // for ViewModel
     def lifecycle_version = "2.2.0"
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version" // view model
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
 
+    // for settings preferences
     implementation "androidx.preference:preference:1.1.1"
+
+    // for dagger
+    implementation "com.google.dagger:dagger-android:2.15"
+    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+
 }
 repositories {
     mavenCentral()
