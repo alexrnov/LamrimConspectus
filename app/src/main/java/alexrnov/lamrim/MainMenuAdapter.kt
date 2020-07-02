@@ -19,8 +19,7 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
-  var currentSelectId: String = "0" // id выбранного пункта
-    private set
+  private var currentSelectId: String = "0" // id выбранного пункта
 
   init {
     if (dualPane) { // by default, in dual pane mode, select the first item

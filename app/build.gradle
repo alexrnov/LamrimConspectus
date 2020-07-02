@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
+// in kotlin-base app kapt is used instead annotationProcessor
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 29
@@ -19,6 +21,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    // added because there were problem with the viewModels() method
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    // added because there were problem with the viewModels() method
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
@@ -34,19 +47,36 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
-    // for ViewModel
+    //
     def lifecycle_version = "2.2.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version" // view model
+    // for view model
+    implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
+    // for kotlin view model
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    // Annotation processor
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    // optional - helpers for implementing LifecycleOwner in a Service
+    //implementation "androidx.lifecycle:lifecycle-service:$lifecycle_version"
+    // optional - ProcessLifecycleOwner provides a lifecycle for the whole application process
+    //implementation "androidx.lifecycle:lifecycle-process:$lifecycle_version"
+    // optional - ReactiveStreams support for LiveData
+    //implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
+    // optional - Test helpers for LiveData
+    //testImplementation "androidx.arch.core:core-testing:$arch_version"
+    // to use the viewModels() extension function
+    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    //implementation "androidx.activity:activity-ktx:1.1.0"
 
     // for settings preferences
     implementation "androidx.preference:preference:1.1.1"
+    implementation "androidx.lifecycle:lifecycle-process:2.2.0"
 
     // for dagger
     implementation "com.google.dagger:dagger-android:2.15"
-    annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
-
+    //annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
+    kapt 'com.google.dagger:dagger-android-processor:2.15'
 }
 repositories {
     mavenCentral()
