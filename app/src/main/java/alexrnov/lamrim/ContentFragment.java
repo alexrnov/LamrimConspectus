@@ -3,7 +3,6 @@ package alexrnov.lamrim;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,17 +14,13 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.preference.PreferenceManager;
 
 public class ContentFragment extends Fragment {
 
   private String currentItemID = "";
-  private TextView textView;
-  private Button button;
-  private SharedPreferences sharedPreferences;
   private boolean dualPane = false;
-
-
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -43,9 +38,6 @@ public class ContentFragment extends Fragment {
         Log.i("P", "dualPane fragment = " + dualPane);
       }
     }
-
-    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
-
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
@@ -55,13 +47,14 @@ public class ContentFragment extends Fragment {
     Log.i("P", "invoke onCreateView");
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
+    TextView textView;
     if (dualPane) {
       rootView = inflater.inflate(R.layout.descript_text_view, container, false);
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
       textView.setText("text = " + currentItemID
               + " introduction text " +
               "dssdfkdskkk;lkmkmm \n c ffuihse gvgh dsf dsfdsf dsf sdf");
-      button = rootView.findViewById(R.id.details_button);
+      Button button = rootView.findViewById(R.id.details_button);
       button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -83,18 +76,15 @@ public class ContentFragment extends Fragment {
               "dssdfkdskkk;lkmkmm \n dsklf dskfdsckm \n dslkjk \n dkjslsc akl dfgef dsfse dsdfd ds fsdffd s dsf efsfsd dsf ds khghg kjhkjhkj hiuhuihiu iguihuihi hgjhgj jhgh jihese gvgh dsf dsfdsf dsf sdf");
     }
 
-    MyLocationListener myLocationListener = new MyLocationListener(this.getActivity().getApplicationContext(), getLifecycle(), textView);
-    getLifecycle().addObserver(myLocationListener);
-
+    // add observer for TextView change style (color and size)
+    FragmentActivity activity = this.getActivity();
+    if (activity != null) {
+      Context context = activity.getApplicationContext();
+      TextStyleObserver observer = new TextStyleObserver(context, getLifecycle());
+      observer.addView(textView);
+      getLifecycle().addObserver(observer);
+    }
     return rootView;
   }
 
-  @Override
-  public void onResume() {
-    //String size = sharedPreferences.getString("font_size", "20");
-    //String color = sharedPreferences.getString("font_color", "#000000");
-    //textView.setTextSize(Float.valueOf(size));
-    //textView.setTextColor(Color.parseColor(color));
-    super.onResume();
-  }
 }
