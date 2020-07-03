@@ -21,14 +21,17 @@ internal class TextStyleObserverTest {
   fun setUp() {
     val lifecycleOwner: LifecycleOwner = mock(LifecycleOwner::class.java)
     lifeCycle = LifecycleRegistry(lifecycleOwner)
+
+
     textStyleObserver = TextStyleObserver(context, lifeCycle)
-    lifeCycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
     textStyleObserver.addView(textView)
+
     lifeCycle.addObserver(textStyleObserver)
+    lifeCycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
   }
 
   @Test
   fun f() {
-
+    //textStyleObserver.addView(textView)
   }
 }
