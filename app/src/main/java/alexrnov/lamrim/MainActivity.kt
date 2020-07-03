@@ -27,10 +27,10 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-    myLocationListener = MyLocationListener(this, lifecycle)
-    myLocationListener.enable()
+    //myLocationListener = MyLocationListener(this, lifecycle)
+    //myLocationListener.enable()
 
-    lifecycle.addObserver(myLocationListener)
+    //lifecycle.addObserver(myLocationListener)
 
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
     val v:TextViewModel by viewModels()

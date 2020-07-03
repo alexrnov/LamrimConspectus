@@ -45,12 +45,14 @@ public class ContentFragment extends Fragment {
     }
 
     sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
   @Override
   public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
+    Log.i("P", "invoke onCreateView");
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
     if (dualPane) {
@@ -80,15 +82,19 @@ public class ContentFragment extends Fragment {
               + " sddskljkj kdskckdscj dskjkskl dsklfsdk dskklsd " +
               "dssdfkdskkk;lkmkmm \n dsklf dskfdsckm \n dslkjk \n dkjslsc akl dfgef dsfse dsdfd ds fsdffd s dsf efsfsd dsf ds khghg kjhkjhkj hiuhuihiu iguihuihi hgjhgj jhgh jihese gvgh dsf dsfdsf dsf sdf");
     }
+
+    MyLocationListener myLocationListener = new MyLocationListener(this.getActivity().getApplicationContext(), getLifecycle(), textView);
+    getLifecycle().addObserver(myLocationListener);
+
     return rootView;
   }
 
   @Override
   public void onResume() {
-    String size = sharedPreferences.getString("font_size", "20");
-    String color = sharedPreferences.getString("font_color", "#000000");
-    textView.setTextSize(Float.valueOf(size));
-    textView.setTextColor(Color.parseColor(color));
+    //String size = sharedPreferences.getString("font_size", "20");
+    //String color = sharedPreferences.getString("font_color", "#000000");
+    //textView.setTextSize(Float.valueOf(size));
+    //textView.setTextColor(Color.parseColor(color));
     super.onResume();
   }
 }
