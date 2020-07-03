@@ -25,6 +25,8 @@ public class ContentFragment extends Fragment {
   private SharedPreferences sharedPreferences;
   private boolean dualPane = false;
 
+
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
