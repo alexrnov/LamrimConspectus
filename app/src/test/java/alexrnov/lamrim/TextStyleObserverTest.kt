@@ -2,6 +2,7 @@ package alexrnov.lamrim
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.Lifecycle
@@ -42,15 +43,15 @@ class TextStyleObserverTest {
     lifeCycle.addObserver(textStyleObserver)
     lifeCycle.handleLifecycleEvent(Lifecycle.Event.ON_CREATE)
 
-    //`when`(textView.setTextColor(anyInt()))
+    `when`(textView.setTextColor(Color.parseColor(anyString()))).thenCallRealMethod()
     //doThrow(RuntimeException::class.java).`when`(textView.setTextColor(anyInt()))
-    //doNothing().`when`(textView.setTextColor(anyInt()))
+    //doNothing().`when`(textView.setTextColor(Color.parseColor(anyString())))
     textStyleObserver.addView(textView)
   }
 
   @Test
   fun f() {
     lifeCycle.handleLifecycleEvent(Lifecycle.Event.ON_RESUME)
-    Log.i("P", "textSize = " + textView.textSize)
+    //Log.i("P", "textSize = " + textView.textSize)
   }
 }
