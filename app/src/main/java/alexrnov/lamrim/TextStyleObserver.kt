@@ -33,7 +33,7 @@ internal class TextStyleObserver(
   @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
   fun resume() {
     val size = sharedPref.getString("font_size", "20")
-    val color = sharedPref.getString("font_color", "#000000");
+    val color = sharedPref.getString("font_color", "#000000")
     textView.textSize = size!!.toFloat()
     textView.setTextColor(Color.parseColor(color))
   }
