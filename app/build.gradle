@@ -106,8 +106,8 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:1.2.5"
     //implementation "androidx.activity:activity-ktx:1.1.0"
 
-    implementation "android.arch.lifecycle:runtime:1.1.1"
-    annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
+    //implementation "android.arch.lifecycle:runtime:1.1.1"
+    //annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
 
     // for settings preferences
     implementation "androidx.preference:preference:1.1.1"
@@ -120,6 +120,7 @@ dependencies {
 
     // for test
     testImplementation 'junit:junit:4.12' // required - JUnit4 framework
+
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     //androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     // optional - Robolectric environment
