@@ -4,6 +4,7 @@ import alexrnov.lamrim.settings.SettingsActivity
 import android.content.Intent
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
+
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
     val v:TextViewModel by viewModels()
 
@@ -39,11 +41,18 @@ class MainActivity : AppCompatActivity() {
     // LinearLayoutManager arranges the items in a one-dimensional list
     layoutManager = LinearLayoutManager(this)
     recyclerView!!.layoutManager = layoutManager
-    adapter = MainMenuAdapter(dualPane, this)
-    recyclerView!!.adapter = adapter
-    //Toolbar collapsingToolbarLayout = findViewById(R.id.toolbar);
 
-    //collapsingToolbarLayout.setTitle("Конспект ламрима");
+    // Check whether we're recreating a previously destroyed instance
+    val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
+    if (savedInstanceState != null) { // Check whether we're recreating a previously destroyed instance
+
+    } else { // activity created for the first time
+
+    }
+
+    adapter = MainMenuAdapter(item, dualPane, this)
+    recyclerView!!.adapter = adapter
+
     val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
     setSupportActionBar(toolbar)
     val actionBar = supportActionBar
@@ -53,8 +62,6 @@ class MainActivity : AppCompatActivity() {
               this.getString(R.string.app_name) + "</font>")
     }
 
-    //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
-    //toolbar.setOverflowIcon(drawable);
     getScreenSizeWithNavBar(this)
   }
 
@@ -78,5 +85,20 @@ class MainActivity : AppCompatActivity() {
       }
       else -> super.onOptionsItemSelected(item)
     }
+  }
+
+  override fun onSaveInstanceState(outState: Bundle) {
+    Log.i("P", "saveInstance currentSelectId = " + adapter?.currentSelectId)
+    outState.run {
+      putString(SELECT_ITEM, adapter?.currentSelectId) // save select item
+    }
+    // Always call the superclass so it can save the view hierarchy state. Note: In order
+    // for the Android system to restore the state of the views in your activity,
+    // each view must have a unique ID, supplied by the android:id attribute.
+    super.onSaveInstanceState(outState)
+  }
+
+  companion object {
+    const val SELECT_ITEM = "selectItem"
   }
 }

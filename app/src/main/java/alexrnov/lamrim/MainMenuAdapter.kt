@@ -2,6 +2,7 @@ package alexrnov.lamrim
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 
-class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity: MainActivity) :
+class MainMenuAdapter(private val item: String, private val dualPane: Boolean, private val parentActivity: MainActivity) :
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
   private var dataset = arrayOf("Item1", "Item2", "Item3", "Item4",
@@ -19,10 +20,13 @@ class MainMenuAdapter(private val dualPane: Boolean, private val parentActivity:
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
-  private var currentSelectId: String = "0" // id выбранного пункта
+  var currentSelectId: String = "0" // id выбранного пункта
+    private set
+
 
   init {
     if (dualPane) { // by default, in dual pane mode, select the first item
+      Log.i("P", "item555 = $item")
       selectedItem.add(0)
 
       val arguments = Bundle()
