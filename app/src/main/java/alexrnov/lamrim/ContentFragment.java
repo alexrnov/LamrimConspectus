@@ -12,15 +12,20 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceManager;
 
 public class ContentFragment extends Fragment {
 
   private String currentItemID = "";
   private boolean dualPane = false;
+  private TextView textView;
+  private TextViewModel model;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,20 @@ public class ContentFragment extends Fragment {
         Log.i("P", "dualPane fragment = " + dualPane);
       }
     }
+
+    model = new ViewModelProvider(this).get(TextViewModel.class);
+
+    // Create the observer which updates the UI.
+    final Observer<String> textObserver = new Observer<String>() {
+      @Override
+      public void onChanged(@Nullable String newName) {
+        // Update UI (TextView)
+        textView.setText(newName);
+      }
+    };
+
+    // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
+    model.getTextItem().observe(this, textObserver);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
@@ -47,7 +66,7 @@ public class ContentFragment extends Fragment {
     Log.i("P", "invoke onCreateView");
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
-    TextView textView;
+    //TextView textView;
     if (dualPane) {
       rootView = inflater.inflate(R.layout.descript_text_view, container, false);
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
@@ -59,6 +78,7 @@ public class ContentFragment extends Fragment {
         @Override
         public void onClick(View v) {
           Context context = getContext();
+          model.getTextItem().setValue("555555");
           if (context != null) {
             Intent intent = new Intent(context, ContentActivity.class);
             intent.putExtra("id", currentItemID);
