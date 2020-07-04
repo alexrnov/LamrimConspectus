@@ -10,6 +10,10 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.preference.PreferenceManager
 
+/**
+ * Lifecycle-aware components perform actions in response to a change in the
+ * lifecycle status of another component, such as activities and fragments.
+ */
 internal class TextStyleObserver(
         private val context: Context,
         private val lifecycle: Lifecycle): LifecycleObserver {

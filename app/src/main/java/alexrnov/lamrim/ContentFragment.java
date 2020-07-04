@@ -44,7 +44,9 @@ public class ContentFragment extends Fragment {
       }
     }
 
-    model = new ViewModelProvider(this).get(TextViewModel.class);
+    // here used requireActivity() (activity including fragment) - If one fragment
+    // replaces the other one, the UI continues to work without any problems.
+    model = new ViewModelProvider(requireActivity()).get(TextViewModel.class);
 
     // Create the observer which updates the UI.
     final Observer<String> textObserver = new Observer<String>() {

@@ -15,6 +15,12 @@ class TextViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
   // Create a LiveData with a String
   val textItem: MutableLiveData<String> by lazy {
-    MutableLiveData<String>()
+    MutableLiveData<String>().also {
+      loadText()
+    }
+  }
+
+  private fun loadText() {
+    // Do an asynchronous operation
   }
 }
