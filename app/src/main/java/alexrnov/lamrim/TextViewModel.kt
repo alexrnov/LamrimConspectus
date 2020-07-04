@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
@@ -12,8 +13,8 @@ class TextViewModel(savedStateHandle: SavedStateHandle) : ViewModel() {
 
   val idItem: String = "id_item"
 
-  //val textItem: TextItem = TODO()
-
-
-
+  // Create a LiveData with a String
+  val textItem: MutableLiveData<String> by lazy {
+    MutableLiveData<String>()
+  }
 }
