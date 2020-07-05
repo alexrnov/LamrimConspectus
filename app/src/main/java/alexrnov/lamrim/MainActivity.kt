@@ -2,6 +2,7 @@ package alexrnov.lamrim
 
 import alexrnov.lamrim.settings.SettingsActivity
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -28,7 +29,6 @@ class MainActivity : AppCompatActivity() {
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
 
-
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
     val v:TextViewModel by viewModels()
 
@@ -42,13 +42,9 @@ class MainActivity : AppCompatActivity() {
     layoutManager = LinearLayoutManager(this)
     recyclerView!!.layoutManager = layoutManager
 
-    // Check whether we're recreating a previously destroyed instance
+    // Check whether we're recreating a previously destroyed instance.
+    // If yes, then get the item number, if not, then get 0 for first item
     val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
-    if (savedInstanceState != null) { // Check whether we're recreating a previously destroyed instance
-
-    } else { // activity created for the first time
-
-    }
 
     adapter = MainMenuAdapter(item, dualPane, this)
     recyclerView!!.adapter = adapter
@@ -58,10 +54,17 @@ class MainActivity : AppCompatActivity() {
     val actionBar = supportActionBar
     if (actionBar != null) {
       actionBar.setIcon(R.drawable.home_icon)
-      actionBar.title = Html.fromHtml("<font color='#fffbbe'>" +
-              this.getString(R.string.app_name) + "</font>")
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        // FROM_HTML_MODE_LEGACY is the behaviour that was used for versions
+        // below android N we are using this flag to give a consistent behaviour
+        actionBar.title = Html.fromHtml("<font color='#fffbbe'>" +
+                this.getString(R.string.app_name) + "</font>", Html.FROM_HTML_MODE_LEGACY)
+      } else {
+        @Suppress("DEPRECATION")
+        actionBar.title = Html.fromHtml("<font color='#fffbbe'>" +
+                this.getString(R.string.app_name) + "</font>")
+      }
     }
-
     getScreenSizeWithNavBar(this)
   }
 
@@ -88,7 +91,6 @@ class MainActivity : AppCompatActivity() {
   }
 
   override fun onSaveInstanceState(outState: Bundle) {
-    Log.i("P", "saveInstance currentSelectId = " + adapter?.currentSelectId)
     outState.run {
       putString(SELECT_ITEM, adapter?.currentSelectId) // save select item
     }

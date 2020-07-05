@@ -2,7 +2,6 @@ package alexrnov.lamrim
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,16 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 
-class MainMenuAdapter(private val item: String, private val dualPane: Boolean, private val parentActivity: MainActivity) :
+/**
+ * Adapter for main menu
+ * [currentSelectId] - id item witch is current select. Pass to the
+ * constructor to remember select state retain after rotation screen.
+ * [dualPaneMode] - mode when view menu and short description.
+ * [parentActivity] - activity include fragment.
+ */
+class MainMenuAdapter(var currentSelectId: String,
+          private val dualPaneMode: Boolean,
+          private val parentActivity: MainActivity) :
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
   private var dataset = arrayOf("Item1", "Item2", "Item3", "Item4",
@@ -20,18 +28,14 @@ class MainMenuAdapter(private val item: String, private val dualPane: Boolean, p
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
-  var currentSelectId: String = "0" // id выбранного пункта
-    private set
-
-
   init {
-    if (dualPane) { // by default, in dual pane mode, select the first item
-      Log.i("P", "item555 = $item")
-      selectedItem.add(0)
+    if (dualPaneMode) {
+      // in dual pane mode, select the item, witch saved in onSaveInstanceState() method
+      selectedItem.add(Integer.valueOf(currentSelectId))
 
       val arguments = Bundle()
-      arguments.putString("id", "0")
-      arguments.putBoolean("dualPaneMode", dualPane)
+      arguments.putString("id", currentSelectId)
+      arguments.putBoolean("dualPaneMode", dualPaneMode)
       val fragment = ContentFragment()
       fragment.arguments = arguments
 
@@ -48,7 +52,7 @@ class MainMenuAdapter(private val item: String, private val dualPane: Boolean, p
     val intent = Intent(context, ContentActivity::class.java)
     currentSelectId = view.tag.toString()
     intent.putExtra("id", currentSelectId)
-    intent.putExtra("dualPaneMode", dualPane)
+    intent.putExtra("dualPaneMode", dualPaneMode)
     context.startActivity(intent)
   }
 
@@ -62,8 +66,7 @@ class MainMenuAdapter(private val item: String, private val dualPane: Boolean, p
     // create a new view
     val textView = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_menu_text_view, parent, false) as TextView
-    // set the view's size, margins, paddings and layout parameters
-    // ...
+    // here may set the view's size, margins, paddings and layout parameters
     return TextViewHolder(textView)
   }
 
@@ -81,8 +84,7 @@ class MainMenuAdapter(private val item: String, private val dualPane: Boolean, p
     holder.textView.tag = position
     holder.textView.isClickable = true
 
-
-    if (dualPane) { // dual pane mode
+    if (dualPaneMode) { // dual pane mode
 
       holder.textView.setOnClickListener { view ->
         // solution Dustin Charles how-to-properly-highlight-selected-item-on-recyclerview
@@ -102,7 +104,7 @@ class MainMenuAdapter(private val item: String, private val dualPane: Boolean, p
         val arguments = Bundle()
         currentSelectId = view.tag.toString()
         arguments.putString("id", currentSelectId)
-        arguments.putBoolean("dualPaneMode", dualPane)
+        arguments.putBoolean("dualPaneMode", dualPaneMode)
         val fragment = ContentFragment()
         fragment.arguments = arguments
 
