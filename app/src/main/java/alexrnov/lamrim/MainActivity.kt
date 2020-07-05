@@ -12,26 +12,27 @@ import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
   private var recyclerView: RecyclerView? = null
-  private var adapter: MainMenuAdapter? = null
+  private lateinit var adapter: MainMenuAdapter
   private var layoutManager: RecyclerView.LayoutManager? = null
   private var dualPane = false
   private val TAG = "P"
 
-  private lateinit var textStyleObserver: TextStyleObserver
+  private val vm: TextViewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
 
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
+    //val vm2: TextViewModel by viewModels()
 
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
-    val v:TextViewModel by viewModels()
-
+    //val vm: TextViewModel by viewModels()
     val container = findViewById<View>(R.id.fragment_container)
     dualPane = container != null && container.visibility == View.VISIBLE
     recyclerView = findViewById<View>(R.id.main_menu) as RecyclerView
@@ -44,8 +45,10 @@ class MainActivity : AppCompatActivity() {
 
     // Check whether we're recreating a previously destroyed instance.
     // If yes, then get the item number, if not, then get 0 for first item
-    val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
-
+    // when used Bundle
+    // val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
+    // when used SavedStateHandle of ViewModel
+    val item: String = vm.getCurrentItem()
     adapter = MainMenuAdapter(item, dualPane, this)
     recyclerView!!.adapter = adapter
 
@@ -91,16 +94,14 @@ class MainActivity : AppCompatActivity() {
   }
 
   override fun onSaveInstanceState(outState: Bundle) {
-    outState.run {
-      putString(SELECT_ITEM, adapter?.currentSelectId) // save select item
-    }
+    // when used Bundle
+    // outState.putString(SELECT_ITEM, adapter.currentSelectId) // save select item
+    // when used SavedStateHandle of ViewModel
+    vm.setCurrentItem(adapter.currentSelectId)
     // Always call the superclass so it can save the view hierarchy state. Note: In order
     // for the Android system to restore the state of the views in your activity,
     // each view must have a unique ID, supplied by the android:id attribute.
     super.onSaveInstanceState(outState)
   }
 
-  companion object {
-    const val SELECT_ITEM = "selectItem"
-  }
 }

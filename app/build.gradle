@@ -104,7 +104,7 @@ dependencies {
     //testImplementation "androidx.arch.core:core-testing:$arch_version"
     // to use the viewModels() extension function
     implementation "androidx.fragment:fragment-ktx:1.2.5"
-    //implementation "androidx.activity:activity-ktx:1.1.0"
+    implementation "androidx.activity:activity-ktx:1.1.0"
 
     //implementation "android.arch.lifecycle:runtime:1.1.1"
     //annotationProcessor "android.arch.lifecycle:compiler:1.1.1"
