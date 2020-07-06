@@ -23,16 +23,14 @@ class MainActivity : AppCompatActivity() {
   private var dualPane = false
   private val TAG = "P"
 
-  private val vm: TextViewModel by viewModels()
+  private val model: TextViewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
 
     super.onCreate(savedInstanceState)
     setContentView(R.layout.activity_main)
-    //val vm2: TextViewModel by viewModels()
 
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
-    //val vm: TextViewModel by viewModels()
     val container = findViewById<View>(R.id.fragment_container)
     dualPane = container != null && container.visibility == View.VISIBLE
     recyclerView = findViewById<View>(R.id.main_menu) as RecyclerView
@@ -48,7 +46,8 @@ class MainActivity : AppCompatActivity() {
     // when used Bundle
     // val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
     // when used SavedStateHandle of ViewModel
-    val item: String = vm.getCurrentItem()
+    val item: String = model.getCurrentItem()
+
     adapter = MainMenuAdapter(item, dualPane, this)
     recyclerView!!.adapter = adapter
 
@@ -97,7 +96,7 @@ class MainActivity : AppCompatActivity() {
     // when used Bundle
     // outState.putString(SELECT_ITEM, adapter.currentSelectId) // save select item
     // when used SavedStateHandle of ViewModel
-    vm.setCurrentItem(adapter.currentSelectId)
+    model.setCurrentItem(adapter.currentSelectId)
     // Always call the superclass so it can save the view hierarchy state. Note: In order
     // for the Android system to restore the state of the views in your activity,
     // each view must have a unique ID, supplied by the android:id attribute.

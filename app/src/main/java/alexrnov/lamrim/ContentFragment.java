@@ -59,6 +59,8 @@ public class ContentFragment extends Fragment {
 
     // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
     model.getTextItem().observe(this, textObserver);
+    String item = model.getCurrentItem();
+    Log.i("P", "item fragment = " + item);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
@@ -72,6 +74,7 @@ public class ContentFragment extends Fragment {
     if (dualPane) {
       rootView = inflater.inflate(R.layout.descript_text_view, container, false);
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
+      String s = model.getTextItem().getValue();
       textView.setText("text = " + currentItemID
               + " introduction text " +
               "dssdfkdskkk;lkmkmm \n c ffuihse gvgh dsf dsfdsf dsf sdf");
@@ -81,6 +84,7 @@ public class ContentFragment extends Fragment {
         public void onClick(View v) {
           Context context = getContext();
           model.getTextItem().setValue("555555");
+          //model.getTextItem().getValue();
           if (context != null) {
             Intent intent = new Intent(context, ContentActivity.class);
             intent.putExtra("id", currentItemID);
