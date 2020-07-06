@@ -2,7 +2,6 @@ package alexrnov.lamrim;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +17,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.preference.PreferenceManager;
 
 public class ContentFragment extends Fragment {
 
@@ -46,7 +44,7 @@ public class ContentFragment extends Fragment {
 
     // here used requireActivity() (activity including fragment) - If one fragment
     // replaces the other one, the UI continues to work without any problems.
-    model = new ViewModelProvider(requireActivity()).get(TextViewModel.class);
+    model = new ViewModelProvider(this).get(TextViewModel.class);
 
     // Create the observer which updates the UI.
     final Observer<String> textObserver = new Observer<String>() {
@@ -58,32 +56,40 @@ public class ContentFragment extends Fragment {
     };
 
     // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
-    model.getTextItem().observe(this, textObserver);
+    model.getText1().observe(this, textObserver);
+    //model.getText2().observe(this, textObserver);
     String item = model.getCurrentItem();
     Log.i("P", "item fragment = " + item);
+    String text = model.getText2().getValue();
+    Log.i("P", "text fragment = " + text);
+    String s = model.getText1().getValue();
+    Log.i("P", "s model = " + s);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
   @Override
   public View onCreateView(@NotNull LayoutInflater inflater, ViewGroup container,
                            Bundle savedInstanceState) {
-    Log.i("P", "invoke onCreateView");
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
     //TextView textView;
     if (dualPane) {
       rootView = inflater.inflate(R.layout.descript_text_view, container, false);
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
-      String s = model.getTextItem().getValue();
+
+      //model.getText1().setValue("55555");
+
+      /*
       textView.setText("text = " + currentItemID
               + " introduction text " +
               "dssdfkdskkk;lkmkmm \n c ffuihse gvgh dsf dsfdsf dsf sdf");
+      */
       Button button = rootView.findViewById(R.id.details_button);
       button.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
           Context context = getContext();
-          model.getTextItem().setValue("555555");
+          //model.getText1().setValue("555555");
           //model.getTextItem().getValue();
           if (context != null) {
             Intent intent = new Intent(context, ContentActivity.class);

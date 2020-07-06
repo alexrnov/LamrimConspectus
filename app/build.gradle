@@ -88,8 +88,11 @@ dependencies {
     def lifecycle_version = "2.2.0"
     // for view model
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
-    // for kotlin view model
+    // KTX extensions for each corresponding Architecture components (in particular coroutines )
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
     // Saved state module for ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
     // Annotation processor

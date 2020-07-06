@@ -1,11 +1,9 @@
 package alexrnov.lamrim
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.launch
+import androidx.lifecycle.*
+import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 
 // A ViewModel object provides the data for a specific UI component, such as a fragment
 // or activity, and contains data-handling business logic to communicate with the model.
@@ -18,10 +16,45 @@ class TextViewModel(private val state: SavedStateHandle) : ViewModel() {
   private val savedState = state
 
   // Create a LiveData with a String
-  val textItem: MutableLiveData<String> by lazy {
-    MutableLiveData<String>().also {
-      loadText()
+  /*
+  val text1: MutableLiveData<String> by lazy {
+    return@lazy MutableLiveData<String>().also {
+      loadText1()
     }
+  }
+   */
+  val text1 = MutableLiveData<String>().apply {
+    //setValue("55555555")
+    //loadText1()
+  }
+
+  // Do an asynchronous operation
+  private fun loadText1() = viewModelScope.launch {
+      // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
+      text1.postValue("text5")
+    Log.i("P", "loadText1()")
+    }
+
+  val text2: LiveData<String> = liveData {
+    val data = loadText2()
+    emit(data)
+  }
+
+  private suspend fun loadText2(): String {
+    return withContext(IO) {
+      return@withContext "text"
+    }
+  }
+
+  private suspend fun loadText5(): String {
+    var s = ""
+    delay(100)
+    Log.i("P", "loadText2()")
+    viewModelScope.launch {
+      Log.i("P", "loadText2()")
+      s = "text"
+    }
+    return s
   }
 
   fun setCurrentItem(currentItem: String) {
@@ -31,15 +64,6 @@ class TextViewModel(private val state: SavedStateHandle) : ViewModel() {
   fun getCurrentItem(): String {
     // when app start for a first time, return first item ("0")
     return savedState[SELECT_ITEM] ?: "0"
-  }
-
-  private fun loadText() {
-    // Do an asynchronous operation
-
-    viewModelScope.launch {
-      // Coroutine that will be canceled when the ViewModel is cleared.
-      textItem.value = "7777"
-    }
   }
 
   companion object {
