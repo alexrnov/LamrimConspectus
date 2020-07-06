@@ -16,24 +16,48 @@ class TextViewModel(private val state: SavedStateHandle) : ViewModel() {
   private val savedState = state
 
   // Create a LiveData with a String
+
   /*
   val text1: MutableLiveData<String> by lazy {
     return@lazy MutableLiveData<String>().also {
-      loadText1()
+      viewModelScope.launch {
+        // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
+        Log.i("P", "THread = ${Thread.currentThread().name}")
+        text1.postValue("text5")
+        Log.i("P", "loadText1()")
+      }
     }
   }
+
    */
-  val text1 = MutableLiveData<String>().apply {
-    //setValue("55555555")
-    //loadText1()
+
+  val text1: MutableLiveData<String> by lazy {
+    return@lazy MutableLiveData<String>().also {
+      loadText()
+    }
   }
 
+  private fun loadText() = viewModelScope.launch {
+    val v1 = async(CoroutineName("v1coroutine")) {
+      "text"
+    }
+    text1.postValue(v1.await())
+    // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
+  }
+
+  /*
+  val text1 = MutableLiveData<String>()
+          .apply {
+    setValue("5555555 5")
+    //loadText1()
+  }
+  */
   // Do an asynchronous operation
   private fun loadText1() = viewModelScope.launch {
       // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
       text1.postValue("text5")
     Log.i("P", "loadText1()")
-    }
+  }
 
   val text2: LiveData<String> = liveData {
     val data = loadText2()
