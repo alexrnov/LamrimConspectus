@@ -1,6 +1,5 @@
 package alexrnov.lamrim
 
-import android.util.Log
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
@@ -17,22 +16,8 @@ class TextViewModel(private val state: SavedStateHandle) : ViewModel() {
 
   // Create a LiveData with a String
 
-  /*
-  val text1: MutableLiveData<String> by lazy {
-    return@lazy MutableLiveData<String>().also {
-      viewModelScope.launch {
-        // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
-        Log.i("P", "THread = ${Thread.currentThread().name}")
-        text1.postValue("text5")
-        Log.i("P", "loadText1()")
-      }
-    }
-  }
-
-   */
-
-  val text1: MutableLiveData<String> by lazy {
-    return@lazy MutableLiveData<String>().also {
+  val text: MutableLiveData<String> by lazy {
+    MutableLiveData<String>().also {
       loadText()
     }
   }
@@ -41,23 +26,19 @@ class TextViewModel(private val state: SavedStateHandle) : ViewModel() {
     val v1 = async(CoroutineName("v1coroutine")) {
       "text"
     }
-    text1.postValue(v1.await())
+    text.postValue(v1.await())
     // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
   }
+
 
   /*
   val text1 = MutableLiveData<String>()
           .apply {
-    setValue("5555555 5")
+    setValue("55555555")
     //loadText1()
   }
-  */
-  // Do an asynchronous operation
-  private fun loadText1() = viewModelScope.launch {
-      // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
-      text1.postValue("text5")
-    Log.i("P", "loadText1()")
-  }
+
+   */
 
   val text2: LiveData<String> = liveData {
     val data = loadText2()
@@ -70,16 +51,6 @@ class TextViewModel(private val state: SavedStateHandle) : ViewModel() {
     }
   }
 
-  private suspend fun loadText5(): String {
-    var s = ""
-    delay(100)
-    Log.i("P", "loadText2()")
-    viewModelScope.launch {
-      Log.i("P", "loadText2()")
-      s = "text"
-    }
-    return s
-  }
 
   fun setCurrentItem(currentItem: String) {
     savedState.set(SELECT_ITEM, currentItem)
