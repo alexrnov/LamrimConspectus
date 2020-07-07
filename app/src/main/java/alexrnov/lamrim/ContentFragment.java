@@ -56,14 +56,18 @@ public class ContentFragment extends Fragment {
     };
 
     // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
-    model.getText().observe(this, textObserver);
+    model.getMyLiveData().observe(this, textObserver);
+    MyRepository.getInstance().doSomeStuff();
     //model.getText2().observe(this, textObserver);
+    /*
     String item = model.getCurrentItem();
     Log.i("P", "item fragment = " + item);
     String text = model.getText2().getValue();
     Log.i("P", "text fragment = " + text);
     String s = model.getText().getValue();
     Log.i("P", "s model = " + s);
+
+     */
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
@@ -78,7 +82,7 @@ public class ContentFragment extends Fragment {
       textView = ((TextView) rootView.findViewById(R.id.item_detail));
 
       //model.getText1().setValue("55555");
-      model.getText().setValue("777777");
+      //model.getText().setValue("777777");
       /*
       textView.setText("text = " + currentItemID
               + " introduction text " +
