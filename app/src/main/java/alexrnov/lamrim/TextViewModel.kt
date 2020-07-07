@@ -21,6 +21,7 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
   private lateinit var myLiveData: LiveData<String>
 
   init {
+    Log.i("P", "init view model")
     myLiveData = repo.myLiveData
 
 
@@ -48,7 +49,7 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
 
 
   suspend fun processBitmap() = withContext(Dispatchers.Default) {
-    delay(5000)
+    delay(10000)
     Log.i("P", "processBitmap()")
   }
 
