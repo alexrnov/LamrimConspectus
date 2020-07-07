@@ -1,9 +1,9 @@
 package alexrnov.lamrim
 
+import android.util.Log
 import androidx.annotation.NonNull
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import kotlinx.coroutines.*
 
 // A ViewModel object provides the data for a specific UI component, such as a fragment
 // or activity, and contains data-handling business logic to communicate with the model.
@@ -16,33 +16,43 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
   private val savedState = state
 
   @NonNull
-  private val repo = MyRepository.getInstance()
+  private val repo = FileRepository.getInstance()
 
   private lateinit var myLiveData: LiveData<String>
 
   init {
     myLiveData = repo.myLiveData
+
+
+    viewModelScope.launch {
+      processBitmap()
+    }
   }
 
   fun getMyLiveData(): LiveData<String> {
     return myLiveData
   }
-  /*
+
   // Create a LiveData with a String
   val text = MutableLiveData<String>().apply {
     // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
     viewModelScope.launch {
       val job = async(CoroutineName("load text")) {
-        loadTextFromFile() // long operation - load big text from file
+        delay(7000)
+        "text"// long operation - load big text from file
       }
       postValue(job.await())
     }
   }
 
-  private fun loadTextFromFile(): String {
-    return "loadingText"
+
+
+  suspend fun processBitmap() = withContext(Dispatchers.Default) {
+    delay(5000)
+    Log.i("P", "processBitmap()")
   }
-  */
+
+
   /*
   val text2: LiveData<String> = liveData {
     val data = loadText2()

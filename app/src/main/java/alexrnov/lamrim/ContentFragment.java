@@ -25,6 +25,8 @@ public class ContentFragment extends Fragment {
   private TextView textView;
   private TextViewModel model;
 
+
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -56,18 +58,9 @@ public class ContentFragment extends Fragment {
     };
 
     // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
-    model.getMyLiveData().observe(this, textObserver);
-    MyRepository.getInstance().doSomeStuff();
-    //model.getText2().observe(this, textObserver);
-    /*
-    String item = model.getCurrentItem();
-    Log.i("P", "item fragment = " + item);
-    String text = model.getText2().getValue();
-    Log.i("P", "text fragment = " + text);
-    String s = model.getText().getValue();
-    Log.i("P", "s model = " + s);
-
-     */
+    //model.getMyLiveData().observe(this, textObserver);
+    //FileRepository.getInstance().doSomeStuff();
+    model.getText().observe(this, textObserver);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
