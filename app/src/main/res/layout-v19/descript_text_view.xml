@@ -6,46 +6,80 @@
     android:layout_height="match_parent"
     tools:context=".ContentFragment">
 
-    <TextView
-        android:id="@+id/item_detail"
-        style="?android:attr/textAppearanceLarge"
-        android:padding="16dp"
-        android:textIsSelectable="true"
-        app:fontFamily="sans-serif"
-        tools:context=".ContentFragment"
+    <Button
+        android:id="@+id/details_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_toggle"
+        android:paddingLeft="30dp"
+        android:paddingTop="20dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="20dp"
+        android:text="@string/details_button_text"
+        android:textColor="@color/ButtonTextColor"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/details_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- for api low 19 used the usually button in other xml-layout -->
-    <!-- android:theme is to not mistake error inflate -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/details_button"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/details_button_text"
-        android:textAppearance="@style/ButtonStyle"
-        app:icon="@mipmap/button_icon_round"
-        app:iconTint="@null"
-        app:iconGravity="textStart"
-        android:textColor="@color/MatButtonTextColor"
-        app:backgroundTintMode="src_over"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/item_detail"
-        app:cornerRadius="14dp"
-        app:iconPadding="15dp"
-        android:paddingStart="15dp"
-        android:paddingTop="5dp"
-        android:paddingEnd="15dp"
-        android:paddingBottom="5dp"
-        app:backgroundTint="@color/BackgroundMatButtonColor"
-        android:theme="@style/Theme.MaterialComponents.Light"/>
+        <ScrollView
+            android:id="@+id/preview_scrollview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:fadeScrollbars="true"
+            android:fadingEdgeLength="50dp"
+            android:requiresFadingEdge="vertical"
+            android:scrollbars="none"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/item_detail"
+                    style="?android:attr/textAppearanceLarge"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="16dp"
+                    android:text=""
+                    android:textAlignment="center"
+                    android:textIsSelectable="true"
+                    app:fontFamily="sans-serif"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:context=".ContentFragment"
+                    tools:layout_conversion_absoluteHeight="62dp"
+                    tools:layout_conversion_absoluteWidth="32dp"
+                    tools:layout_editor_absoluteX="43dp"
+                    tools:layout_editor_absoluteY="239dp" />
+            </LinearLayout>
+        </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

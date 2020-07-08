@@ -39,14 +39,14 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
     // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
     viewModelScope.launch {
       val job = async(CoroutineName("load text")) {
-        delay(7000)
+        Log.i("P", "job start")
+        delay(10000)
+        Log.i("P", "job success")
         "text"// long operation - load big text from file
       }
       postValue(job.await())
     }
   }
-
-
 
   suspend fun processBitmap() = withContext(Dispatchers.Default) {
     delay(10000)

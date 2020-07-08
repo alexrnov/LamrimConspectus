@@ -13,6 +13,8 @@ import android.widget.TextView;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.InputStream;
+
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
@@ -59,9 +61,10 @@ public class ContentFragment extends Fragment {
     };
 
     // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
-    //model.getMyLiveData().observe(this, textObserver);
-    //FileRepository.getInstance().doSomeStuff();
-    model.getText().observe(this, textObserver);
+    model.getMyLiveData().observe(this, textObserver);
+    InputStream input = getResources().openRawResource(R.raw.text1);
+    FileRepository.getInstance().doSomeStuff(input);
+    //model.getText().observe(this, textObserver);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.

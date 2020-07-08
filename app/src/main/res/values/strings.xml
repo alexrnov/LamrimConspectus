@@ -4,7 +4,7 @@
     <string name="app_version">1.0</string>
 
     <!-- interface -->
-    <string name="details_button_text">Читать</string>
+    <string name="details_button_text">Читать полностью</string>
 
     <string name="appbar_scrolling_text">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
