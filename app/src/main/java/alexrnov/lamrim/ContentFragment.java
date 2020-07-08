@@ -27,8 +27,6 @@ public class ContentFragment extends Fragment {
   private TextView textView;
   private TextViewModel model;
 
-
-
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -48,23 +46,28 @@ public class ContentFragment extends Fragment {
 
     Log.i("P", "create contentFragment");
     // here used requireActivity() (activity including fragment) - If one fragment
-    // replaces the other one, the UI continues to work without any problems.
-    model = new ViewModelProvider(requireActivity()).get(TextViewModel.class);
+    // replaces the other one, the UI continues to work without any problems. If
+    // instead requireActivity() set 'this' then coroutines in ViewvModel may invoke twice,
+    // becouse this ViewModel registry also in MainActivity
+    model = new ViewModelProvider(this).get(TextViewModel.class);
 
     // Create the observer which updates the UI.
     final Observer<String> textObserver = new Observer<String>() {
       @Override
       public void onChanged(@Nullable String newName) {
-        // Update UI (TextView)
-        textView.setText(newName);
+        textView.setText(newName); // Update UI (TextView)
       }
     };
 
     // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
-    model.getMyLiveData().observe(this, textObserver);
-    InputStream input = getResources().openRawResource(R.raw.text1);
-    FileRepository.getInstance().doSomeStuff(input);
+    //model.getMyLiveData().observe(this, textObserver);
+    //InputStream input = getResources().openRawResource(R.raw.text1);
+    //FileRepository.getInstance().doSomeStuff(input);
+
     //model.getText().observe(this, textObserver);
+
+    model.getNewLiveData().observe(this, textObserver);
+    model.f();
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.

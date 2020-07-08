@@ -15,10 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.widget.ImageView;
 
 public class ContentActivity extends AppCompatActivity {
+
+  //private TextViewModel model;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ public class ContentActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
 
     setContentView(R.layout.activity_detail);
+
+    //model = new ViewModelProvider(this).get(TextViewModel.class);
 
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 

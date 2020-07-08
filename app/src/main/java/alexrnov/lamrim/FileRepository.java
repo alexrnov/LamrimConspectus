@@ -19,6 +19,9 @@ public class FileRepository {
   @NonNull
   private MutableLiveData<String> myLiveData = new MutableLiveData<>();
 
+  @NonNull
+  private MutableLiveData<String> newLiveData = new MutableLiveData<>();
+
   public static FileRepository getInstance() {
     if (instance == null) {
       synchronized (FileRepository.class) {
@@ -34,6 +37,11 @@ public class FileRepository {
     return myLiveData;
   }
 
+  @NonNull
+  public LiveData<String> getNewLiveData() {
+    return newLiveData;
+  }
+
   // This method runs some work for 3 seconds. It then posts a status update to the live data.
   // This would effectively be the "doInBackground" method from AsyncTask.
   public void doSomeStuff(InputStream input) {
@@ -42,7 +50,7 @@ public class FileRepository {
     new Thread(() -> {
       int i = 0;
       try {
-        Thread.sleep(1);
+        Thread.sleep(10000);
         i++;
         Log.i("P", "i = " + i);
 
@@ -57,7 +65,7 @@ public class FileRepository {
             result.append(System.getProperty("line.separator"));
             line = bf.readLine();
           }
-          Log.v("P", "raw file = " + result.toString());
+          //Log.v("P", "raw file = " + result.toString());
 
           myLiveData.postValue("Updated time: "+result.toString());
         } catch(IOException e) {
@@ -72,5 +80,9 @@ public class FileRepository {
 
       //myLiveData.postValue("Updated time: "+System.currentTimeMillis());
     }).start();
+  }
+
+  public void performJob() {
+    newLiveData.postValue("text5555");
   }
 }

@@ -20,18 +20,14 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
 
   private lateinit var myLiveData: LiveData<String>
 
+  private var newLiveData: LiveData<String>
+
   init {
     Log.i("P", "init view model")
     myLiveData = repo.myLiveData
 
+    newLiveData = repo.newLiveData
 
-    viewModelScope.launch {
-      processBitmap()
-    }
-  }
-
-  fun getMyLiveData(): LiveData<String> {
-    return myLiveData
   }
 
   // Create a LiveData with a String
@@ -39,33 +35,37 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
     // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
     viewModelScope.launch {
       val job = async(CoroutineName("load text")) {
-        Log.i("P", "job start")
+        //Log.i("P", "job start")
         delay(10000)
-        Log.i("P", "job success")
+        //Log.i("P", "job success")
         "text"// long operation - load big text from file
       }
       postValue(job.await())
     }
   }
 
-  suspend fun processBitmap() = withContext(Dispatchers.Default) {
-    delay(10000)
-    Log.i("P", "processBitmap()")
-  }
-
-
-  /*
-  val text2: LiveData<String> = liveData {
-    val data = loadText2()
-    emit(data)
-  }
-
-  private suspend fun loadText2(): String {
-    return withContext(IO) {
-      return@withContext "text"
+  fun f() {
+    viewModelScope.launch {
+      sf()
     }
   }
-  */
+
+  private suspend fun sf() = withContext(Dispatchers.Default) {
+    delay(10000)
+    repo.performJob()
+    Log.i("P", "sf() complete")
+  }
+
+  fun getMyLiveData(): LiveData<String> {
+    return myLiveData
+  }
+
+  fun getNewLiveData(): LiveData<String> {
+    return newLiveData
+  }
+
+
+
   fun setCurrentItem(currentItem: String) {
     savedState.set(SELECT_ITEM, currentItem)
   }
