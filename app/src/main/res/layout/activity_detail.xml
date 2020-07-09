@@ -6,9 +6,8 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/background_content"
-    tools:context=".ContentActivity"
+    tools:context=".DetailsActivity"
     tools:ignore="MergeRootFrame">
-
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"
@@ -49,23 +48,17 @@
                 app:popupTheme="@style/AppTheme"
                 app:contentInsetStartWithNavigation="0dp"
                 app:titleMarginStart="20dp">
-
             </androidx.appcompat.widget.Toolbar>
-
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/fragment_container"
+        android:id="@+id/fragment_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
-
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

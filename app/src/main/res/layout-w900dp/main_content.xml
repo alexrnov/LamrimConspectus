@@ -10,7 +10,7 @@
         android:layout_width="@dimen/menu_item_width"
         android:layout_height="match_parent"
 
-        app:layout_constraintEnd_toStartOf="@+id/fragment_container"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_preview"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -18,7 +18,7 @@
         android:background="@color/itemFillDefault" />
 
     <FrameLayout
-        android:id="@+id/fragment_container"
+        android:id="@+id/fragment_preview"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"

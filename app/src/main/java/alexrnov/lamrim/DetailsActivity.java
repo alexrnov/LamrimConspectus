@@ -19,15 +19,13 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.widget.ImageView;
 
-public class ContentActivity extends AppCompatActivity {
+public class DetailsActivity extends AppCompatActivity {
 
   //private TextViewModel model;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-
     super.onCreate(savedInstanceState);
-
     setContentView(R.layout.activity_detail);
 
     //model = new ViewModelProvider(this).get(TextViewModel.class);
@@ -72,7 +70,7 @@ public class ContentActivity extends AppCompatActivity {
 
       arguments.putBoolean("dualPaneMode", getIntent().getBooleanExtra("dualPaneMode", false));
 
-      ContentFragment fragment = new ContentFragment();
+      DetailsFragment fragment = new DetailsFragment();
       fragment.setArguments(arguments);
 
       // to manage the fragments in activity, need to use FragmentManager.
@@ -80,7 +78,7 @@ public class ContentActivity extends AppCompatActivity {
       // to make fragment transactions in activity (such as add, remove, or replace a fragment)
       FragmentTransaction transaction = manager.beginTransaction();
       // add a fragment, specifying the fragment to add and the view in which to insert it.
-      transaction.add(R.id.fragment_container, fragment);
+      transaction.add(R.id.fragment_details, fragment);
       transaction.commit(); // call commit() for the changes to take effect.
     }
   }
@@ -91,15 +89,10 @@ public class ContentActivity extends AppCompatActivity {
       case R.id.action_about:
         AboutDialogFragment settings = new AboutDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
-        Log.i("P", "action1");
         return true;
       case R.id.action_settings:
-
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
-
-
-        Log.i("P", "action2");
         return true;
       default:
         return super.onOptionsItemSelected(item);

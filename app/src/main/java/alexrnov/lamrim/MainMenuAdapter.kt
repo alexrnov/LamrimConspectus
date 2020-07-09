@@ -36,12 +36,12 @@ class MainMenuAdapter(var currentSelectId: String,
       val arguments = Bundle()
       arguments.putString("id", currentSelectId)
       arguments.putBoolean("dualPaneMode", dualPaneMode)
-      val fragment = ContentFragment()
+      val fragment = PreviewFragment()
       fragment.arguments = arguments
 
       // to manage the fragments in activity, need to use FragmentManager.
       parentActivity.supportFragmentManager.beginTransaction()
-              .replace(R.id.fragment_container, fragment)
+              .replace(R.id.fragment_preview, fragment)
               .commit() // call commit() for the changes to take effect.
     }
   }
@@ -49,7 +49,7 @@ class MainMenuAdapter(var currentSelectId: String,
   private val onePanelListener = { view: View ->
     view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
-    val intent = Intent(context, ContentActivity::class.java)
+    val intent = Intent(context, DetailsActivity::class.java)
     currentSelectId = view.tag.toString()
     intent.putExtra("id", currentSelectId)
     intent.putExtra("dualPaneMode", dualPaneMode)
@@ -105,7 +105,7 @@ class MainMenuAdapter(var currentSelectId: String,
         currentSelectId = view.tag.toString()
         arguments.putString("id", currentSelectId)
         arguments.putBoolean("dualPaneMode", dualPaneMode)
-        val fragment = ContentFragment()
+        val fragment = PreviewFragment()
         fragment.arguments = arguments
 
         // to manage the fragments in activity, need to use FragmentManager.
@@ -113,7 +113,7 @@ class MainMenuAdapter(var currentSelectId: String,
         // to make fragment transactions in activity (such as add, remove, or replace a fragment)
         val transaction: FragmentTransaction = manager.beginTransaction()
         // replace an existing fragment that was added to a container
-        transaction.replace(R.id.fragment_container, fragment)
+        transaction.replace(R.id.fragment_preview, fragment)
         transaction.commit() // call commit() for the changes to take effect.
       }
     } else { // one pane mode

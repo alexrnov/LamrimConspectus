@@ -20,12 +20,12 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-public class ContentFragment extends Fragment {
+public class PreviewFragment extends Fragment {
 
   private String currentItemID = "";
   private boolean dualPane = false;
   private TextView textView;
-  private TextViewModel model;
+  private PreviewModel model;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class ContentFragment extends Fragment {
     // replaces the other one, the UI continues to work without any problems. If
     // instead requireActivity() set 'this' then coroutines in ViewvModel may invoke twice,
     // becouse this ViewModel registry also in MainActivity
-    model = new ViewModelProvider(this).get(TextViewModel.class);
+    model = new ViewModelProvider(this).get(PreviewModel.class);
 
     // Create the observer which updates the UI.
     final Observer<String> textObserver = new Observer<String>() {
@@ -59,15 +59,11 @@ public class ContentFragment extends Fragment {
       }
     };
 
-    // Observe the LiveData, passing in this fragment as the LifecycleOwner and the observer.
-    //model.getMyLiveData().observe(this, textObserver);
-    //InputStream input = getResources().openRawResource(R.raw.text1);
-    //FileRepository.getInstance().doSomeStuff(input);
-
     //model.getText().observe(this, textObserver);
 
     model.getNewLiveData().observe(this, textObserver);
-    model.f();
+    InputStream input = getResources().openRawResource(R.raw.text1);
+    model.f(input);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.
@@ -76,41 +72,23 @@ public class ContentFragment extends Fragment {
                            Bundle savedInstanceState) {
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
-    //TextView textView;
-    if (dualPane) {
-      rootView = inflater.inflate(R.layout.descript_text_view, container, false);
-      textView = ((TextView) rootView.findViewById(R.id.item_detail));
 
-      //model.getText1().setValue("55555");
-      //model.getText().setValue("777777");
-      /*
-      textView.setText("text = " + currentItemID
-              + " introduction text " +
-              "dssdfkdskkk;lkmkmm \n c ffuihse gvgh dsf dsfdsf dsf sdf");
-      */
-      Button button = rootView.findViewById(R.id.details_button);
-      button.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          Context context = getContext();
-          //model.getText1().setValue("555555");
-          //model.getTextItem().getValue();
-          if (context != null) {
-            Intent intent = new Intent(context, ContentActivity.class);
-            intent.putExtra("id", currentItemID);
-            intent.putExtra("dualPaneMode", false);
-            context.startActivity(intent);
-          }
+    rootView = inflater.inflate(R.layout.descript_text_view, container, false);
+    textView = ((TextView) rootView.findViewById(R.id.item_detail));
+
+    Button button = rootView.findViewById(R.id.details_button);
+    button.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        Context context = getContext();
+        if (context != null) {
+          Intent intent = new Intent(context, DetailsActivity.class);
+          intent.putExtra("id", currentItemID);
+          intent.putExtra("dualPaneMode", false);
+          context.startActivity(intent);
         }
-      });
-
-    } else {
-      rootView = inflater.inflate(R.layout.detail_text_view, container, false);
-      textView = ((TextView) rootView.findViewById(R.id.item_detail));
-      textView.setText("text = " + currentItemID
-              + " sddskljkj kdskckdscj dskjkskl dsklfsdk dskklsd " +
-              "dssdfkdskkk;lkmkmm \n dsklf dskfdsckm \n dslkjk \n dkjslsc akl dfgef dsfse dsdfd ds fsdffd s dsf efsfsd dsf ds khghg kjhkjhkj hiuhuihiu iguihuihi hgjhgj jhgh jihese gvgh dsf dsfdsf dsf sdf");
-    }
+      }
+    });
 
     // add observer for TextView change style (color and size)
     FragmentActivity activity = this.getActivity();

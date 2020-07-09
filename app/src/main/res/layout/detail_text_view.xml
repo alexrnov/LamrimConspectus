@@ -9,4 +9,4 @@
     android:padding="16dp"
     android:textIsSelectable="true"
     app:fontFamily="sans-serif"
-    tools:context=".ContentFragment" />
+    tools:context=".PreviewFragment" />

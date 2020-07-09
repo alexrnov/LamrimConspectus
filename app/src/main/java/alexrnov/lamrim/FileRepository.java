@@ -15,10 +15,7 @@ public class FileRepository {
 
   private static FileRepository instance;
 
-  // Note the use of MutableLiveData, this allows changes to be made
-  @NonNull
-  private MutableLiveData<String> myLiveData = new MutableLiveData<>();
-
+  // mutable because only the repository can change data
   @NonNull
   private MutableLiveData<String> newLiveData = new MutableLiveData<>();
 
@@ -33,56 +30,24 @@ public class FileRepository {
 
   // The getter upcasts to LiveData, this ensures that only the repository can cause a change
   @NonNull
-  public LiveData<String> getMyLiveData() {
-    return myLiveData;
-  }
-
-  @NonNull
   public LiveData<String> getNewLiveData() {
     return newLiveData;
   }
 
-  // This method runs some work for 3 seconds. It then posts a status update to the live data.
-  // This would effectively be the "doInBackground" method from AsyncTask.
-  public void doSomeStuff(InputStream input) {
-
-    final String s = "";
-    new Thread(() -> {
-      int i = 0;
-      try {
-        Thread.sleep(10000);
-        i++;
-        Log.i("P", "i = " + i);
-
-        //прочитать с помощью BufferedReader
-        BufferedReader bf;
-        StringBuilder result = new StringBuilder();
-        try {
-          bf = new BufferedReader(new InputStreamReader(input));
-          String line = bf.readLine();
-          while (line != null) {
-            result.append(line);
-            result.append(System.getProperty("line.separator"));
-            line = bf.readLine();
-          }
-          //Log.v("P", "raw file = " + result.toString());
-
-          myLiveData.postValue("Updated time: "+result.toString());
-        } catch(IOException e) {
-          Log.v("P", "Error readRawFile");
-        }
-      } catch (InterruptedException ignored) {
+  public void performJob(InputStream input) {
+    BufferedReader bf;
+    StringBuilder result = new StringBuilder();
+    try {
+      bf = new BufferedReader(new InputStreamReader(input));
+      String line = bf.readLine();
+      while (line != null) {
+        result.append(line);
+        result.append(System.getProperty("line.separator"));
+        line = bf.readLine();
       }
-
-
-
-
-
-      //myLiveData.postValue("Updated time: "+System.currentTimeMillis());
-    }).start();
-  }
-
-  public void performJob() {
-    newLiveData.postValue("text5555");
+      newLiveData.postValue("Updated time: "+result.toString());
+    } catch(IOException e) {
+      Log.v("P", "Error readRawFile");
+    }
   }
 }

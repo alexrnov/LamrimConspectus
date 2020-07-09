@@ -5,14 +5,12 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.lifecycle.SavedStateViewModelFactory
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -23,7 +21,7 @@ class MainActivity : AppCompatActivity() {
   private var dualPane = false
   private val TAG = "P"
 
-  private val model: TextViewModel by viewModels()
+  private val model: PreviewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -31,7 +29,7 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.activity_main)
 
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
-    val container = findViewById<View>(R.id.fragment_container)
+    val container = findViewById<View>(R.id.fragment_preview)
     dualPane = container != null && container.visibility == View.VISIBLE
     recyclerView = findViewById<View>(R.id.main_menu) as RecyclerView
     // use this setting to improve performance if you know that changes

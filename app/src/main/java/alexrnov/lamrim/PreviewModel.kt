@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
+import java.io.InputStream
 
 // A ViewModel object provides the data for a specific UI component, such as a fragment
 // or activity, and contains data-handling business logic to communicate with the model.
@@ -11,23 +12,17 @@ import kotlinx.coroutines.*
 // changes, such as recreating an activity when rotating the device. The class that
 // prepares the data for viewing in the UserProfileFragment and reacts to user interactions.
 // state: SaveStateHandle allow store state of view
-class TextViewModel(state: SavedStateHandle) : ViewModel() {
+class PreviewModel(state: SavedStateHandle) : ViewModel() {
 
   private val savedState = state
 
   @NonNull
   private val repo = FileRepository.getInstance()
 
-  private lateinit var myLiveData: LiveData<String>
-
   private var newLiveData: LiveData<String>
 
   init {
-    Log.i("P", "init view model")
-    myLiveData = repo.myLiveData
-
     newLiveData = repo.newLiveData
-
   }
 
   // Create a LiveData with a String
@@ -44,20 +39,17 @@ class TextViewModel(state: SavedStateHandle) : ViewModel() {
     }
   }
 
-  fun f() {
+  fun f(input: InputStream) {
+    // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
     viewModelScope.launch {
-      sf()
+      sf(input)
     }
   }
 
-  private suspend fun sf() = withContext(Dispatchers.Default) {
+  private suspend fun sf(input: InputStream) = withContext(Dispatchers.Default) {
     delay(10000)
-    repo.performJob()
-    Log.i("P", "sf() complete")
-  }
-
-  fun getMyLiveData(): LiveData<String> {
-    return myLiveData
+    repo.performJob(input)
+    Log.i("P", "suspend fun complete")
   }
 
   fun getNewLiveData(): LiveData<String> {

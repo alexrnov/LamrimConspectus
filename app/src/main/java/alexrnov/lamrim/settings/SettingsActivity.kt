@@ -36,7 +36,7 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
 
     supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, SettingsFragment())
+            .replace(R.id.fragment_settings, SettingsFragment())
             .commit()
   }
 
@@ -49,7 +49,7 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
     fragment.arguments = args
     fragment.setTargetFragment(caller, 0)
     supportFragmentManager.beginTransaction()
-            .replace(R.id.fragment_container, fragment)
+            .replace(R.id.fragment_settings, fragment)
             .addToBackStack(null)
             .commit()
     return true
