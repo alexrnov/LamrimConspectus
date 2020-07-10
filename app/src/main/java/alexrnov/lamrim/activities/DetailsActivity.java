@@ -23,8 +23,6 @@ import android.widget.ImageView;
 
 public class DetailsActivity extends AppCompatActivity {
 
-  //private TextViewModel model;
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -49,18 +47,12 @@ public class DetailsActivity extends AppCompatActivity {
       actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>Ламрим</font>"));
     }
 
-    //Drawable drawable = ContextCompat.getDrawable(getApplicationContext(), R.drawable.menu_icon);
-    //toolbar.setOverflowIcon(drawable);
-
     String s = getIntent().getStringExtra("id");
     ImageView image = findViewById(R.id.image_toolbar);
 
+    //private TextViewModel model;
     String name = "app_bar_image" + s;
     int i = getResources().getIdentifier(name, "drawable", getPackageName());
-    Log.i("P", "identifier = " + i);
-    Log.i("P", "identifiers = " + R.drawable.app_bar_image1);
-
-    //image.setImageResource(R.drawable.app_bar_image);
     image.setImageResource(i);
 
     // savedInstanceState is non-null when there is fragment state saved from previous
@@ -69,7 +61,6 @@ public class DetailsActivity extends AppCompatActivity {
 
       Bundle arguments = new Bundle();
       arguments.putString("id", getIntent().getStringExtra("id"));
-
       arguments.putBoolean("dualPaneMode", getIntent().getBooleanExtra("dualPaneMode", false));
 
       DetailsFragment fragment = new DetailsFragment();

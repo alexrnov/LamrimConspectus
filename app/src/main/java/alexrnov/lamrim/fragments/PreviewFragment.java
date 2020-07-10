@@ -53,10 +53,9 @@ public class PreviewFragment extends Fragment {
     String s = model.getPreviewFileName() + model.getCurrentItem();
 
     String packageName = Objects.requireNonNull(getActivity()).getPackageName();
-    int resId = getResources().getIdentifier(s, "raw", packageName);
-    Log.i("P", "resId == " + resId);
+    int resID = getResources().getIdentifier(s, "raw", packageName);
 
-    InputStream input = getResources().openRawResource(resId);
+    InputStream input = getResources().openRawResource(resID);
     model.loadText(input);
   }
 

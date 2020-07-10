@@ -4,6 +4,7 @@ import alexrnov.lamrim.R
 import alexrnov.lamrim.architecture.DetailModel
 import alexrnov.lamrim.architecture.TextStyleObserver
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +12,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import java.util.*
 
 class DetailsFragment: Fragment() {
 
@@ -23,11 +25,16 @@ class DetailsFragment: Fragment() {
     currentItemID = arguments?.getString("id")?:"1"
 
     // Create the observer which updates the UI.
-    val textObserver: Observer<String> = Observer { newName ->
-      textView?.text = newName ?: ""
+    val textObserver: Observer<String> = Observer { text ->
+      textView?.text = text ?: ""
     }
+
+    val s = model.detailsFileName + currentItemID
+    val pack = activity!!.packageName
+    val resID = resources.getIdentifier(s, "raw", pack)
+
     model.getDetailsText().observe(this, textObserver)
-    val input = resources.openRawResource(R.raw.details_text1)
+    val input = resources.openRawResource(resID)
     model.loadText(input)
   }
 
