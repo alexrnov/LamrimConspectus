@@ -1,6 +1,5 @@
 package alexrnov.lamrim.architecture
 
-import android.util.Log
 import androidx.annotation.NonNull
 import androidx.lifecycle.*
 import kotlinx.coroutines.*
@@ -30,7 +29,7 @@ class PreviewModel(state: SavedStateHandle) : ViewModel() {
     viewModelScope.launch {
       withContext(Dispatchers.Default) {
         delay(5000)
-        repository.loadTextPromFile(input)
+        repository.loadPreviewTextPromFile(input)
       }
     }
   }

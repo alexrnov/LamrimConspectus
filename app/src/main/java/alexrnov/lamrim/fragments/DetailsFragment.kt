@@ -1,22 +1,39 @@
 package alexrnov.lamrim.fragments
 
 import alexrnov.lamrim.R
+import alexrnov.lamrim.architecture.DetailModel
 import alexrnov.lamrim.architecture.TextStyleObserver
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import java.io.InputStream
 
 class DetailsFragment: Fragment() {
 
   private var currentItemID = ""
   private var textView: TextView? = null
+  private val model: DetailModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
     currentItemID = arguments?.getString("id")?:"1"
+
+
+    // Create the observer which updates the UI.
+    val textObserver: Observer<String> = Observer { newName ->
+      Log.i("P", "textView observer = " + newName)
+      textView!!.text = newName
+    }
+
+    model.getDetailsText().observe(this, textObserver)
+    val input = resources.openRawResource(R.raw.details_text1)
+    model.loadText(input)
   }
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saveInstanseState: Bundle?): View? {

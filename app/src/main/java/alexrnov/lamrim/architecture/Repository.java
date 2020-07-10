@@ -19,6 +19,9 @@ public class Repository {
   @NonNull
   private MutableLiveData<String> previewText = new MutableLiveData<>();
 
+  @NonNull
+  private MutableLiveData<String> detailsText = new MutableLiveData<>();
+
   public static Repository getInstance() {
     if (instance == null) {
       synchronized (Repository.class) {
@@ -34,7 +37,20 @@ public class Repository {
     return previewText;
   }
 
-  public void loadTextPromFile(InputStream input) {
+  @NonNull
+  public LiveData<String> getDetailsText() {
+    return detailsText;
+  }
+
+  public void loadPreviewTextPromFile(InputStream input) {
+    load(input, previewText);
+  }
+
+  public void loadDetailsTextPromFile(InputStream input) {
+    load(input, detailsText);
+  }
+
+  private void load(InputStream input, MutableLiveData<String> text) {
     BufferedReader bf;
     StringBuilder result = new StringBuilder();
     try {
@@ -45,7 +61,7 @@ public class Repository {
         result.append(System.getProperty("line.separator"));
         line = bf.readLine();
       }
-      previewText.postValue("Updated time: "+result.toString());
+      text.postValue(result.toString());
     } catch(IOException e) {
       Log.v("P", "Error readRawFile");
     }
