@@ -1,7 +1,8 @@
-package alexrnov.lamrim;
+package alexrnov.lamrim.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,10 @@ import org.jetbrains.annotations.Nullable;
 
 import java.io.InputStream;
 
+import alexrnov.lamrim.R;
+import alexrnov.lamrim.activities.DetailsActivity;
+import alexrnov.lamrim.architecture.PreviewModel;
+import alexrnov.lamrim.architecture.TextStyleObserver;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.lifecycle.Observer;
@@ -44,7 +49,6 @@ public class PreviewFragment extends Fragment {
       }
     }
 
-    Log.i("P", "create contentFragment");
     // here used requireActivity() (activity including fragment) - If one fragment
     // replaces the other one, the UI continues to work without any problems. If
     // instead requireActivity() set 'this' then coroutines in ViewvModel may invoke twice,
@@ -59,11 +63,9 @@ public class PreviewFragment extends Fragment {
       }
     };
 
-    //model.getText().observe(this, textObserver);
-
-    model.getNewLiveData().observe(this, textObserver);
+    model.getPreviewText().observe(this, textObserver);
     InputStream input = getResources().openRawResource(R.raw.text1);
-    model.f(input);
+    model.loadText(input);
   }
 
   // calls when it'currentItemID time for the fragment to draw its layout.

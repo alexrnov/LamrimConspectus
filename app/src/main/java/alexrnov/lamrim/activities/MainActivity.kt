@@ -1,5 +1,9 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.activities
 
+import alexrnov.lamrim.fragments.AboutDialogFragment
+import alexrnov.lamrim.R
+import alexrnov.lamrim.architecture.PreviewModel
+import alexrnov.lamrim.getScreenSizeWithNavBar
 import alexrnov.lamrim.settings.SettingsActivity
 import android.content.Intent
 import android.os.Build

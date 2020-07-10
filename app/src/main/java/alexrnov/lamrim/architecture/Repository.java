@@ -1,4 +1,4 @@
-package alexrnov.lamrim;
+package alexrnov.lamrim.architecture;
 
 import android.util.Log;
 
@@ -11,18 +11,18 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-public class FileRepository {
+public class Repository {
 
-  private static FileRepository instance;
+  private static Repository instance;
 
   // mutable because only the repository can change data
   @NonNull
-  private MutableLiveData<String> newLiveData = new MutableLiveData<>();
+  private MutableLiveData<String> previewText = new MutableLiveData<>();
 
-  public static FileRepository getInstance() {
+  public static Repository getInstance() {
     if (instance == null) {
-      synchronized (FileRepository.class) {
-        instance = new FileRepository();
+      synchronized (Repository.class) {
+        instance = new Repository();
       }
     }
     return instance;
@@ -30,11 +30,11 @@ public class FileRepository {
 
   // The getter upcasts to LiveData, this ensures that only the repository can cause a change
   @NonNull
-  public LiveData<String> getNewLiveData() {
-    return newLiveData;
+  public LiveData<String> getPreviewText() {
+    return previewText;
   }
 
-  public void performJob(InputStream input) {
+  public void loadTextPromFile(InputStream input) {
     BufferedReader bf;
     StringBuilder result = new StringBuilder();
     try {
@@ -45,7 +45,7 @@ public class FileRepository {
         result.append(System.getProperty("line.separator"));
         line = bf.readLine();
       }
-      newLiveData.postValue("Updated time: "+result.toString());
+      previewText.postValue("Updated time: "+result.toString());
     } catch(IOException e) {
       Log.v("P", "Error readRawFile");
     }

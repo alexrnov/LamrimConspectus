@@ -1,5 +1,7 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.activities
 
+import alexrnov.lamrim.R
+import alexrnov.lamrim.fragments.PreviewFragment
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater

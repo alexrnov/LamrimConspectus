@@ -1,5 +1,7 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.fragments
 
+import alexrnov.lamrim.R
+import alexrnov.lamrim.architecture.TextStyleObserver
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View

@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import alexrnov.lamrim.architecture.TextStyleObserver
 import android.content.Context
 import android.content.SharedPreferences
 import android.widget.TextView

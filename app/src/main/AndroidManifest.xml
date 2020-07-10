@@ -18,27 +18,27 @@
         android:largeHeap="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".DetailsActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".activities.DetailsActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppTheme" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="alexrnov.lamrim.MainActivity" />
+                android:value="alexrnov.lamrim.activities.MainActivity" />
         </activity>
         <activity
             android:name=".settings.SettingsActivity"
-            android:parentActivityName=".MainActivity"
+            android:parentActivityName=".activities.MainActivity"
             android:theme="@style/AppThemeSettings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="alexrnov.lamrim.MainActivity" />
+                android:value="alexrnov.lamrim.activities.MainActivity" />
         </activity>
     </application>
 

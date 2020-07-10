@@ -1,4 +1,4 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.architecture
 
 import android.util.Log
 import androidx.annotation.NonNull
@@ -17,46 +17,27 @@ class PreviewModel(state: SavedStateHandle) : ViewModel() {
   private val savedState = state
 
   @NonNull
-  private val repo = FileRepository.getInstance()
+  private val repository = Repository.getInstance()
 
-  private var newLiveData: LiveData<String>
+  private var previewText: LiveData<String>
 
   init {
-    newLiveData = repo.newLiveData
+    previewText = repository.previewText
   }
 
-  // Create a LiveData with a String
-  val text = MutableLiveData<String>().apply {
+  fun loadText(input: InputStream) {
     // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
     viewModelScope.launch {
-      val job = async(CoroutineName("load text")) {
-        //Log.i("P", "job start")
-        delay(10000)
-        //Log.i("P", "job success")
-        "text"// long operation - load big text from file
+      withContext(Dispatchers.Default) {
+        delay(5000)
+        repository.loadTextPromFile(input)
       }
-      postValue(job.await())
     }
   }
 
-  fun f(input: InputStream) {
-    // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
-    viewModelScope.launch {
-      sf(input)
-    }
+  fun getPreviewText(): LiveData<String> {
+    return previewText
   }
-
-  private suspend fun sf(input: InputStream) = withContext(Dispatchers.Default) {
-    delay(10000)
-    repo.performJob(input)
-    Log.i("P", "suspend fun complete")
-  }
-
-  fun getNewLiveData(): LiveData<String> {
-    return newLiveData
-  }
-
-
 
   fun setCurrentItem(currentItem: String) {
     savedState.set(SELECT_ITEM, currentItem)

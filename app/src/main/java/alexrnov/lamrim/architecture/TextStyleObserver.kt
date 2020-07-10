@@ -1,9 +1,8 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.architecture
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.graphics.Color
-import android.util.Log
 import android.widget.TextView
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
