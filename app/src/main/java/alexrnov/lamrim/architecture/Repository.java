@@ -50,7 +50,7 @@ public class Repository {
     load(input, detailsText);
   }
 
-  private void load(InputStream input, MutableLiveData<String> text) {
+  private void load(InputStream input, MutableLiveData<String> liveData) {
     BufferedReader bf;
     StringBuilder result = new StringBuilder();
     try {
@@ -61,7 +61,7 @@ public class Repository {
         result.append(System.getProperty("line.separator"));
         line = bf.readLine();
       }
-      text.postValue(result.toString());
+      liveData.postValue(result.toString());
     } catch(IOException e) {
       Log.v("P", "Error readRawFile");
     }

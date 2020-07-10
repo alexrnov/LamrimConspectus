@@ -13,6 +13,7 @@ import java.io.InputStream
 // state: SaveStateHandle allow store state of view
 class PreviewModel(state: SavedStateHandle) : ViewModel() {
 
+  val previewFileName = "preview_text"
   private val savedState = state
 
   @NonNull
@@ -28,7 +29,6 @@ class PreviewModel(state: SavedStateHandle) : ViewModel() {
     // Coroutine that will be canceled when the ViewModel is cleared automatically to avoid consuming resources.
     viewModelScope.launch {
       withContext(Dispatchers.Default) {
-        delay(5000)
         repository.loadPreviewTextPromFile(input)
       }
     }

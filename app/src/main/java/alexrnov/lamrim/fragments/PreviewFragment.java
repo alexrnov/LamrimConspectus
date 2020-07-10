@@ -2,7 +2,6 @@ package alexrnov.lamrim.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,9 +11,9 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import java.io.InputStream;
+import java.util.Objects;
 
 import alexrnov.lamrim.R;
 import alexrnov.lamrim.activities.DetailsActivity;
@@ -27,8 +26,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 public class PreviewFragment extends Fragment {
 
-  private String currentItemID = "";
-  private boolean dualPane = false;
   private TextView textView;
   private PreviewModel model;
 
@@ -36,35 +33,30 @@ public class PreviewFragment extends Fragment {
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
-    if (getArguments() != null) {
-
-      if (getArguments().containsKey("id")) {
-        currentItemID = getArguments().getString("id");
-        Log.i("P", "currentItemID = " + currentItemID);
-      }
-
-      if (getArguments().containsKey("dualPaneMode")) {
-        dualPane = getArguments().getBoolean("dualPaneMode");
-        Log.i("P", "dualPane fragment = " + dualPane);
-      }
-    }
-
     // here used requireActivity() (activity including fragment) - If one fragment
     // replaces the other one, the UI continues to work without any problems. If
-    // instead requireActivity() set 'this' then coroutines in ViewvModel may invoke twice,
-    // becouse this ViewModel registry also in MainActivity
+    // instead requireActivity() set 'this' then coroutines in ViewModel may invoke twice,
+    // because this ViewModel registry also in MainActivity
     model = new ViewModelProvider(this).get(PreviewModel.class);
 
+    if (getArguments() != null && getArguments().containsKey("id")) {
+      String currentItemID = getArguments().getString("id");
+      model.setCurrentItem(currentItemID != null ? currentItemID : "0");
+    }
+
     // Create the observer which updates the UI.
-    final Observer<String> textObserver = new Observer<String>() {
-      @Override
-      public void onChanged(@Nullable String newName) {
-        textView.setText(newName); // Update UI (TextView)
-      }
+    final Observer<String> textObserver = text -> {
+      textView.setText(text); // Update UI (TextView)
     };
 
     model.getPreviewText().observe(this, textObserver);
-    InputStream input = getResources().openRawResource(R.raw.text1);
+    String s = model.getPreviewFileName() + model.getCurrentItem();
+
+    String packageName = Objects.requireNonNull(getActivity()).getPackageName();
+    int resId = getResources().getIdentifier(s, "raw", packageName);
+    Log.i("P", "resId == " + resId);
+
+    InputStream input = getResources().openRawResource(resId);
     model.loadText(input);
   }
 
@@ -75,20 +67,17 @@ public class PreviewFragment extends Fragment {
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
     View rootView;
 
-    rootView = inflater.inflate(R.layout.descript_text_view, container, false);
-    textView = ((TextView) rootView.findViewById(R.id.item_detail));
+    rootView = inflater.inflate(R.layout.preview_layout, container, false);
+    textView = rootView.findViewById(R.id.preview_text);
 
     Button button = rootView.findViewById(R.id.details_button);
-    button.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Context context = getContext();
-        if (context != null) {
-          Intent intent = new Intent(context, DetailsActivity.class);
-          intent.putExtra("id", currentItemID);
-          intent.putExtra("dualPaneMode", false);
-          context.startActivity(intent);
-        }
+    button.setOnClickListener(view -> {
+      Context context = getContext();
+      if (context != null) {
+        Intent intent = new Intent(context, DetailsActivity.class);
+        intent.putExtra("id", model.getCurrentItem());
+        intent.putExtra("dualPaneMode", false);
+        context.startActivity(intent);
       }
     });
 
