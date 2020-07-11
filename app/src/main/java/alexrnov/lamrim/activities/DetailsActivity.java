@@ -61,7 +61,6 @@ public class DetailsActivity extends AppCompatActivity {
 
       Bundle arguments = new Bundle();
       arguments.putString("id", getIntent().getStringExtra("id"));
-      arguments.putBoolean("dualPaneMode", getIntent().getBooleanExtra("dualPaneMode", false));
 
       DetailsFragment fragment = new DetailsFragment();
       fragment.setArguments(arguments);

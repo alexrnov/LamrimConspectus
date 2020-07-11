@@ -24,9 +24,14 @@ class MainMenuAdapter(var currentSelectId: String,
           private val parentActivity: MainActivity) :
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
-  private var dataset = arrayOf("Item1", "Item2", "Item3", "Item4",
-          "Item5", "Item6", "Item7", "Item8", "Item9", "Item10", "Item11", "Item12",
-          "Item13", "Item14", "Iem15", "Item16","Item17", "Item18", "Item19")
+  private var dataset = arrayOf("Предисловие", "Вверение",
+          "Подготовка", "Правила практики", "Между созерцаниями",
+          "Устранение ложных представлений", "Наделение смыслом",
+          "Трудность обретения", "Методика наделения смыслом",
+          "Памятование о смерти", "Обращение к прибежищу",
+          "Обязанности после обращения", "Карма", "Разъяснение тяжести",
+          "Хорошие деяния", "Разъяснение кармы", "Особое размышление",
+          "Очищение", "Установка")
 
   private val selectedItem: ArrayList<Int> = ArrayList()
 
@@ -37,7 +42,6 @@ class MainMenuAdapter(var currentSelectId: String,
 
       val arguments = Bundle()
       arguments.putString("id", currentSelectId)
-      arguments.putBoolean("dualPaneMode", dualPaneMode)
       val fragment = PreviewFragment()
       fragment.arguments = arguments
 
@@ -54,7 +58,6 @@ class MainMenuAdapter(var currentSelectId: String,
     val intent = Intent(context, DetailsActivity::class.java)
     currentSelectId = view.tag.toString()
     intent.putExtra("id", currentSelectId)
-    intent.putExtra("dualPaneMode", dualPaneMode)
     context.startActivity(intent)
   }
 
@@ -106,7 +109,6 @@ class MainMenuAdapter(var currentSelectId: String,
         val arguments = Bundle()
         currentSelectId = view.tag.toString()
         arguments.putString("id", currentSelectId)
-        arguments.putBoolean("dualPaneMode", dualPaneMode)
         val fragment = PreviewFragment()
         fragment.arguments = arguments
 
