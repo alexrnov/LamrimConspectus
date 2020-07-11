@@ -13,6 +13,7 @@ android {
         // To maintain your application along with each Android release, you should increase the value of this attribute
         // to match the latest API level, then thoroughly test your application on the corresponding platform version.
         targetSdkVersion 29
+        multiDexEnabled true // so that there is no dex error
         versionCode 1
         versionName "1.0"
         // Determine that AndroidJUnitRunner as the default test instrumentation runner
@@ -86,6 +87,8 @@ dependencies {
 
     // dependencies for lifecycle
     def lifecycle_version = "2.2.0"
+    def fragment_version = "1.2.5"
+
     // for view model
     implementation "androidx.lifecycle:lifecycle-viewmodel:$lifecycle_version"
     // KTX extensions for each corresponding Architecture components (in particular coroutines )
@@ -106,7 +109,7 @@ dependencies {
     // optional - Test helpers for LiveData
     //testImplementation "androidx.arch.core:core-testing:$arch_version"
     // to use the viewModels() extension function
-    implementation "androidx.fragment:fragment-ktx:1.2.5"
+    implementation "androidx.fragment:fragment-ktx:$fragment_version"
     implementation "androidx.activity:activity-ktx:1.1.0"
 
     //implementation "android.arch.lifecycle:runtime:1.1.1"
@@ -156,6 +159,11 @@ dependencies {
     // optional -- UI testing with UI Automator (begin from API 18 Android 4.3)
     androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
     androidTestUtil 'androidx.test:orchestrator:1.2.0'
+
+    //for testing fragments
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_version"
+    // so that there is no dex error when used debugImplementation "androidx.fragment:...
+    implementation 'com.android.support:multidex:2.0.1' //1.0.3 for support library
 
 }
 

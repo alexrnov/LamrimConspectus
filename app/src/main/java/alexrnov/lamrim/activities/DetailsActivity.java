@@ -1,9 +1,10 @@
 package alexrnov.lamrim.activities;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MenuInflater;
@@ -28,8 +29,6 @@ public class DetailsActivity extends AppCompatActivity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_detail);
 
-    //model = new ViewModelProvider(this).get(TextViewModel.class);
-
     CollapsingToolbarLayout collapsingToolbarLayout = findViewById(R.id.toolbar_layout);
 
     collapsingToolbarLayout.setTitle(this.getString(R.string.app_name));
@@ -44,7 +43,22 @@ public class DetailsActivity extends AppCompatActivity {
     if (actionBar != null) {
       actionBar.setDisplayHomeAsUpEnabled(true); // enable the Up button
       actionBar.setIcon(R.drawable.home_icon);
-      actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>Ламрим</font>"));
+
+      /*
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        // FROM_HTML_MODE_LEGACY is the behaviour that was used for versions
+        // below android N we are using this flag to give a consistent behaviour
+        actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>" +
+          this.getString(R.string.app_name) + "</font>", Html.FROM_HTML_MODE_LEGACY));
+      } else {
+        actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>" +
+          this.getString(R.string.app_name) + "</font>"));
+      }
+
+
+       */
+
+      //actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>Ламрим</font>"));
     }
 
     String s = getIntent().getStringExtra("id");

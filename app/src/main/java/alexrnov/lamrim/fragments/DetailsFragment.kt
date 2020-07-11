@@ -1,7 +1,7 @@
 package alexrnov.lamrim.fragments
 
 import alexrnov.lamrim.R
-import alexrnov.lamrim.architecture.DetailModel
+import alexrnov.lamrim.architecture.DetailsModel
 import alexrnov.lamrim.architecture.TextStyleObserver
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ class DetailsFragment: Fragment() {
 
   private var currentItemID = ""
   private var textView: TextView? = null
-  private val model: DetailModel by viewModels()
+  private val model: DetailsModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)

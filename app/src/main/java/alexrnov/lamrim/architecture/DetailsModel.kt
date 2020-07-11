@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.io.InputStream
 
-class DetailModel : ViewModel() {
+class DetailsModel : ViewModel() {
 
   @NonNull
   private val repository = Repository.getInstance()
