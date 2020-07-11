@@ -37,7 +37,7 @@
     </style>
 
     <style name="TextMenu" parent = "@android:style/TextAppearance">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/item_menu_text_size</item>
         <item name="android:textColor">@color/menuTextColor</item>
     </style>
 

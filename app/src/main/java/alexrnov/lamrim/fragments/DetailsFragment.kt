@@ -4,7 +4,6 @@ import alexrnov.lamrim.R
 import alexrnov.lamrim.architecture.DetailModel
 import alexrnov.lamrim.architecture.TextStyleObserver
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import java.util.*
 
 class DetailsFragment: Fragment() {
 
@@ -40,7 +38,7 @@ class DetailsFragment: Fragment() {
 
   override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, saveInstanseState: Bundle?): View? {
     // A boolean indicating whether the inflated layout should be attached to the ViewGroup (the second parameter) during inflation.
-    val rootView: View = inflater.inflate(R.layout.details_layout, container, false)
+    val rootView: View = inflater.inflate(R.layout.details_text_view, container, false)
     textView = rootView.findViewById<View>(R.id.details_text) as TextView
 
     // add observer for TextView change style (color and size)

@@ -54,6 +54,12 @@
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/fragment_details"
+
+        android:fadeScrollbars="true"
+        android:fadingEdgeLength="50dp"
+        android:requiresFadingEdge="vertical"
+        android:scrollbars="none"
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_text"
