@@ -12,20 +12,31 @@ class AboutDialogFragmentTest {
 
   @Test
   fun showDialog() {
-    val v = launchFragment<AboutDialogFragment>()
-    v.onFragment {
 
+    val scenario = launchFragment<AboutDialogFragment>()
+    scenario.onFragment { fragment ->
+      assertThat(fragment.dialog).isNotNull()
+      assertThat(fragment.requireDialog().isShowing).isTrue()
+      fragment.dismiss()
+      // is deprecated
+      //fragment.requireFragmentManager().executePendingTransactions()
+      fragment.parentFragmentManager.executePendingTransactions()
+      assertThat(fragment.dialog).isNull()
     }
+
+    /*
     with(launchFragment<AboutDialogFragment>()) {
       onFragment { fragment ->
         assertThat(fragment.dialog).isNotNull()
-        //assertThat(fragment.requireDialog().isShowing).isTrue()
-        //fragment.dismiss()
+        assertThat(fragment.requireDialog().isShowing).isTrue()
+        fragment.dismiss()
+        // is deprecated
         //fragment.requireFragmentManager().executePendingTransactions()
-        //fragment.getParentFragmentManager().executePendingTransactions()
-        //assertThat(fragment.dialog).isNull();
-
+        fragment.parentFragmentManager.executePendingTransactions()
+        assertThat(fragment.dialog).isNull()
       }
     }
+    */
+
   }
 }

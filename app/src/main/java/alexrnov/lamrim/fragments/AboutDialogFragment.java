@@ -7,7 +7,9 @@ import android.widget.Button;
 import org.jetbrains.annotations.NotNull;
 
 import alexrnov.lamrim.R;
+import alexrnov.lamrim.activities.MainActivity;
 import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentActivity;
 
@@ -27,7 +29,10 @@ public class AboutDialogFragment extends DialogFragment {
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
     FragmentActivity activity = this.requireActivity();
-    AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    // this announcement causes a test error
+    //AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(activity, R.style.AboutDialogStyle));
+
     //LayoutInflater inflater = activity.getLayoutInflater();
     //View v = inflater.inflate(R.layout.about_dialog, null);
     View v = View.inflate(getContext(), R.layout.about_dialog, null);

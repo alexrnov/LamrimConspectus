@@ -36,6 +36,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="AboutDialogStyle" parent="Theme.AppCompat.Dialog">
+        <!-- to avoid testing errors in AboutDialogFragmentTest -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
     <style name="TextMenu" parent = "@android:style/TextAppearance">
         <item name="android:textSize">@dimen/item_menu_text_size</item>
         <item name="android:textColor">@color/menuTextColor</item>
