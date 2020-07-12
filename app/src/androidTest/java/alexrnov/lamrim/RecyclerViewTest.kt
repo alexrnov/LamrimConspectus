@@ -1,13 +1,16 @@
 package alexrnov.lamrim
 
 import alexrnov.lamrim.activities.MainActivity
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.MediumTest
 import androidx.test.rule.ActivityTestRule
 import org.hamcrest.Matchers
 import org.junit.Rule
@@ -15,6 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
+@MediumTest // Marks a test that should run as part of the medium tests.
 class RecyclerViewTest {
 
   @get:Rule
@@ -22,10 +26,27 @@ class RecyclerViewTest {
           = ActivityTestRule(MainActivity::class.java)
 
   @Test
-  public fun f() {
-    onView(ViewMatchers.withId(R.id.main_menu))
+  fun clickFirstItem() {
+    onView(withId(R.id.main_menu))
             .inRoot(RootMatchers.withDecorView(Matchers.`is`(activityRule.activity.window.decorView)))
-            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(5, click()))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(0, click()))
+
+  }
+
+  @Test
+  fun clickEndItem() {
+    val recyclerView = activityRule.activity.findViewById<RecyclerView>(R.id.main_menu)
+    val itemCount = recyclerView.adapter?.itemCount
+
+    val lastItem = itemCount?.minus(1)?: 0
+    // scroll to end of position
+    onView(withId(R.id.main_menu)).inRoot(RootMatchers.withDecorView(
+                    Matchers.`is`(activityRule.activity.window.decorView)))
+            .perform(RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(lastItem))
+
+    onView(withId(R.id.main_menu))
+            .inRoot(RootMatchers.withDecorView(Matchers.`is`(activityRule.activity.window.decorView)))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(lastItem, click()))
 
   }
 }
