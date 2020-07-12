@@ -14,6 +14,10 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 
 
+/**
+ * To help set up the conditions for performing these tests, AndroidX provides
+ * a library, FragmentScenario, to create fragments and change their state.
+ */
 @RunWith(AndroidJUnit4::class)
 class DetailsFragmentTest {
 
@@ -26,7 +30,7 @@ class DetailsFragmentTest {
     val scenario = launchFragmentInContainer<DetailsFragment>(
             fragmentArgs, R.id.fragment_details)
 
-    scenario.moveToState(Lifecycle.State.RESUMED)
+    scenario.moveToState(Lifecycle.State.RESUMED) // set state
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
     //onView(withId(R.id.details_text)).check(matches(TextMatchers.isLength(2860)))
     //onView(withId(R.id.details_text)).check(matches(withText("")))

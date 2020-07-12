@@ -10,6 +10,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import com.google.common.truth.Truth.assertThat
 
+/**
+ * To help set up the conditions for performing these tests, AndroidX provides
+ * a library, FragmentScenario, to create fragments and change their state.
+ */
 @RunWith(AndroidJUnit4::class)
 class AboutDialogFragmentTest {
 
@@ -28,7 +32,6 @@ class AboutDialogFragmentTest {
 
     // Assumes that the dialog had a button
     // containing the text "Cancel".
-    //onView(withText("Cancel")).check(doesNotExist())
-
+    // onView(withText("Cancel")).check(doesNotExist())
   }
 }
