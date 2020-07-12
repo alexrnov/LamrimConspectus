@@ -12,19 +12,19 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import com.google.common.truth.Truth.assertThat
+
 
 @RunWith(AndroidJUnit4::class)
 class DetailsFragmentTest {
 
   @Test
-  fun f() {
+  fun loadOneItem() {
     val fragmentArgs = Bundle().apply {
       putString("id", "1")
     }
 
     val scenario = launchFragmentInContainer<DetailsFragment>(
-              fragmentArgs, R.id.fragment_details)
+            fragmentArgs, R.id.fragment_details)
 
     scenario.moveToState(Lifecycle.State.RESUMED)
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
