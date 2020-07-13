@@ -32,7 +32,7 @@ class DetailsFragmentTest {
 
     scenario.moveToState(Lifecycle.State.RESUMED) // set state
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
-    //onView(withId(R.id.details_text)).check(matches(TextMatchers.isLength(2860)))
+    //onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(2860)))
     //onView(withId(R.id.details_text)).check(matches(withText("")))
   }
 

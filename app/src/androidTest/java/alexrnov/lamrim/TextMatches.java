@@ -6,7 +6,7 @@ import android.widget.TextView;
 import org.hamcrest.Description;
 import org.hamcrest.TypeSafeMatcher;
 
-public class TextMatchers {
+public class TextMatches {
 
   public static TypeSafeMatcher<View> isLength(final int lines) {
     return new TypeSafeMatcher<View>() {
