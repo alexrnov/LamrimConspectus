@@ -1,9 +1,7 @@
 package alexrnov.lamrim
 
-import alexrnov.lamrim.architecture.Repository
 import alexrnov.lamrim.fragments.DetailsFragment
 import android.os.Bundle
-import android.widget.TextView
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
 import androidx.test.espresso.Espresso.onView
@@ -12,7 +10,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import org.junit.Test
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-
 
 /**
  * To help set up the conditions for performing these tests, AndroidX provides
@@ -32,8 +29,15 @@ class DetailsFragmentTest {
 
     scenario.moveToState(Lifecycle.State.RESUMED) // set state
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
-    //onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(2860)))
-    //onView(withId(R.id.details_text)).check(matches(withText("")))
+
+    var previewText = ""
+    scenario.onFragment { fragment ->
+      val input = fragment.activity?.resources?.openRawResource(R.raw.details_text0)
+      previewText = TestUtils.loadTextFromFile(input)
+    }
+    onView(withId(R.id.details_text)).check(matches(isDisplayed()))
+    onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(previewText.length)))
+    onView(withId(R.id.details_text)).check(matches(withText(previewText)))
   }
 
 }

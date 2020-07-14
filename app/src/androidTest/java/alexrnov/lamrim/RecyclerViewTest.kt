@@ -1,11 +1,13 @@
 package alexrnov.lamrim
 
-import alexrnov.lamrim.TestUtils.load
+import alexrnov.lamrim.TestUtils.loadTextFromFile
 import alexrnov.lamrim.activities.MainActivity
 import android.content.pm.ActivityInfo
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.RootMatchers
@@ -33,12 +35,12 @@ class RecyclerViewTest {
 
     // At start, the zero index item is set (first item)
     var input = activityRule.activity.resources.openRawResource(R.raw.preview_text0)
-    var previewText = load(input)
+    var previewText = loadTextFromFile(input)
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
     onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
 
     input = activityRule.activity.resources.openRawResource(R.raw.preview_text1)
-    previewText = load(input)
+    previewText = loadTextFromFile(input)
     onView(withId(R.id.main_menu))
             .inRoot(RootMatchers.withDecorView(Matchers.`is`(activityRule.activity.window.decorView)))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
@@ -46,12 +48,22 @@ class RecyclerViewTest {
     onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
 
     input = activityRule.activity.resources.openRawResource(R.raw.preview_text2)
-    previewText = load(input)
+    previewText = loadTextFromFile(input)
     onView(withId(R.id.main_menu))
             .inRoot(RootMatchers.withDecorView(Matchers.`is`(activityRule.activity.window.decorView)))
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
     onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
+  }
+
+  fun clickItemWhenPortraitOrientation() {
+    // set landscape orientation for test
+    activityRule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+
+    val input = activityRule.activity.resources.openRawResource(R.raw.details_text0)
+    val detailsText = loadTextFromFile(input)
+
+    //onView(withText(R.id.preview_text)).check(doesNotExist())
   }
 
   @Test
