@@ -54,10 +54,7 @@ public class DetailsActivity extends AppCompatActivity {
         actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>" +
           this.getString(R.string.app_name) + "</font>"));
       }
-
-
-       */
-
+      */
       //actionBar.setTitle(Html.fromHtml("<font color='#fffbbe'>Ламрим</font>"));
     }
 
@@ -92,6 +89,9 @@ public class DetailsActivity extends AppCompatActivity {
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     switch (item.getItemId()) {
+      case android.R.id.home:
+        onBackPressed(); // In order for the home button press to return to the previous activity
+        return true;
       case R.id.action_about:
         AboutDialogFragment settings = new AboutDialogFragment();
         settings.show(this.getSupportFragmentManager(), "tag");
@@ -111,4 +111,5 @@ public class DetailsActivity extends AppCompatActivity {
     inflater.inflate(R.menu.menu_layout, menu);
     return true;
   }
+
 }

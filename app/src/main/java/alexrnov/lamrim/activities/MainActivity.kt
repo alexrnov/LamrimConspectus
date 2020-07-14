@@ -2,6 +2,7 @@ package alexrnov.lamrim.activities
 
 import alexrnov.lamrim.fragments.AboutDialogFragment
 import alexrnov.lamrim.R
+import alexrnov.lamrim.architecture.ItemObserver
 import alexrnov.lamrim.architecture.PreviewModel
 import alexrnov.lamrim.getScreenSizeWithNavBar
 import alexrnov.lamrim.settings.SettingsActivity
@@ -9,6 +10,7 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -22,6 +24,7 @@ class MainActivity : AppCompatActivity() {
   private var recyclerView: RecyclerView? = null
   private lateinit var adapter: MainMenuAdapter
   private var layoutManager: RecyclerView.LayoutManager? = null
+  private lateinit var itemObserver: ItemObserver
   private var dualPane = false
   private val TAG = "P"
 
@@ -70,6 +73,15 @@ class MainActivity : AppCompatActivity() {
       }
     }
     getScreenSizeWithNavBar(this)
+
+    val observer = ItemObserver(adapter, model, lifecycle)
+    lifecycle.addObserver(observer)
+  }
+
+  override fun onResume() {
+    super.onResume()
+    val item: String = model.getCurrentItem()
+    Log.i("P", "item, onResume() = " + item)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -104,5 +116,4 @@ class MainActivity : AppCompatActivity() {
     // each view must have a unique ID, supplied by the android:id attribute.
     super.onSaveInstanceState(outState)
   }
-
 }

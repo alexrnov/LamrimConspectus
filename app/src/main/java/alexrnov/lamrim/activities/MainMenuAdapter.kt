@@ -4,6 +4,7 @@ import alexrnov.lamrim.R
 import alexrnov.lamrim.fragments.PreviewFragment
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,6 +35,7 @@ class MainMenuAdapter(var currentSelectId: String,
           "18. Очищение", "19. Установка")
 
   private val selectedItem: ArrayList<Int> = ArrayList()
+  private var lastHolder: TextViewHolder? = null
 
   init {
     if (dualPaneMode) {
@@ -53,6 +55,19 @@ class MainMenuAdapter(var currentSelectId: String,
   }
 
   private val onePanelListener = { view: View ->
+
+    /*
+    if (lastHolder != null) {
+      val lastPosition = lastHolder?.getAdapterPosition()?:0
+      Log.i("P", "lastPosition = " + lastPosition)
+      lastHolder?.itemView?.setBackgroundResource(R.drawable.item_default)
+      notifyItemChanged(lastPosition)
+    }
+    */
+
+
+
+
     view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
     val intent = Intent(context, DetailsActivity::class.java)
@@ -121,7 +136,29 @@ class MainMenuAdapter(var currentSelectId: String,
         transaction.commit() // call commit() for the changes to take effect.
       }
     } else { // one pane mode
-      holder.textView.setOnClickListener(onePanelListener)
+      //lastHolder = holder
+      //holder.textView.setOnClickListener(onePanelListener)
+      holder.textView.setOnClickListener { view ->
+
+        if (selectedItem.isEmpty()) {
+          selectedItem.add(position)
+        } else {
+          val oldSelected = selectedItem[0]
+          selectedItem.clear()
+          selectedItem.add(position)
+          // we do not notify that an item has been selected because that work is
+          // done here. We instead send notifications for items to be deselected
+          notifyItemChanged(oldSelected)
+        }
+
+
+        view.setBackgroundResource(R.drawable.item_check)
+        val context = view.context
+        val intent = Intent(context, DetailsActivity::class.java)
+        currentSelectId = view.tag.toString()
+        intent.putExtra("id", currentSelectId)
+        context.startActivity(intent)
+      }
     }
   }
 
