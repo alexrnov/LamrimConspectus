@@ -68,9 +68,6 @@ class MainMenuAdapter(var currentSelectId: String,
     }
     */
 
-
-
-
     view.setBackgroundResource(R.drawable.item_check)
     val context = view.context
     val intent = Intent(context, DetailsActivity::class.java)
@@ -162,11 +159,6 @@ class MainMenuAdapter(var currentSelectId: String,
           notifyItemChanged(oldSelected)
         }
 
-        //AsyncTask.execute {
-        //}
-
-        //view.setBackgroundResource(R.drawable.item_check)
-
         val context = view.context
         val intent = Intent(context, DetailsActivity::class.java)
         currentSelectId = view.tag.toString()
@@ -181,11 +173,6 @@ class MainMenuAdapter(var currentSelectId: String,
         */
         intent.putExtra("id", currentSelectId)
         context.startActivity(intent)
-
-
-
-        //intent.putExtra("id", currentSelectId)
-        //context.startActivity(intent)
       }
     }
   }
