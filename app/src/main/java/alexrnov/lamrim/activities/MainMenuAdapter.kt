@@ -7,11 +7,14 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnLongClickListener
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
+
 
 /**
  * Adapter for main menu
@@ -138,7 +141,15 @@ class MainMenuAdapter(var currentSelectId: String,
     } else { // one pane mode
       //lastHolder = holder
       //holder.textView.setOnClickListener(onePanelListener)
+
+      holder.textView.setOnLongClickListener { v ->
+        Log.i("P", "longpress")
+        false
+      }
+
       holder.textView.setOnClickListener { view ->
+
+        view.setBackgroundResource(R.drawable.item_check)
 
         if (selectedItem.isEmpty()) {
           selectedItem.add(position)
@@ -151,13 +162,30 @@ class MainMenuAdapter(var currentSelectId: String,
           notifyItemChanged(oldSelected)
         }
 
+        //AsyncTask.execute {
+        //}
 
-        view.setBackgroundResource(R.drawable.item_check)
+        //view.setBackgroundResource(R.drawable.item_check)
+
         val context = view.context
         val intent = Intent(context, DetailsActivity::class.java)
         currentSelectId = view.tag.toString()
+
+        /*
+        AsyncTask.execute {
+          Thread.sleep(500L)
+          parentActivity.runOnUiThread {
+            view.setBackgroundResource(R.drawable.item_default)
+          }
+        }
+        */
         intent.putExtra("id", currentSelectId)
         context.startActivity(intent)
+
+
+
+        //intent.putExtra("id", currentSelectId)
+        //context.startActivity(intent)
       }
     }
   }

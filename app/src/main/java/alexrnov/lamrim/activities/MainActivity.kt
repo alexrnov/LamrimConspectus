@@ -2,7 +2,6 @@ package alexrnov.lamrim.activities
 
 import alexrnov.lamrim.fragments.AboutDialogFragment
 import alexrnov.lamrim.R
-import alexrnov.lamrim.architecture.ItemObserver
 import alexrnov.lamrim.architecture.PreviewModel
 import alexrnov.lamrim.getScreenSizeWithNavBar
 import alexrnov.lamrim.settings.SettingsActivity
@@ -24,7 +23,6 @@ class MainActivity : AppCompatActivity() {
   private var recyclerView: RecyclerView? = null
   private lateinit var adapter: MainMenuAdapter
   private var layoutManager: RecyclerView.LayoutManager? = null
-  private lateinit var itemObserver: ItemObserver
   private var dualPane = false
   private val TAG = "P"
 
@@ -73,9 +71,6 @@ class MainActivity : AppCompatActivity() {
       }
     }
     getScreenSizeWithNavBar(this)
-
-    val observer = ItemObserver(adapter, model, lifecycle)
-    lifecycle.addObserver(observer)
   }
 
   override fun onResume() {
