@@ -28,19 +28,21 @@ public class AsyncClass extends AsyncTask<Void, Void, Void> {
   @Override
   protected Void doInBackground(Void... voids) {
     try {
-      Thread.sleep(500L);
+      Thread.sleep(100L);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
+
     mainActivity.get().runOnUiThread(() -> {
       view.get().setBackgroundResource(R.drawable.item_default);
     });
+
     return null;
   }
 
   //invoked on the UI thread after the background computation finishes.
   @Override
   protected void onPostExecute(Void result) {
-    view.get().setBackgroundResource(R.drawable.item_default);
+    //view.get().setBackgroundResource(R.drawable.item_default);
   }
 }

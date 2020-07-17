@@ -3,12 +3,11 @@ package alexrnov.lamrim.activities
 import alexrnov.lamrim.R
 import alexrnov.lamrim.fragments.PreviewFragment
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
+import android.view.*
 import android.view.View.OnLongClickListener
-import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentManager
@@ -38,7 +37,6 @@ class MainMenuAdapter(var currentSelectId: String,
           "18. Очищение", "19. Установка")
 
   private val selectedItem: ArrayList<Int> = ArrayList()
-  private var lastHolder: TextViewHolder? = null
 
   init {
     if (dualPaneMode) {
@@ -55,25 +53,6 @@ class MainMenuAdapter(var currentSelectId: String,
               .replace(R.id.fragment_preview, fragment)
               .commit() // call commit() for the changes to take effect.
     }
-  }
-
-  private val onePanelListener = { view: View ->
-
-    /*
-    if (lastHolder != null) {
-      val lastPosition = lastHolder?.getAdapterPosition()?:0
-      Log.i("P", "lastPosition = " + lastPosition)
-      lastHolder?.itemView?.setBackgroundResource(R.drawable.item_default)
-      notifyItemChanged(lastPosition)
-    }
-    */
-
-    view.setBackgroundResource(R.drawable.item_check)
-    val context = view.context
-    val intent = Intent(context, DetailsActivity::class.java)
-    currentSelectId = view.tag.toString()
-    intent.putExtra("id", currentSelectId)
-    context.startActivity(intent)
   }
 
   // Provide a reference to the views for each data item. Complex data items may need
@@ -98,6 +77,7 @@ class MainMenuAdapter(var currentSelectId: String,
     } else { // view is selected
       holder.itemView.setBackgroundResource(R.drawable.item_check)
     }
+
     // - get element from your dataset at this position - replace the contents of the view with that element
     holder.textView.text = dataset[position]
 
@@ -135,18 +115,11 @@ class MainMenuAdapter(var currentSelectId: String,
         transaction.replace(R.id.fragment_preview, fragment)
         transaction.commit() // call commit() for the changes to take effect.
       }
-    } else { // one pane mode
-      //lastHolder = holder
-      //holder.textView.setOnClickListener(onePanelListener)
 
-      holder.textView.setOnLongClickListener { v ->
-        Log.i("P", "longpress")
-        false
-      }
+    } else { // one pane mode
 
       holder.textView.setOnClickListener { view ->
-
-        view.setBackgroundResource(R.drawable.item_check)
+        //view.setBackgroundResource(R.drawable.item_check)
 
         if (selectedItem.isEmpty()) {
           selectedItem.add(position)
@@ -159,18 +132,14 @@ class MainMenuAdapter(var currentSelectId: String,
           notifyItemChanged(oldSelected)
         }
 
+        Log.i("P", "PASS")
+
+        AsyncClass(parentActivity, holder.textView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+
         val context = view.context
         val intent = Intent(context, DetailsActivity::class.java)
         currentSelectId = view.tag.toString()
 
-        /*
-        AsyncTask.execute {
-          Thread.sleep(500L)
-          parentActivity.runOnUiThread {
-            view.setBackgroundResource(R.drawable.item_default)
-          }
-        }
-        */
         intent.putExtra("id", currentSelectId)
         context.startActivity(intent)
       }
@@ -179,4 +148,5 @@ class MainMenuAdapter(var currentSelectId: String,
 
   // return the size of your dataset (invoked by the layout manager)
   override fun getItemCount() = dataset.size
+
 }
