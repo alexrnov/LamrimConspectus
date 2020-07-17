@@ -26,22 +26,15 @@ class MainMenuAdapter(var currentSelectId: String,
           private val parentActivity: MainActivity) :
         RecyclerView.Adapter<MainMenuAdapter.TextViewHolder>() {
 
-  private var dataset = arrayOf("1. Предисловие", "2. Вверение",
-          "3. Подготовка", "4. Правила практики", "5. Между созерцаниями",
-          "6. Ложные представления", "7. Наделение смыслом",
-          "8. Трудность обретения", "9. Памятование о смерти",
-          "10. После смерти", "11. Обращение к прибежищу",
-          "12. Обязанности после обращения", "13. Карма", "14. Разъяснение тяжести",
-          "15. Хорошие деяния", "16. Разъяснение кармы", "17. Особое размышление",
-          "18. Очищение", "19. Установка")
-
+  private var dataset: Array<String> = parentActivity.resources.getStringArray(R.array.item_names)
   private val selectedItem: ArrayList<Int> = ArrayList()
 
   init {
-    // select the item, witch saved in onSaveInstanceState() method
-    selectedItem.add(Integer.valueOf(currentSelectId))
 
     if (dualPaneMode) {
+      // select the item, witch saved in onSaveInstanceState() method
+      selectedItem.add(Integer.valueOf(currentSelectId))
+
       val arguments = Bundle()
       arguments.putString("id", currentSelectId)
       val fragment = PreviewFragment()
@@ -131,8 +124,6 @@ class MainMenuAdapter(var currentSelectId: String,
           //notifyItemChanged(oldSelected) // work slowly
           notifyDataSetChanged()
         }
-
-        //AsyncClass(parentActivity, holder.textView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
 
         val context = view.context
         val intent = Intent(context, DetailsActivity::class.java)
