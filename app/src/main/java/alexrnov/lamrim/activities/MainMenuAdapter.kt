@@ -98,7 +98,8 @@ class MainMenuAdapter(var currentSelectId: String,
           selectedItem.add(position)
           // we do not notify that an item has been selected because that work is
           // done here. We instead send notifications for items to be deselected
-          notifyItemChanged(oldSelected)
+          //notifyItemChanged(oldSelected)
+          notifyDataSetChanged()
         }
 
         val arguments = Bundle()
@@ -119,7 +120,7 @@ class MainMenuAdapter(var currentSelectId: String,
     } else { // one pane mode
 
       holder.textView.setOnClickListener { view ->
-        //view.setBackgroundResource(R.drawable.item_check)
+        view.setBackgroundResource(R.drawable.item_check)
 
         if (selectedItem.isEmpty()) {
           selectedItem.add(position)
@@ -130,11 +131,10 @@ class MainMenuAdapter(var currentSelectId: String,
           // we do not notify that an item has been selected because that work is
           // done here. We instead send notifications for items to be deselected
           notifyItemChanged(oldSelected)
+          notifyDataSetChanged()
         }
 
-        Log.i("P", "PASS")
-
-        AsyncClass(parentActivity, holder.textView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
+        //AsyncClass(parentActivity, holder.textView).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR)
 
         val context = view.context
         val intent = Intent(context, DetailsActivity::class.java)
