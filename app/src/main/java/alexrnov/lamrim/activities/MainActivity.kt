@@ -1,8 +1,6 @@
 package alexrnov.lamrim.activities
 
-import alexrnov.lamrim.ClickListener
 import alexrnov.lamrim.R
-import alexrnov.lamrim.RecyclerTouchListener
 import alexrnov.lamrim.architecture.PreviewModel
 import alexrnov.lamrim.fragments.AboutDialogFragment
 import alexrnov.lamrim.getScreenSizeWithNavBar
@@ -15,13 +13,11 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-
 
 class MainActivity : AppCompatActivity() {
   private var recyclerView: RecyclerView? = null
@@ -57,21 +53,6 @@ class MainActivity : AppCompatActivity() {
 
     adapter = MainMenuAdapter(item, dualPane, this)
     recyclerView!!.adapter = adapter
-
-    /*
-    recyclerView!!.addOnItemTouchListener(RecyclerTouchListener(this,
-            recyclerView, object : ClickListener {
-
-      override fun onClick(view: View, position: Int) {
-        Log.i("P", "onClick() listener")
-      }
-
-      override fun onLongClick(view: View, position: Int) {
-        Log.i("P", "onLongClick() listener")
-      }
-
-    }))
-    */
 
     val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
     setSupportActionBar(toolbar)

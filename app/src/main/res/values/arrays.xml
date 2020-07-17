@@ -33,4 +33,28 @@
         <item>#753100</item>
         <item>#1a3677</item>
     </string-array>
+
+    <!-- text name for items-->
+    <string-array name="item_names">
+        <item>1. Предисловие</item>
+        <item>2. Вверение</item>
+        <item>3. Подготовка</item>
+        <item>4. Правила практики</item>
+        <item>5. Между созерцаниями</item>
+        <item>6. Ложные представления</item>
+        <item>7. Наделение смыслом</item>
+        <item>8. Трудность обретения</item>
+        <item>9. Памятование о смерти</item>
+        <item>10. После смерти</item>
+        <item>11. Обращение к прибежищу</item>
+        <item>12. Обязанности после обращения</item>
+        <item>13. Карма</item>
+        <item>14. Разъяснение тяжести</item>
+        <item>15. Хорошие деяния</item>
+        <item>16. Разъяснение кармы</item>
+        <item>17. Особое размышление</item>
+        <item>18. Очищение</item>
+        <item>19. Установка</item>
+    </string-array>
+
 </resources>
