@@ -3,13 +3,10 @@ package alexrnov.lamrim.activities
 import alexrnov.lamrim.R
 import alexrnov.lamrim.fragments.PreviewFragment
 import android.content.Intent
-import android.os.AsyncTask
 import android.os.Bundle
 import android.util.Log
 import android.view.*
-import android.view.View.OnLongClickListener
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
