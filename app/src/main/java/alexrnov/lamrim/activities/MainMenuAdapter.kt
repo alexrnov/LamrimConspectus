@@ -97,7 +97,7 @@ class MainMenuAdapter(var currentSelectId: String,
           selectedItem.add(position)
           // we do not notify that an item has been selected because that work is
           // done here. We instead send notifications for items to be deselected
-          //notifyItemChanged(oldSelected)
+          //notifyItemChanged(oldSelected) // work slowly
           notifyDataSetChanged()
         }
 
@@ -128,7 +128,7 @@ class MainMenuAdapter(var currentSelectId: String,
           selectedItem.add(position)
           // we do not notify that an item has been selected because that work is
           // done here. We instead send notifications for items to be deselected
-          //notifyItemChanged(oldSelected)
+          //notifyItemChanged(oldSelected) // work slowly
           notifyDataSetChanged()
         }
 
