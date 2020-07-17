@@ -90,6 +90,7 @@ class MainMenuAdapter(var currentSelectId: String,
         // solution Dustin Charles how-to-properly-highlight-selected-item-on-recyclerview
         view.setBackgroundResource(R.drawable.item_check)
 
+
         if (selectedItem.isEmpty()) {
           selectedItem.add(position)
         } else {
@@ -101,6 +102,8 @@ class MainMenuAdapter(var currentSelectId: String,
           //notifyItemChanged(oldSelected)
           notifyDataSetChanged()
         }
+
+
 
         val arguments = Bundle()
         currentSelectId = view.tag.toString()
