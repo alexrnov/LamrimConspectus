@@ -14,7 +14,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 
-
 /**
  * Adapter for main menu
  * [currentSelectId] - id item witch is current select. Pass to the
@@ -39,10 +38,10 @@ class MainMenuAdapter(var currentSelectId: String,
   private val selectedItem: ArrayList<Int> = ArrayList()
 
   init {
-    if (dualPaneMode) {
-      // in dual pane mode, select the item, witch saved in onSaveInstanceState() method
-      selectedItem.add(Integer.valueOf(currentSelectId))
+    // select the item, witch saved in onSaveInstanceState() method
+    selectedItem.add(Integer.valueOf(currentSelectId))
 
+    if (dualPaneMode) {
       val arguments = Bundle()
       arguments.putString("id", currentSelectId)
       val fragment = PreviewFragment()
@@ -90,11 +89,10 @@ class MainMenuAdapter(var currentSelectId: String,
         // solution Dustin Charles how-to-properly-highlight-selected-item-on-recyclerview
         view.setBackgroundResource(R.drawable.item_check)
 
-
         if (selectedItem.isEmpty()) {
           selectedItem.add(position)
         } else {
-          val oldSelected = selectedItem[0]
+          //val oldSelected = selectedItem[0]
           selectedItem.clear()
           selectedItem.add(position)
           // we do not notify that an item has been selected because that work is
@@ -102,8 +100,6 @@ class MainMenuAdapter(var currentSelectId: String,
           //notifyItemChanged(oldSelected)
           notifyDataSetChanged()
         }
-
-
 
         val arguments = Bundle()
         currentSelectId = view.tag.toString()
@@ -121,19 +117,18 @@ class MainMenuAdapter(var currentSelectId: String,
       }
 
     } else { // one pane mode
-
       holder.textView.setOnClickListener { view ->
         view.setBackgroundResource(R.drawable.item_check)
 
         if (selectedItem.isEmpty()) {
           selectedItem.add(position)
         } else {
-          val oldSelected = selectedItem[0]
+          //val oldSelected = selectedItem[0]
           selectedItem.clear()
           selectedItem.add(position)
           // we do not notify that an item has been selected because that work is
           // done here. We instead send notifications for items to be deselected
-          notifyItemChanged(oldSelected)
+          //notifyItemChanged(oldSelected)
           notifyDataSetChanged()
         }
 
