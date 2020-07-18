@@ -55,7 +55,6 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/main_menu" />
+        app:layout_constraintHorizontal_bias="0.5" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
