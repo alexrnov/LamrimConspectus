@@ -43,8 +43,9 @@ class PreviewModel(state: SavedStateHandle) : ViewModel() {
   }
 
   fun getCurrentItem(): String {
-    // when app start for a first time, return first item ("0")
-    return savedState[SELECT_ITEM] ?: "0"
+    // when app start for a first time, return value "-1", for case when app run
+    // app have portrait orientation for not select item
+    return savedState[SELECT_ITEM] ?: "-1"
   }
 
   companion object {

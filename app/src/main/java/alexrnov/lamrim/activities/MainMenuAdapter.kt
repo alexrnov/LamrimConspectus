@@ -30,7 +30,12 @@ class MainMenuAdapter(var currentSelectId: String,
 
     if (dualPaneMode) {
       // select the item, witch saved in onSaveInstanceState() method
-      selectedItem.add(Integer.valueOf(currentSelectId))
+
+      if (currentSelectId == "-1") {
+        selectedItem.add(Integer.valueOf("0"))
+      } else {
+        selectedItem.add(Integer.valueOf(currentSelectId))
+      }
 
       val arguments = Bundle()
       arguments.putString("id", currentSelectId)
@@ -41,6 +46,10 @@ class MainMenuAdapter(var currentSelectId: String,
       parentActivity.supportFragmentManager.beginTransaction()
               .replace(R.id.fragment_preview, fragment)
               .commit() // call commit() for the changes to take effect.
+    } else {
+      if (currentSelectId != "-1") { // if it not first time select item
+        selectedItem.add(Integer.valueOf(currentSelectId))
+      }
     }
   }
 

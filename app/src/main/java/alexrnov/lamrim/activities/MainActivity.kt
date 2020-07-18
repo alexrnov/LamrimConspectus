@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     // val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
     // when used SavedStateHandle of ViewModel
     val item: String = model.getCurrentItem()
+    Log.i("P", "item value = " + item)
 
     adapter = MainMenuAdapter(item, dualPane, this)
     recyclerView!!.adapter = adapter

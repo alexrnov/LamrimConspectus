@@ -50,7 +50,12 @@ public class PreviewFragment extends Fragment {
     };
 
     model.getPreviewText().observe(this, textObserver);
-    String s = model.getPreviewFileName() + model.getCurrentItem();
+
+    String item = model.getCurrentItem();
+    // if it first time when select first item for landscape orientation
+    if (item.equals("-1")) item = "0";
+
+    String s = model.getPreviewFileName() + item;
 
     String packageName = Objects.requireNonNull(getActivity()).getPackageName();
     int resID = getResources().getIdentifier(s, "raw", packageName);
