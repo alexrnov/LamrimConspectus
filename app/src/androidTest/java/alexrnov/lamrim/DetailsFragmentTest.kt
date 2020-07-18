@@ -19,10 +19,33 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 @RunWith(AndroidJUnit4::class)
 class DetailsFragmentTest {
 
+  private var detailsText = ""
+
   @Test
-  fun loadOneItem() {
+  fun loadFirstItem() {
+    val fragmentArgs = Bundle().apply { putString("id", "0") }
+
+    val scenario = launchFragmentInContainer<DetailsFragment>(
+            fragmentArgs, R.id.fragment_details)
+
+    scenario.moveToState(Lifecycle.State.RESUMED) // set state
+    onView(withId(R.id.details_text)).check(matches(isDisplayed()))
+
+    scenario.onFragment { fragment ->
+      val input = fragment.activity?.resources?.openRawResource(R.raw.details_text0)
+      detailsText = TestUtils.loadTextFromFile(input)
+    }
+
+    onView(withId(R.id.details_text)).check(matches(isDisplayed()))
+    onView(withId(R.id.details_text)).check(matches(isLength(detailsText.length)))
+    onView(withId(R.id.details_text)).check(matches(withText(detailsText)))
+  }
+
+  @Test
+  fun loadLastItem() {
+
     val fragmentArgs = Bundle().apply {
-      putString("id", "1")
+      putString("id", "18")
     }
 
     val scenario = launchFragmentInContainer<DetailsFragment>(
@@ -31,14 +54,13 @@ class DetailsFragmentTest {
     scenario.moveToState(Lifecycle.State.RESUMED) // set state
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
 
-    var previewText = ""
     scenario.onFragment { fragment ->
-      val input = fragment.activity?.resources?.openRawResource(R.raw.details_text0)
-      previewText = TestUtils.loadTextFromFile(input)
+      val input = fragment.activity?.resources?.openRawResource(R.raw.details_text18)
+      detailsText = TestUtils.loadTextFromFile(input)
     }
-    onView(withId(R.id.details_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.details_text)).check(matches(isLength(previewText.length)))
-    onView(withId(R.id.details_text)).check(matches(withText(previewText)))
-  }
 
+    onView(withId(R.id.details_text)).check(matches(isDisplayed()))
+    onView(withId(R.id.details_text)).check(matches(isLength(detailsText.length)))
+    onView(withId(R.id.details_text)).check(matches(withText(detailsText)))
+  }
 }

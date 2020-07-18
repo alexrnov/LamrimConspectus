@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import alexrnov.lamrim.TestUtils.isLength
 import alexrnov.lamrim.activities.MainActivity
 import alexrnov.lamrim.fragments.AboutDialogFragment
 import androidx.fragment.app.testing.launchFragment
@@ -24,6 +25,7 @@ import org.junit.Rule
 class AboutDialogFragmentTest {
 
   private lateinit var buttonLabel: String
+  private lateinit var aboutText: String
 
   @get:Rule
   var activityRule: ActivityTestRule<MainActivity>
@@ -32,6 +34,7 @@ class AboutDialogFragmentTest {
   @Before
   fun initString() {
     buttonLabel = activityRule.activity.getString(R.string.ok_button)
+    aboutText = activityRule.activity.getString(R.string.about_program_text)
   }
 
   @Test
@@ -42,6 +45,7 @@ class AboutDialogFragmentTest {
       assertThat(fragment.requireDialog().isShowing).isTrue()
     }
     onView(withId(R.id.about_app_text)).check(matches(isDisplayed()))
+    onView(withId(R.id.about_app_text)).check(matches(isLength(aboutText.length)))
     onView(withId(R.id.close_dialog_button)).check(matches(isDisplayed()))
     onView(withId(R.id.close_dialog_button)).check(matches(withText(buttonLabel)))
 
