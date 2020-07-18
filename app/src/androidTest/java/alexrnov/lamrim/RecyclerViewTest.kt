@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import alexrnov.lamrim.TestUtils.isLength
 import alexrnov.lamrim.TestUtils.loadTextFromFile
 import alexrnov.lamrim.activities.MainActivity
 import android.content.pm.ActivityInfo
@@ -36,7 +37,7 @@ class RecyclerViewTest {
     var input = activityRule.activity.resources.openRawResource(R.raw.preview_text0)
     var previewText = loadTextFromFile(input)
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
+    onView(withId(R.id.preview_text)).check(matches(isLength(previewText.length)))
 
     input = activityRule.activity.resources.openRawResource(R.raw.preview_text1)
     previewText = loadTextFromFile(input)
@@ -45,10 +46,9 @@ class RecyclerViewTest {
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
 
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
+    onView(withId(R.id.preview_text)).check(matches(isLength(previewText.length)))
     onView(withId(R.id.details_button)).check(matches(isDisplayed()))
     onView(withId(R.id.details_button)).check(matches(withText(R.string.details_button_text)))
-
 
     input = activityRule.activity.resources.openRawResource(R.raw.preview_text2)
     previewText = loadTextFromFile(input)
@@ -57,7 +57,7 @@ class RecyclerViewTest {
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(2, click()))
 
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
+    onView(withId(R.id.preview_text)).check(matches(isLength(previewText.length)))
     onView(withId(R.id.details_button)).check(matches(isDisplayed()))
     onView(withId(R.id.details_button)).check(matches(withText(R.string.details_button_text)))
   }
@@ -79,7 +79,7 @@ class RecyclerViewTest {
     onView(withText(R.id.frame_main_menu)).check(doesNotExist())
     onView(withId(R.id.fragment_details)).check(matches(isDisplayed()))
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(detailsText.length)))
+    onView(withId(R.id.details_text)).check(matches(isLength(detailsText.length)))
   }
 
   @Test
@@ -105,7 +105,7 @@ class RecyclerViewTest {
             .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(lastItem, click()))
 
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
+    onView(withId(R.id.preview_text)).check(matches(isLength(previewText.length)))
     onView(withId(R.id.details_button)).check(matches(isDisplayed()))
     onView(withId(R.id.details_button)).check(matches(withText(R.string.details_button_text)))
   }
@@ -135,7 +135,7 @@ class RecyclerViewTest {
     onView(withText(R.id.frame_main_menu)).check(doesNotExist())
     onView(withId(R.id.fragment_details)).check(matches(isDisplayed()))
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(detailsText.length)))
+    onView(withId(R.id.details_text)).check(matches(isLength(detailsText.length)))
   }
 
 }

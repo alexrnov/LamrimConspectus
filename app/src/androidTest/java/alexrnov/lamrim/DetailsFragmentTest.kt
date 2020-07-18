@@ -1,5 +1,6 @@
 package alexrnov.lamrim
 
+import alexrnov.lamrim.TestUtils.isLength
 import alexrnov.lamrim.fragments.DetailsFragment
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
@@ -36,7 +37,7 @@ class DetailsFragmentTest {
       previewText = TestUtils.loadTextFromFile(input)
     }
     onView(withId(R.id.details_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(previewText.length)))
+    onView(withId(R.id.details_text)).check(matches(isLength(previewText.length)))
     onView(withId(R.id.details_text)).check(matches(withText(previewText)))
   }
 
