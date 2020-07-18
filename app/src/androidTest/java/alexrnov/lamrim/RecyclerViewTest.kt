@@ -56,18 +56,31 @@ class RecyclerViewTest {
     onView(withId(R.id.preview_text)).check(matches(TextMatches.isLength(previewText.length)))
   }
 
+  @Test
   fun clickItemWhenPortraitOrientation() {
-    // set landscape orientation for test
+    // set portrait orientation for test
     activityRule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
-    val input = activityRule.activity.resources.openRawResource(R.raw.details_text0)
+    onView(withText(R.id.preview_text)).check(doesNotExist())
+
+    onView(withId(R.id.main_menu))
+            .inRoot(RootMatchers.withDecorView(Matchers.`is`(activityRule.activity.window.decorView)))
+            .perform(RecyclerViewActions.actionOnItemAtPosition<RecyclerView.ViewHolder>(1, click()))
+
+    val input = activityRule.activity.resources.openRawResource(R.raw.details_text1)
     val detailsText = loadTextFromFile(input)
 
-    //onView(withText(R.id.preview_text)).check(doesNotExist())
+    onView(withText(R.id.frame_main_menu)).check(doesNotExist())
+    onView(withId(R.id.fragment_details)).check(matches(isDisplayed()))
+    onView(withId(R.id.details_text)).check(matches(isDisplayed()))
+    onView(withId(R.id.details_text)).check(matches(TextMatches.isLength(detailsText.length)))
   }
 
   @Test
-  fun clickEndItem() {
+  fun clickEndItemLandscapeOrientation() {
+    // set landscape orientation for test
+    activityRule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+
     val recyclerView = activityRule.activity.findViewById<RecyclerView>(R.id.main_menu)
     val itemCount = recyclerView.adapter?.itemCount
 

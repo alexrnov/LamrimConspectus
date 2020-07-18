@@ -111,5 +111,4 @@ public class DetailsActivity extends AppCompatActivity {
     inflater.inflate(R.menu.menu_layout, menu);
     return true;
   }
-
 }

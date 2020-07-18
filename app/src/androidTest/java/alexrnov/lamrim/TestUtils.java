@@ -1,13 +1,9 @@
 package alexrnov.lamrim;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-
-import androidx.lifecycle.MutableLiveData;
 
 public class TestUtils {
 
@@ -22,10 +18,7 @@ public class TestUtils {
         result.append(System.getProperty("line.separator"));
         line = bf.readLine();
       }
-    } catch(IOException e) {
-      Log.v("P", "Error readRawFile");
-    }
+    } catch(IOException e) { e.printStackTrace(); }
     return result.toString();
   }
-
 }
