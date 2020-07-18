@@ -1,5 +1,10 @@
 package alexrnov.lamrim;
 
+import android.app.Activity;
+import android.app.Instrumentation;
+import android.content.Context;
+import android.content.Intent;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
@@ -39,7 +44,25 @@ public class TestUtils {
 
       @Override
       public void describeTo(Description description) {
-        description.appendText("isTextInLines");
+        description.appendText("isTextLength");
+      }
+    };
+  }
+
+  public static TypeSafeMatcher<View> isFontSize(final float size) {
+    return new TypeSafeMatcher<View>() {
+      @Override
+      protected boolean matchesSafely(View item) {
+        System.out.println("textSize = " + ((TextView) item).getTextSize());
+
+        //float sp = ((TextView) item).getTextSize() / getResources().getDisplayMetrics().scaledDensity;
+        // comparing pixels
+        return ((TextView) item).getTextSize() == size;
+      }
+
+      @Override
+      public void describeTo(Description description) {
+        description.appendText("isTextSize");
       }
     };
   }

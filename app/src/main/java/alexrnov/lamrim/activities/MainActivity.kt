@@ -72,6 +72,7 @@ class MainActivity : AppCompatActivity() {
       }
     }
     getScreenSizeWithNavBar(this)
+
   }
 
   override fun onResume() {

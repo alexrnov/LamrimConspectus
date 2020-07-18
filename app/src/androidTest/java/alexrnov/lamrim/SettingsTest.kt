@@ -1,10 +1,13 @@
 package alexrnov.lamrim
 
+import alexrnov.lamrim.TestUtils.isFontSize
 import android.content.Context
 import android.content.Intent
+import android.view.Surface
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -49,10 +52,14 @@ class SettingsTest {
     context.startActivity(intent)
     device.wait(Until.hasObject(By.pkg(BASIC_SAMPLE_PACKAGE).depth(0)),
             LAUNCH_TIMEOUT ) // Wait
+
   }
 
   @Test
-  fun f() {
+  fun changeSizeFontLandscape() {
+    InstrumentationRegistry.getInstrumentation().uiAutomation
+            .setRotation(Surface.ROTATION_90) // landscape orientation
+
     // Get the button object. If you want to access a specific UI component in your
     // application, use the UiSelector class. This class represents a request for
     // specific items in the currently displayed user interface.
@@ -69,15 +76,20 @@ class SettingsTest {
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
 
-    onView(withText(R.string.very_min_size)).perform(click())
+    onView(withText(R.string.very_big_size)).perform(click())
 
+    device.pressBack() // back to main activity
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
 
-    onView(withText(R.string.font_size)).perform(click())
+    onView(withId(R.id.preview_text)).check(matches(isFontSize(13.0f)))
 
-    device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
-            LAUNCH_TIMEOUT)
   }
+
+  fun changeSizeFontPortrait() {
+    InstrumentationRegistry.getInstrumentation().uiAutomation
+            .setRotation(Surface.ROTATION_0) // portrait orientation
+  }
+
 
 }
