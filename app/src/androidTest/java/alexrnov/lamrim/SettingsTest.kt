@@ -69,7 +69,12 @@ class SettingsTest {
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
 
-    onView(withText(R.string.very_big_size)).perform(click())
+    onView(withText(R.string.very_min_size)).perform(click())
+
+    device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
+            LAUNCH_TIMEOUT)
+
+    onView(withText(R.string.font_size)).perform(click())
 
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
