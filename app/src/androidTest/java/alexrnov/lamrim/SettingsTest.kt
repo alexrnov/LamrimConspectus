@@ -1,6 +1,7 @@
 package alexrnov.lamrim
 
 import alexrnov.lamrim.TestUtils.isFontSize
+import alexrnov.lamrim.activities.MainActivity
 import android.content.Context
 import android.content.Intent
 import android.view.Surface
@@ -14,9 +15,11 @@ import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
 import org.hamcrest.CoreMatchers
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -82,7 +85,7 @@ class SettingsTest {
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
 
-    onView(withId(R.id.preview_text)).check(matches(isFontSize(13.0f)))
+    //onView(withId(R.id.preview_text)).check(matches(isFontSize(13.0f)))
 
   }
 

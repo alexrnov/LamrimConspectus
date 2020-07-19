@@ -49,15 +49,12 @@ public class TestUtils {
     };
   }
 
-  public static TypeSafeMatcher<View> isFontSize(final float size) {
+  public static TypeSafeMatcher<View> isFontSize(final float size, final float density) {
     return new TypeSafeMatcher<View>() {
       @Override
       protected boolean matchesSafely(View item) {
-        System.out.println("textSize = " + ((TextView) item).getTextSize());
-
-        //float sp = ((TextView) item).getTextSize() / getResources().getDisplayMetrics().scaledDensity;
-        // comparing pixels
-        return ((TextView) item).getTextSize() == size;
+        float sp = ((TextView) item).getTextSize() / density;
+        return sp == size;
       }
 
       @Override
