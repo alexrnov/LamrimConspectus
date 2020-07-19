@@ -48,9 +48,9 @@ public class Utils {
     };
   }
 
+  /** Allows comparison by text color */
   public static Matcher<View> withTextColor(final int expectedId) {
     return new BoundedMatcher<View, TextView>(TextView.class) {
-
       @Override
       protected boolean matchesSafely(TextView textView) {
         int colorId = ContextCompat.getColor(textView.getContext(), expectedId);
@@ -59,7 +59,7 @@ public class Utils {
 
       @Override
       public void describeTo(Description description) {
-        description.appendText("with text color: ");
+        description.appendText("comparing text color");
         description.appendValue(expectedId);
       }
     };

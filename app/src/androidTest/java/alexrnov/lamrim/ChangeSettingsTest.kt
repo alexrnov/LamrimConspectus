@@ -91,6 +91,18 @@ class ChangeSettingsTest {
     onView(withId(R.id.preview_text)).check(matches(withTextColor(R.color.BlueTextColor)))
   }
 
+  @Test
+  fun aboutApp() {
+    onView(withId(R.id.action_settings)).perform(click())
+    onView(withText(R.string.program_information)).perform(click())
+    onView(withText(R.string.program_name)).check(matches(isDisplayed()))
+    onView(withText(R.string.version_pref)).check(matches(isDisplayed()))
+    onView(withText(R.string.additional_resources)).check(matches(isDisplayed()))
+    // press up home button
+    onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
+    onView(withText(R.string.about_program_category)).check(matches(isDisplayed()))
+  }
+
   private fun isSP(size: Float): Matcher<View> {
     return TestViewSPMatcher(activityRule.activity).isSize(size)
   }
