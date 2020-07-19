@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Point
 import android.os.Build
-import android.util.Log
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 
@@ -37,8 +36,7 @@ fun getScreenSizeWithNavBar(activity: AppCompatActivity) {
   val density: Float = displayMetrics.density
   val dpWidth: Float = width / density
   val dpHeight: Float = height / density
-  Log.i("i", "density = $density, width = $width, height = $height, " + "dpWidth = $dpWidth, dpHeight = $dpHeight")
-
+  println("density = $density, width = $width, height = $height, dpWidth = $dpWidth, dpHeight = $dpHeight")
 }
 
 private fun getWidth(x: Int, y: Int, orientation: Int): Int {

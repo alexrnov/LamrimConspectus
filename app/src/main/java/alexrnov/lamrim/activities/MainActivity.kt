@@ -9,7 +9,6 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.text.Html
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -24,8 +23,6 @@ class MainActivity : AppCompatActivity() {
   private lateinit var adapter: MainMenuAdapter
   private var layoutManager: RecyclerView.LayoutManager? = null
   private var dualPane = false
-  private val TAG = "P"
-
   private val model: PreviewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +47,6 @@ class MainActivity : AppCompatActivity() {
     // val item: String = savedInstanceState?.getString(SELECT_ITEM) ?: "0"
     // when used SavedStateHandle of ViewModel
     val item: String = model.getCurrentItem()
-    Log.i("P", "item value = " + item)
 
     adapter = MainMenuAdapter(item, dualPane, this)
     recyclerView!!.adapter = adapter
@@ -73,12 +69,6 @@ class MainActivity : AppCompatActivity() {
     }
     getScreenSizeWithNavBar(this)
 
-  }
-
-  override fun onResume() {
-    super.onResume()
-    val item: String = model.getCurrentItem()
-    Log.i("P", "item, onResume() = " + item)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {

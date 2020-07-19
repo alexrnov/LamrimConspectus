@@ -4,7 +4,6 @@ import alexrnov.lamrim.R
 import alexrnov.lamrim.fragments.PreviewFragment
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.FragmentManager

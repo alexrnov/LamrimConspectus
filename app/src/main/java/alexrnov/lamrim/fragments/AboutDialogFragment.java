@@ -7,7 +7,6 @@ import android.widget.Button;
 import org.jetbrains.annotations.NotNull;
 
 import alexrnov.lamrim.R;
-import alexrnov.lamrim.activities.MainActivity;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.fragment.app.DialogFragment;
@@ -15,13 +14,10 @@ import androidx.fragment.app.FragmentActivity;
 
 public class AboutDialogFragment extends DialogFragment {
 
-  private View.OnClickListener clickListener = new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-      Dialog dialog = AboutDialogFragment.this.getDialog();
-      if (dialog != null) {
-        dialog.cancel();
-      }
+  private View.OnClickListener clickListener = v -> {
+    Dialog dialog = AboutDialogFragment.this.getDialog();
+    if (dialog != null) {
+      dialog.cancel();
     }
   };
 
