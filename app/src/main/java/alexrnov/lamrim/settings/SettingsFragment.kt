@@ -59,7 +59,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
      */
   }
 
-  /* // click by preference
+  /* // click by preferences
   override fun onPreferenceTreeClick(preference: Preference?): Boolean {
     Log.i("P", "preference tree click")
     return super.onPreferenceTreeClick(preference)
