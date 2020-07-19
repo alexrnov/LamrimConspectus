@@ -1,8 +1,8 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.fragments
 
-import alexrnov.lamrim.TestUtils.isLength
+import alexrnov.lamrim.R
+import alexrnov.lamrim.testutils.Utils.isLength
 import alexrnov.lamrim.activities.MainActivity
-import alexrnov.lamrim.fragments.AboutDialogFragment
 import androidx.fragment.app.testing.launchFragment
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist

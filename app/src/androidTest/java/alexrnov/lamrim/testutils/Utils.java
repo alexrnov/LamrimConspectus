@@ -1,10 +1,5 @@
-package alexrnov.lamrim;
+package alexrnov.lamrim.testutils;
 
-import android.app.Activity;
-import android.app.Instrumentation;
-import android.content.Context;
-import android.content.Intent;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.TextView;
 
@@ -16,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class TestUtils {
+public class Utils {
 
   /** allow load text from file */
   public static String loadTextFromFile(InputStream input) {
@@ -49,19 +44,5 @@ public class TestUtils {
     };
   }
 
-  public static TypeSafeMatcher<View> isFontSize(final float size, final float density) {
-    return new TypeSafeMatcher<View>() {
-      @Override
-      protected boolean matchesSafely(View item) {
-        float sp = ((TextView) item).getTextSize() / density;
-        return sp == size;
-      }
-
-      @Override
-      public void describeTo(Description description) {
-        description.appendText("isTextSize");
-      }
-    };
-  }
 
 }

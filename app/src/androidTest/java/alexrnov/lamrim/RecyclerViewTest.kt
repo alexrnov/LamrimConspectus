@@ -1,7 +1,7 @@
 package alexrnov.lamrim
 
-import alexrnov.lamrim.TestUtils.isLength
-import alexrnov.lamrim.TestUtils.loadTextFromFile
+import alexrnov.lamrim.testutils.Utils.isLength
+import alexrnov.lamrim.testutils.Utils.loadTextFromFile
 import alexrnov.lamrim.activities.MainActivity
 import android.content.pm.ActivityInfo
 import androidx.recyclerview.widget.RecyclerView

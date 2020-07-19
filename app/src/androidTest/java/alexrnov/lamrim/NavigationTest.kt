@@ -1,7 +1,5 @@
 package alexrnov.lamrim
 
-import alexrnov.lamrim.TestUtils.isFontSize
-import alexrnov.lamrim.activities.MainActivity
 import android.content.Context
 import android.content.Intent
 import android.view.Surface
@@ -85,14 +83,11 @@ class SettingsTest {
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
 
-    //onView(withId(R.id.preview_text)).check(matches(isFontSize(13.0f)))
-
   }
 
   fun changeSizeFontPortrait() {
     InstrumentationRegistry.getInstrumentation().uiAutomation
             .setRotation(Surface.ROTATION_0) // portrait orientation
   }
-
 
 }

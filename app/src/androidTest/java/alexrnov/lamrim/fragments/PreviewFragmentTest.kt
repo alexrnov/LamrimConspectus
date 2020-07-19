@@ -1,7 +1,8 @@
-package alexrnov.lamrim
+package alexrnov.lamrim.fragments
 
-import alexrnov.lamrim.TestUtils.isLength
-import alexrnov.lamrim.fragments.PreviewFragment
+import alexrnov.lamrim.R
+import alexrnov.lamrim.testutils.Utils.isLength
+import alexrnov.lamrim.testutils.Utils
 import android.os.Bundle
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.lifecycle.Lifecycle
@@ -31,7 +32,7 @@ class PreviewFragmentTest {
 
     scenario.onFragment { fragment ->
       val input = fragment.activity?.resources?.openRawResource(R.raw.preview_text0)
-      previewText = TestUtils.loadTextFromFile(input)
+      previewText = Utils.loadTextFromFile(input)
     }
 
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
@@ -51,7 +52,7 @@ class PreviewFragmentTest {
 
     scenario.onFragment { fragment ->
       val input = fragment.activity?.resources?.openRawResource(R.raw.preview_text18)
-      previewText = TestUtils.loadTextFromFile(input)
+      previewText = Utils.loadTextFromFile(input)
     }
 
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
