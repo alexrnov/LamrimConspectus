@@ -24,4 +24,9 @@
     <color name="BackgroundButtonPressedColor">#cd8a59</color>
     <color name="ButtonTextColor">#fffbbe</color>
 
+    <!-- TextView color for tests -->
+    <color name="GrayTextColor">#393939</color>
+    <color name="BlackTextColor">#000000</color>
+    <color name="BrownTextColor">#753100</color>
+    <color name="BlueTextColor">#1a3677</color>
 </resources>

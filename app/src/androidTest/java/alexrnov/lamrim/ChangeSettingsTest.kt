@@ -2,8 +2,9 @@ package alexrnov.lamrim
 
 import alexrnov.lamrim.activities.MainActivity
 import alexrnov.lamrim.testutils.TestViewSPMatcher
+import alexrnov.lamrim.testutils.Utils.withTextColor
 import android.content.pm.ActivityInfo
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -11,6 +12,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
+import org.hamcrest.Matcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -26,8 +28,6 @@ class ChangeSettingsTest {
   @Test
   fun changeFontSize() {
     activityRule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-    val activity: AppCompatActivity = activityRule.activity
-    val sp = TestViewSPMatcher(activity)
 
     onView(withId(R.id.action_settings)).perform(click())
     onView(withText(R.string.font_size)).perform(click())
@@ -35,34 +35,33 @@ class ChangeSettingsTest {
     // press up home button
     onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
     onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
-    onView(withId(R.id.preview_text)).check(matches(sp.isSize(14.0f)))
+    onView(withId(R.id.preview_text)).check(matches(isSP(14.0f)))
 
     onView(withId(R.id.action_settings)).perform(click())
     onView(withText(R.string.font_size)).perform(click())
     onView(withText(R.string.min_size)).perform(click())
     onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
-    onView(withId(R.id.preview_text)).check(matches(sp.isSize(17.0f)))
+    onView(withId(R.id.preview_text)).check(matches(isSP(17.0f)))
 
     onView(withId(R.id.action_settings)).perform(click())
     onView(withText(R.string.font_size)).perform(click())
     onView(withText(R.string.middle_size)).perform(click())
     onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
-    onView(withId(R.id.preview_text)).check(matches(sp.isSize(20.0f)))
+    onView(withId(R.id.preview_text)).check(matches(isSP(20.0f)))
 
     onView(withId(R.id.action_settings)).perform(click())
     onView(withText(R.string.font_size)).perform(click())
     onView(withText(R.string.big_size)).perform(click())
     onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
-    onView(withId(R.id.preview_text)).check(matches(sp.isSize(23.0f)))
+    onView(withId(R.id.preview_text)).check(matches(isSP(23.0f)))
 
     onView(withId(R.id.action_settings)).perform(click())
     onView(withText(R.string.font_size)).perform(click())
     onView(withText(R.string.very_big_size)).perform(click())
     onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
-    onView(withId(R.id.preview_text)).check(matches(sp.isSize(26.0f)))
+    onView(withId(R.id.preview_text)).check(matches(isSP(26.0f)))
   }
 
-  /*
   @Test
   fun changeFontColor() {
     activityRule.activity.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
@@ -71,7 +70,28 @@ class ChangeSettingsTest {
     onView(withText(R.string.gray_color)).perform(click())
     // press up home button
     onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
+    onView(withId(R.id.preview_text)).check(matches(withTextColor(R.color.GrayTextColor)))
+
+    onView(withId(R.id.action_settings)).perform(click())
+    onView(withText(R.string.font_color)).perform(click())
+    onView(withText(R.string.black_color)).perform(click())
+    onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
+    onView(withId(R.id.preview_text)).check(matches(withTextColor(R.color.BlackTextColor)))
+
+    onView(withId(R.id.action_settings)).perform(click())
+    onView(withText(R.string.font_color)).perform(click())
+    onView(withText(R.string.brown_color)).perform(click())
+    onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
+    onView(withId(R.id.preview_text)).check(matches(withTextColor(R.color.BrownTextColor)))
+
+    onView(withId(R.id.action_settings)).perform(click())
+    onView(withText(R.string.font_color)).perform(click())
+    onView(withText(R.string.blue_color)).perform(click())
+    onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
+    onView(withId(R.id.preview_text)).check(matches(withTextColor(R.color.BlueTextColor)))
   }
 
-   */
+  private fun isSP(size: Float): Matcher<View> {
+    return TestViewSPMatcher(activityRule.activity).isSize(size)
+  }
 }
