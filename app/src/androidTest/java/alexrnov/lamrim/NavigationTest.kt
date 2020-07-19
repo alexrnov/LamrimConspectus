@@ -8,8 +8,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
@@ -83,11 +82,19 @@ class SettingsTest {
     device.wait(Until.hasObject(By.pkg(launcherPackage).depth(0)),
             LAUNCH_TIMEOUT)
 
+    onView(withId(R.id.preview_text)).check(matches(isDisplayed()))
+    onView(withId(R.id.details_button)).check(matches(isDisplayed()))
   }
 
+  @Test
   fun changeSizeFontPortrait() {
     InstrumentationRegistry.getInstrumentation().uiAutomation
             .setRotation(Surface.ROTATION_0) // portrait orientation
+
+    val list = UiScrollable(UiSelector().resourceId("$BASIC_SAMPLE_PACKAGE:id/main_menu"))
+    list.flingToEnd(18)
+
+
   }
 
 }
