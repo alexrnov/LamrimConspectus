@@ -22,10 +22,33 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
       fontSize.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
         //preference.summary = newValue.toString() // change summary under preference name
-        Log.i("P", "click value = $newValue")
-        showSnackbar(this.requireView(), "adgfder")
+        val text = when(newValue) {
+          "14" -> getString(R.string.very_min_size)
+          "17" -> getString(R.string.min_size)
+          "20" -> getString(R.string.middle_size)
+          "23" -> getString(R.string.big_size)
+          else -> getString(R.string.very_big_size)
+        }
+        showSnackbar(this.requireView(), getString(R.string.font_size) + ": " + text)
         true
-      }  
+      }
+
+      val colorSize: ListPreference? = findPreference("font_color") as ListPreference?
+      colorSize?.let {
+        // to ensure we don't get a null value set first value by default
+        if (it.value == null) it.setValueIndex(0)
+
+        it.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+          val text = when(newValue) {
+            "#393939" -> getString(R.string.gray_color)
+            "#000000" -> getString(R.string.black_color)
+            "#753100" -> getString(R.string.brown_color)
+            else -> getString(R.string.blue_color)
+          }
+          showSnackbar(this.requireView(), getString(R.string.font_color) + ": $text")
+          true
+        }
+      }
     }
     
     /* // click by preferences
