@@ -17,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 
 /** Получить размеры экрана с навигационной панелью */
 /* solution offer by EC84B4: https://stackoverflow.com/questions/26674378/android-get-screen-size-including-the-size-of-status-bar-and-software-navigation */
+/*
 fun getScreenSizeWithNavBar(activity: AppCompatActivity) {
   val x: Int
   val y: Int
@@ -55,6 +56,8 @@ private fun getHeight(x: Int, y: Int, orientation: Int): Int {
   return if (orientation == Configuration.ORIENTATION_PORTRAIT) y else x
 }
 
+
+ */
 /**
  * Показать снэкбар (уведомление).
  * [view] - корневой макет;

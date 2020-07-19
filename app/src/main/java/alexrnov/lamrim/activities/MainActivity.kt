@@ -3,7 +3,7 @@ package alexrnov.lamrim.activities
 import alexrnov.lamrim.R
 import alexrnov.lamrim.architecture.PreviewModel
 import alexrnov.lamrim.fragments.AboutDialogFragment
-import alexrnov.lamrim.getScreenSizeWithNavBar
+//import alexrnov.lamrim.getScreenSizeWithNavBar
 import alexrnov.lamrim.settings.SettingsActivity
 import android.content.Intent
 import android.os.Build
@@ -67,8 +67,7 @@ class MainActivity : AppCompatActivity() {
                 this.getString(R.string.app_name) + "</font>")
       }
     }
-    getScreenSizeWithNavBar(this)
-
+    //getScreenSizeWithNavBar(this)
   }
 
   override fun onCreateOptionsMenu(menu: Menu): Boolean {
