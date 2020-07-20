@@ -12,13 +12,12 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SdkSuppress
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.rule.ActivityTestRule
 import androidx.test.uiautomator.*
 import org.hamcrest.CoreMatchers
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+
 
 private const val LAUNCH_TIMEOUT = 1000L
 private const val BASIC_SAMPLE_PACKAGE = "alexrnov.lamrim"
@@ -52,7 +51,6 @@ class SettingsTest {
     context.startActivity(intent)
     device.wait(Until.hasObject(By.pkg(BASIC_SAMPLE_PACKAGE).depth(0)),
             LAUNCH_TIMEOUT ) // Wait
-
   }
 
   @Test
@@ -87,14 +85,10 @@ class SettingsTest {
   }
 
   @Test
-  fun changeSizeFontPortrait() {
+  fun recyclerViewScrollToEndPortrait() {
     InstrumentationRegistry.getInstrumentation().uiAutomation
             .setRotation(Surface.ROTATION_0) // portrait orientation
-
     val list = UiScrollable(UiSelector().resourceId("$BASIC_SAMPLE_PACKAGE:id/main_menu"))
     list.flingToEnd(18)
-
-
   }
-
 }

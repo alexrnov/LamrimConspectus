@@ -50,11 +50,7 @@ public class PreviewFragment extends Fragment {
 
     model.getPreviewText().observe(this, textObserver);
 
-    String item = model.getCurrentItem();
-    // if it first time when select first item for landscape orientation
-    if (item.equals("-1")) item = "0";
-
-    String s = model.getPreviewFileName() + item;
+    String s = model.getPreviewFileName() + getItemID();
 
     String packageName = Objects.requireNonNull(getActivity()).getPackageName();
     int resID = getResources().getIdentifier(s, "raw", packageName);
@@ -78,7 +74,7 @@ public class PreviewFragment extends Fragment {
       Context context = getContext();
       if (context != null) {
         Intent intent = new Intent(context, DetailsActivity.class);
-        intent.putExtra("id", model.getCurrentItem());
+        intent.putExtra("id", getItemID());
         intent.putExtra("dualPaneMode", false);
         context.startActivity(intent);
       }
@@ -93,5 +89,13 @@ public class PreviewFragment extends Fragment {
       getLifecycle().addObserver(observer);
     }
     return rootView;
+  }
+
+  /* check for started not selected value (non selected value - that not
+  selected recycler view item in portrait landscape)*/
+  private String getItemID() {
+    String item = model.getCurrentItem();
+    // if it first time when select first item for landscape orientation
+    return (item.equals("-1")) ? "0" : item;
   }
 }

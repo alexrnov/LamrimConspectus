@@ -66,7 +66,7 @@ private fun getHeight(x: Int, y: Int, orientation: Int): Int {
 fun showSnackbar(view: View, message: CharSequence) {
   val snackbar = Snackbar.make(view, message, 2000)
   snackbar.setAction("OK") { snackbar.dismiss() } // при нажатии на кнопку snackbar просто скрывается
-  snackbar.setActionTextColor(Color.parseColor("#c5fbff")) // цвет кнопки
+  snackbar.setActionTextColor(Color.parseColor("#ffffff")) // цвет кнопки
   val snackbarView = snackbar.view
   snackbarView.setBackgroundColor(Color.parseColor("#858585")) // цвет фона
   snackbarView.setPadding(0, 0, 0, 0)
@@ -84,7 +84,7 @@ fun showSnackbar(view: View, message: CharSequence) {
   //val textView = snackbarView.findViewById<TextView>(android.support.design.R.id.snackbar_text)
   // вызов для библиотеки androidx
   val textView = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-  textView.setTextColor(Color.parseColor("#c5fbff")) // цвет сообщения
+  textView.setTextColor(Color.parseColor("#ffffff")) // цвет сообщения
   snackbar.show()
 }
 
