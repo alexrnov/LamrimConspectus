@@ -1,19 +1,12 @@
 package alexrnov.lamrim
 
-import android.content.Context
-import android.content.res.Configuration
 import android.graphics.Color
-import android.graphics.Point
-import android.os.Build
 import android.view.Gravity
 import android.view.View
-import android.view.WindowManager
 import android.widget.FrameLayout
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.snackbar.Snackbar
-
 
 /** Получить размеры экрана с навигационной панелью */
 /* solution offer by EC84B4: https://stackoverflow.com/questions/26674378/android-get-screen-size-including-the-size-of-status-bar-and-software-navigation */
@@ -55,36 +48,34 @@ private fun getWidth(x: Int, y: Int, orientation: Int): Int {
 private fun getHeight(x: Int, y: Int, orientation: Int): Int {
   return if (orientation == Configuration.ORIENTATION_PORTRAIT) y else x
 }
-
-
  */
+
 /**
- * Показать снэкбар (уведомление).
- * [view] - корневой макет;
- * [message] - текст сообщения.
+ * View snackbar
+ * [view] - root view;
+ * [message] - message text.
  */
 fun showSnackbar(view: View, message: CharSequence) {
   val snackbar = Snackbar.make(view, message, 2000)
-  snackbar.setAction("OK") { snackbar.dismiss() } // при нажатии на кнопку snackbar просто скрывается
-  snackbar.setActionTextColor(Color.parseColor("#ffffff")) // цвет кнопки
+  snackbar.setAction("OK") { snackbar.dismiss() } // when you click on the button, the snackbar just hides
+  snackbar.setActionTextColor(Color.parseColor("#ffffff")) // button color
   val snackbarView = snackbar.view
-  snackbarView.setBackgroundColor(Color.parseColor("#858585")) // цвет фона
+  snackbarView.setBackgroundColor(Color.parseColor("#858585")) // background color
   snackbarView.setPadding(0, 0, 0, 0)
-  // установить ширину снэкбара по экрану - это необходимо, так как на tablet снекбар по умолчанию занимает только часть экрана
-
+  // set the width of the snackbar to the screen - this is necessary, since on the tablet the snackbar by default occupies only part of the screen
   val params = snackbarView.layoutParams as CoordinatorLayout.LayoutParams
   //val params = snackbarView.layoutParams as FrameLayout.LayoutParams
-  // другой вариант расширить снэкбар
+  // another option is to expand the snackbar
   //snackbarView.getLayoutParams().width = AppBarLayout.LayoutParams.MATCH_PARENT;
   params.gravity = Gravity.BOTTOM or Gravity.CENTER_HORIZONTAL
   params.width = FrameLayout.LayoutParams.MATCH_PARENT
   snackbarView.layoutParams = params
 
-  // вызов для библиотеки поддержки android support
+  // invoke for android support library
   //val textView = snackbarView.findViewById<TextView>(android.support.design.R.id.snackbar_text)
-  // вызов для библиотеки androidx
+  // invoke for library androidx
   val textView = snackbarView.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
-  textView.setTextColor(Color.parseColor("#ffffff")) // цвет сообщения
+  textView.setTextColor(Color.parseColor("#ffffff")) // message color
   snackbar.show()
 }
 
