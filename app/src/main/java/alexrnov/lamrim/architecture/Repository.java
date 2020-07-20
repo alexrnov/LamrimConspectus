@@ -1,7 +1,5 @@
 package alexrnov.lamrim.architecture;
 
-import android.util.Log;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -63,7 +61,7 @@ public class Repository {
       }
       liveData.postValue(result.toString());
     } catch(IOException e) {
-      Log.v("P", "Error readRawFile");
+      //e.printStackTrace();
     }
   }
 }
