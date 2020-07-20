@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 // in kotlin-base app kapt is used instead annotationProcessor
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -120,9 +120,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-process:2.2.0"
 
     // for dagger
-    implementation "com.google.dagger:dagger-android:2.15"
+    //implementation "com.google.dagger:dagger-android:2.15"
     //annotationProcessor 'com.google.dagger:dagger-android-processor:2.15'
-    kapt 'com.google.dagger:dagger-android-processor:2.15'
+    //kapt 'com.google.dagger:dagger-android-processor:2.15'
 
     // for test
     testImplementation 'junit:junit:4.12' // required - JUnit4 framework
