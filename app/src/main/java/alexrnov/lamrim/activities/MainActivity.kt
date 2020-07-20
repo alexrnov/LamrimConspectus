@@ -19,10 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class MainActivity : AppCompatActivity() {
-  private var recyclerView: RecyclerView? = null
   private lateinit var adapter: MainMenuAdapter
-  private var layoutManager: RecyclerView.LayoutManager? = null
-  private var dualPane = false
   private val model: PreviewModel by viewModels()
 
   override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,14 +29,14 @@ class MainActivity : AppCompatActivity() {
 
     //for java: TextViewModel model = new ViewModelProvider(this).get(TextViewModel.class);
     val container = findViewById<View>(R.id.fragment_preview)
-    dualPane = container != null && container.visibility == View.VISIBLE
-    recyclerView = findViewById<View>(R.id.main_menu) as RecyclerView
+    val dualPane = container != null && container.visibility == View.VISIBLE
+    val recyclerView = findViewById<View>(R.id.main_menu) as RecyclerView
     // use this setting to improve performance if you know that changes
     // in content do not change the layout size of the RecyclerView
-    recyclerView!!.setHasFixedSize(true)
+    recyclerView.setHasFixedSize(true)
     // LinearLayoutManager arranges the items in a one-dimensional list
-    layoutManager = LinearLayoutManager(this)
-    recyclerView!!.layoutManager = layoutManager
+    val layoutManager = LinearLayoutManager(this)
+    recyclerView.layoutManager = layoutManager
 
     // Check whether we're recreating a previously destroyed instance.
     // If yes, then get the item number, if not, then get 0 for first item
@@ -49,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     val item: String = model.getCurrentItem()
 
     adapter = MainMenuAdapter(item, dualPane, this)
-    recyclerView!!.adapter = adapter
+    recyclerView.adapter = adapter
 
     val toolbar = findViewById<Toolbar>(R.id.main_toolbar)
     setSupportActionBar(toolbar)
