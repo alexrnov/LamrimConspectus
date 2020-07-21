@@ -60,7 +60,7 @@ fun showSnackbar(view: View, message: CharSequence) {
   snackbar.setAction("OK") { snackbar.dismiss() } // when you click on the button, the snackbar just hides
   snackbar.setActionTextColor(Color.parseColor("#ffffff")) // button color
   val snackbarView = snackbar.view
-  snackbarView.setBackgroundColor(Color.parseColor("#858585")) // background color
+  snackbarView.setBackgroundColor(Color.parseColor("#656565")) // background color
   snackbarView.setPadding(0, 0, 0, 0)
   // set the width of the snackbar to the screen - this is necessary, since on the tablet the snackbar by default occupies only part of the screen
   val params = snackbarView.layoutParams as CoordinatorLayout.LayoutParams
