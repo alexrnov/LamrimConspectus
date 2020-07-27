@@ -1,4 +1,4 @@
-Lamrim eBook
+Lamrim eBook:
 
 <p align="center">
   <img src="https://github.com/alexrnov/Files/blob/master/Lamrim1.png" width="350" title="Lamrim">
