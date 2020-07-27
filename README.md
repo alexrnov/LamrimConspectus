@@ -23,3 +23,7 @@ Lamrim eBook:
 <p align="center">
   <img src="https://github.com/alexrnov/Files/blob/master/Lamrim6.png" width="350" title="Lamrim">
 </p>
+
+<p align="center">
+  <img src="https://github.com/alexrnov/Files/blob/master/Lamrim7.png" width="350" title="Lamrim">
+</p>
