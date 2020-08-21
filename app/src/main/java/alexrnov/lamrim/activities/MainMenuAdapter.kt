@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
  * [currentSelectId] - id item witch is current select. Pass to the
  * constructor to remember select state retain after rotation screen.
  * [dualPaneMode] - mode when view menu and short description.
- * [parentActivity] - activity include fragment.
+ * [parentActivity] - activity include fragment (bad solution, it needs to be fixed).
  */
 class MainMenuAdapter(var currentSelectId: String,
           private val dualPaneMode: Boolean,
